@@ -2,7 +2,7 @@
 
 namespace SpbAiChamp.Model
 
-/// TODO - Document
+/// Building type
 type BuildingType =
     | Quarry = 0
     | Mines = 1

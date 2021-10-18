@@ -2,47 +2,47 @@ import { Resource } from "./resource";
 import { Stream } from "../stream";
 
 /**
- * TODO - Document
+ * Building properties
  */
 export class BuildingProperties {
     /**
-     * TODO - Document
+     * Resources required for building
      */
     buildResources: Map<Resource, number>
     /**
-     * TODO - Document
+     * Max health points of the building
      */
     maxHealth: number
     /**
-     * TODO - Document
+     * Max number of workers in the building
      */
     maxWorkers: number
     /**
-     * TODO - Document
+     * Resources required to start another task
      */
     workResources: Map<Resource, number>
     /**
-     * TODO - Document
+     * Whether performing a task spawn new workers
      */
     produceWorker: boolean
     /**
-     * TODO - Document
+     * Resource produced when performing a task
      */
     produceResource: Resource | null
     /**
-     * TODO - Document
+     * Amount of resources/workers produced when performing one task
      */
     produceAmount: number
     /**
-     * TODO - Document
+     * Score points given for performing one task
      */
     produceScore: number
     /**
-     * TODO - Document
+     * Whether building is harvesting. In this case resource can only be produced if it is harvestable on the planet
      */
     harvest: boolean
     /**
-     * TODO - Document
+     * Amount of work needed to finish one task
      */
     workAmount: number
 

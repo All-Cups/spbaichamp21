@@ -5,21 +5,21 @@ namespace SpbAiChamp.Model
 
 open SpbAiChamp
 
-/// TODO - Document
+/// A planet
 type Planet = {
-    /// TODO - Document
+    /// Unique identifier of the planet
     Id: int;
-    /// TODO - Document
+    /// X coordinate
     X: int;
-    /// TODO - Document
+    /// Y coordinate
     Y: int;
-    /// TODO - Document
+    /// Resource that can be harvested on the planet
     HarvestableResource: option<Model.Resource>;
-    /// TODO - Document
+    /// List of worker groups
     WorkerGroups: Model.WorkerGroup[];
-    /// TODO - Document
+    /// Resources stored on the planet
     Resources: Map<Model.Resource, int>;
-    /// TODO - Document
+    /// Building on the planet
     Building: option<Model.Building>;
 } with
 

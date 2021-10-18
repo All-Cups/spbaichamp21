@@ -1,7 +1,7 @@
 import { Stream } from "../stream";
 
 /**
- * TODO - Document
+ * Resource type
  */
 export class Resource {
     readonly name: string;
@@ -13,39 +13,39 @@ export class Resource {
     }
 
     /**
-     * TODO - Document
+     * Stone
      */
     static readonly STONE = new Resource("STONE", 0);
     /**
-     * TODO - Document
+     * Ore
      */
     static readonly ORE = new Resource("ORE", 1);
     /**
-     * TODO - Document
+     * Sand
      */
     static readonly SAND = new Resource("SAND", 2);
     /**
-     * TODO - Document
+     * Organics
      */
     static readonly ORGANICS = new Resource("ORGANICS", 3);
     /**
-     * TODO - Document
+     * Metal
      */
     static readonly METAL = new Resource("METAL", 4);
     /**
-     * TODO - Document
+     * Silicon
      */
     static readonly SILICON = new Resource("SILICON", 5);
     /**
-     * TODO - Document
+     * Plastic
      */
     static readonly PLASTIC = new Resource("PLASTIC", 6);
     /**
-     * TODO - Document
+     * Chip
      */
     static readonly CHIP = new Resource("CHIP", 7);
     /**
-     * TODO - Document
+     * Accumulator
      */
     static readonly ACCUMULATOR = new Resource("ACCUMULATOR", 8);
 

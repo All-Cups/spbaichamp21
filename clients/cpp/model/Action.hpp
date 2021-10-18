@@ -14,12 +14,12 @@
 
 namespace model {
 
-// TODO - Document
+// Player's actions
 class Action {
 public:
-    // TODO - Document
+    // List of movement orders
     std::vector<model::MoveAction> moves;
-    // TODO - Document
+    // List of building orders
     std::vector<model::BuildingAction> buildings;
 
     Action(std::vector<model::MoveAction> moves, std::vector<model::BuildingAction> buildings);

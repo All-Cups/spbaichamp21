@@ -3,7 +3,7 @@ from stream_wrapper import StreamWrapper
 from typing import Optional
 
 class FlyingWorkerGroup:
-    """TODO - Document"""
+    """A flying worker group"""
 
     __slots__ = ("player_index","number","departure_tick","departure_planet","next_planet_arrival_tick","next_planet","target_planet","resource",)
 
@@ -18,21 +18,21 @@ class FlyingWorkerGroup:
 
     def __init__(self, player_index: int, number: int, departure_tick: int, departure_planet: int, next_planet_arrival_tick: int, next_planet: int, target_planet: int, resource: Optional[Resource]):
         self.player_index = player_index
-        """TODO - Document"""
+        """Index of player controlling workers"""
         self.number = number
-        """TODO - Document"""
+        """Number of workers in the group"""
         self.departure_tick = departure_tick
-        """TODO - Document"""
+        """Tick when workers left previous planet on their path"""
         self.departure_planet = departure_planet
-        """TODO - Document"""
+        """Id of the previous planet on the path"""
         self.next_planet_arrival_tick = next_planet_arrival_tick
-        """TODO - Document"""
+        """Tick when workers will arrive to the next planet in their path"""
         self.next_planet = next_planet
-        """TODO - Document"""
+        """Id of the next planet in the path"""
         self.target_planet = target_planet
-        """TODO - Document"""
+        """Id of the target planet"""
         self.resource = resource
-        """TODO - Document"""
+        """Resource that workers are carrying"""
 
     @staticmethod
     def read_from(stream: StreamWrapper) -> "FlyingWorkerGroup":

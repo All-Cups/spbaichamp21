@@ -5,11 +5,11 @@ namespace SpbAiChamp.Model
 
 open SpbAiChamp
 
-/// TODO - Document
+/// Group of workers on a planet
 type WorkerGroup = {
-    /// TODO - Document
+    /// Index of player controlling the workers
     PlayerIndex: int;
-    /// TODO - Document
+    /// Number of workers in the group
     Number: int;
 } with
 

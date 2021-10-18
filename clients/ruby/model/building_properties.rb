@@ -2,27 +2,27 @@ require './model/resource'
 
 module Model
 
-# TODO - Document
+# Building properties
 class BuildingProperties
-    # TODO - Document
+    # Resources required for building
     attr_accessor :build_resources
-    # TODO - Document
+    # Max health points of the building
     attr_accessor :max_health
-    # TODO - Document
+    # Max number of workers in the building
     attr_accessor :max_workers
-    # TODO - Document
+    # Resources required to start another task
     attr_accessor :work_resources
-    # TODO - Document
+    # Whether performing a task spawn new workers
     attr_accessor :produce_worker
-    # TODO - Document
+    # Resource produced when performing a task
     attr_accessor :produce_resource
-    # TODO - Document
+    # Amount of resources/workers produced when performing one task
     attr_accessor :produce_amount
-    # TODO - Document
+    # Score points given for performing one task
     attr_accessor :produce_score
-    # TODO - Document
+    # Whether building is harvesting. In this case resource can only be produced if it is harvestable on the planet
     attr_accessor :harvest
-    # TODO - Document
+    # Amount of work needed to finish one task
     attr_accessor :work_amount
 
     def initialize(build_resources, max_health, max_workers, work_resources, produce_worker, produce_resource, produce_amount, produce_score, harvest, work_amount)

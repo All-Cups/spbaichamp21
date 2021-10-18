@@ -2,7 +2,7 @@
 
 namespace SpbAiChamp.Model
 
-/// TODO - Document
+/// Resource type
 type Resource =
     | Stone = 0
     | Ore = 1

@@ -3,15 +3,15 @@ package spb_ai_champ.model
 import spb_ai_champ.util.StreamUtil
 
 /**
- * TODO - Document
+ * A planet
  *
- * @param id TODO - Document
- * @param x TODO - Document
- * @param y TODO - Document
- * @param harvestableResource TODO - Document
- * @param workerGroups TODO - Document
- * @param resources TODO - Document
- * @param building TODO - Document
+ * @param id Unique identifier of the planet
+ * @param x X coordinate
+ * @param y Y coordinate
+ * @param harvestableResource Resource that can be harvested on the planet
+ * @param workerGroups List of worker groups
+ * @param resources Resources stored on the planet
+ * @param building Building on the planet
  */
 case class Planet(id: Int, x: Int, y: Int, harvestableResource: Option[spb_ai_champ.model.Resource], workerGroups: Seq[spb_ai_champ.model.WorkerGroup], resources: Map[spb_ai_champ.model.Resource, Int], building: Option[spb_ai_champ.model.Building]) {
     /**

@@ -3,11 +3,11 @@ require './model/move_action'
 
 module Model
 
-# TODO - Document
+# Player's actions
 class Action
-    # TODO - Document
+    # List of movement orders
     attr_accessor :moves
-    # TODO - Document
+    # List of building orders
     attr_accessor :buildings
 
     def initialize(moves, buildings)

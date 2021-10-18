@@ -1,5 +1,5 @@
 /**
- * TODO - Document
+ * Building type
  */
 class BuildingType {
     constructor(name, tag) {
@@ -8,43 +8,43 @@ class BuildingType {
     }
 
     /**
-     * TODO - Document
+     * Quarry harvests stone
      */
     static QUARRY = new BuildingType("QUARRY", 0);
     /**
-     * TODO - Document
+     * Mines harvests ore
      */
     static MINES = new BuildingType("MINES", 1);
     /**
-     * TODO - Document
+     * Career harvest sand
      */
     static CAREER = new BuildingType("CAREER", 2);
     /**
-     * TODO - Document
+     * Farm harvests organics
      */
     static FARM = new BuildingType("FARM", 3);
     /**
-     * TODO - Document
+     * Foundry produces metal
      */
     static FOUNDRY = new BuildingType("FOUNDRY", 4);
     /**
-     * TODO - Document
+     * Furnace produces silicon
      */
     static FURNACE = new BuildingType("FURNACE", 5);
     /**
-     * TODO - Document
+     * Bioreactor produces plastic
      */
     static BIOREACTOR = new BuildingType("BIOREACTOR", 6);
     /**
-     * TODO - Document
+     * Chip factory produces chips
      */
     static CHIP_FACTORY = new BuildingType("CHIP_FACTORY", 7);
     /**
-     * TODO - Document
+     * Accumulator factory produces accumulators
      */
     static ACCUMULATOR_FACTORY = new BuildingType("ACCUMULATOR_FACTORY", 8);
     /**
-     * TODO - Document
+     * Replicator produces new workers
      */
     static REPLICATOR = new BuildingType("REPLICATOR", 9);
 

@@ -1,48 +1,48 @@
 namespace SpbAiChamp.Model
 {
     /// <summary>
-    /// TODO - Document
+    /// Building type
     /// </summary>
     public enum BuildingType
     {
         /// <summary>
-        /// TODO - Document
+        /// Quarry harvests stone
         /// </summary>
         Quarry = 0,
         /// <summary>
-        /// TODO - Document
+        /// Mines harvests ore
         /// </summary>
         Mines = 1,
         /// <summary>
-        /// TODO - Document
+        /// Career harvest sand
         /// </summary>
         Career = 2,
         /// <summary>
-        /// TODO - Document
+        /// Farm harvests organics
         /// </summary>
         Farm = 3,
         /// <summary>
-        /// TODO - Document
+        /// Foundry produces metal
         /// </summary>
         Foundry = 4,
         /// <summary>
-        /// TODO - Document
+        /// Furnace produces silicon
         /// </summary>
         Furnace = 5,
         /// <summary>
-        /// TODO - Document
+        /// Bioreactor produces plastic
         /// </summary>
         Bioreactor = 6,
         /// <summary>
-        /// TODO - Document
+        /// Chip factory produces chips
         /// </summary>
         ChipFactory = 7,
         /// <summary>
-        /// TODO - Document
+        /// Accumulator factory produces accumulators
         /// </summary>
         AccumulatorFactory = 8,
         /// <summary>
-        /// TODO - Document
+        /// Replicator produces new workers
         /// </summary>
         Replicator = 9,
     }

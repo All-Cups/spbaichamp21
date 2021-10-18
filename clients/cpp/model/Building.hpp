@@ -9,14 +9,14 @@
 
 namespace model {
 
-// TODO - Document
+// A building
 class Building {
 public:
-    // TODO - Document
+    // Building's type
     model::BuildingType buildingType;
-    // TODO - Document
+    // Current health
     int health;
-    // TODO - Document
+    // Amount of work done for current task
     int workDone;
 
     Building(model::BuildingType buildingType, int health, int workDone);

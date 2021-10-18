@@ -3,7 +3,7 @@ from stream_wrapper import StreamWrapper
 from typing import Optional
 
 class MoveAction:
-    """TODO - Document"""
+    """Movement order"""
 
     __slots__ = ("start_planet","target_planet","worker_number","take_resource",)
 
@@ -14,13 +14,13 @@ class MoveAction:
 
     def __init__(self, start_planet: int, target_planet: int, worker_number: int, take_resource: Optional[Resource]):
         self.start_planet = start_planet
-        """TODO - Document"""
+        """Id of the planet where workers need to be sent from"""
         self.target_planet = target_planet
-        """TODO - Document"""
+        """Id of the target planet"""
         self.worker_number = worker_number
-        """TODO - Document"""
+        """Number of workers to send"""
         self.take_resource = take_resource
-        """TODO - Document"""
+        """Resource workers should carry"""
 
     @staticmethod
     def read_from(stream: StreamWrapper) -> "MoveAction":

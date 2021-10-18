@@ -1,25 +1,25 @@
 use super::*;
 
-/// TODO - Document
+/// Resource type
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum Resource {
-    /// TODO - Document
+    /// Stone
     Stone,
-    /// TODO - Document
+    /// Ore
     Ore,
-    /// TODO - Document
+    /// Sand
     Sand,
-    /// TODO - Document
+    /// Organics
     Organics,
-    /// TODO - Document
+    /// Metal
     Metal,
-    /// TODO - Document
+    /// Silicon
     Silicon,
-    /// TODO - Document
+    /// Plastic
     Plastic,
-    /// TODO - Document
+    /// Chip
     Chip,
-    /// TODO - Document
+    /// Accumulator
     Accumulator,
 }
 

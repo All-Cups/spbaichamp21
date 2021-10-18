@@ -2,11 +2,11 @@ require './model/building_type'
 
 module Model
 
-# TODO - Document
+# Building order
 class BuildingAction
-    # TODO - Document
+    # Id of the planet where the action needs to be performed
     attr_accessor :planet
-    # TODO - Document
+    # Type of a building to build. If absent, current building will be destroyed
     attr_accessor :building_type
 
     def initialize(planet, building_type)

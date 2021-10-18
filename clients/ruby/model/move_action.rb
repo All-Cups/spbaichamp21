@@ -2,15 +2,15 @@ require './model/resource'
 
 module Model
 
-# TODO - Document
+# Movement order
 class MoveAction
-    # TODO - Document
+    # Id of the planet where workers need to be sent from
     attr_accessor :start_planet
-    # TODO - Document
+    # Id of the target planet
     attr_accessor :target_planet
-    # TODO - Document
+    # Number of workers to send
     attr_accessor :worker_number
-    # TODO - Document
+    # Resource workers should carry
     attr_accessor :take_resource
 
     def initialize(start_planet, target_planet, worker_number, take_resource)

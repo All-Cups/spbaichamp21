@@ -3,47 +3,47 @@ package spb_ai_champ.model
 import spb_ai_champ.util.StreamUtil
 
 /**
- * TODO - Document
+ * Current game's state
  */
 class Game {
     /**
-     * TODO - Document
+     * Your player's index
      */
     var myIndex: Int
     /**
-     * TODO - Document
+     * Current tick number
      */
     var currentTick: Int
     /**
-     * TODO - Document
+     * Max number of ticks in the game
      */
     var maxTickCount: Int
     /**
-     * TODO - Document
+     * List of players
      */
     var players: Array<spb_ai_champ.model.Player>
     /**
-     * TODO - Document
+     * List of planets
      */
     var planets: Array<spb_ai_champ.model.Planet>
     /**
-     * TODO - Document
+     * List of flying worker groups
      */
     var flyingWorkerGroups: Array<spb_ai_champ.model.FlyingWorkerGroup>
     /**
-     * TODO - Document
+     * Max number of flying worker groups for one player
      */
     var maxFlyingWorkerGroups: Int
     /**
-     * TODO - Document
+     * Max distance of direct travel between planets
      */
     var maxTravelDistance: Int
     /**
-     * TODO - Document
+     * Max number of workers performing building on one planet
      */
     var maxBuilders: Int
     /**
-     * TODO - Document
+     * Properties of every building type
      */
     var buildingProperties: MutableMap<spb_ai_champ.model.BuildingType, spb_ai_champ.model.BuildingProperties>
 

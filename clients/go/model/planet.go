@@ -4,21 +4,21 @@ import "fmt"
 import "io"
 import . "spb_ai_champ/stream"
 
-// TODO - Document
+// A planet
 type Planet struct {
-    // TODO - Document
+    // Unique identifier of the planet
     Id int32
-    // TODO - Document
+    // X coordinate
     X int32
-    // TODO - Document
+    // Y coordinate
     Y int32
-    // TODO - Document
+    // Resource that can be harvested on the planet
     HarvestableResource *Resource
-    // TODO - Document
+    // List of worker groups
     WorkerGroups []WorkerGroup
-    // TODO - Document
+    // Resources stored on the planet
     Resources map[Resource]int32
-    // TODO - Document
+    // Building on the planet
     Building *Building
 }
 

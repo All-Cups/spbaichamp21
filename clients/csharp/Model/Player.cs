@@ -1,12 +1,12 @@
 namespace SpbAiChamp.Model
 {
     /// <summary>
-    /// TODO - Document
+    /// Player (game participant)
     /// </summary>
     public struct Player
     {
         /// <summary>
-        /// TODO - Document
+        /// Current score points
         /// </summary>
         public int Score { get; set; }
     

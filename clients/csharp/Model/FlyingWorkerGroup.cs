@@ -1,40 +1,40 @@
 namespace SpbAiChamp.Model
 {
     /// <summary>
-    /// TODO - Document
+    /// A flying worker group
     /// </summary>
     public struct FlyingWorkerGroup
     {
         /// <summary>
-        /// TODO - Document
+        /// Index of player controlling workers
         /// </summary>
         public int PlayerIndex { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Number of workers in the group
         /// </summary>
         public int Number { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Tick when workers left previous planet on their path
         /// </summary>
         public int DepartureTick { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Id of the previous planet on the path
         /// </summary>
         public int DeparturePlanet { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Tick when workers will arrive to the next planet in their path
         /// </summary>
         public int NextPlanetArrivalTick { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Id of the next planet in the path
         /// </summary>
         public int NextPlanet { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Id of the target planet
         /// </summary>
         public int TargetPlanet { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Resource that workers are carrying
         /// </summary>
         public Model.Resource? Resource { get; set; }
     

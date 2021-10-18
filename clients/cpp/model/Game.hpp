@@ -19,28 +19,28 @@
 
 namespace model {
 
-// TODO - Document
+// Current game's state
 class Game {
 public:
-    // TODO - Document
+    // Your player's index
     int myIndex;
-    // TODO - Document
+    // Current tick number
     int currentTick;
-    // TODO - Document
+    // Max number of ticks in the game
     int maxTickCount;
-    // TODO - Document
+    // List of players
     std::vector<model::Player> players;
-    // TODO - Document
+    // List of planets
     std::vector<model::Planet> planets;
-    // TODO - Document
+    // List of flying worker groups
     std::vector<model::FlyingWorkerGroup> flyingWorkerGroups;
-    // TODO - Document
+    // Max number of flying worker groups for one player
     int maxFlyingWorkerGroups;
-    // TODO - Document
+    // Max distance of direct travel between planets
     int maxTravelDistance;
-    // TODO - Document
+    // Max number of workers performing building on one planet
     int maxBuilders;
-    // TODO - Document
+    // Properties of every building type
     std::unordered_map<model::BuildingType, model::BuildingProperties> buildingProperties;
 
     Game(int myIndex, int currentTick, int maxTickCount, std::vector<model::Player> players, std::vector<model::Planet> planets, std::vector<model::FlyingWorkerGroup> flyingWorkerGroups, int maxFlyingWorkerGroups, int maxTravelDistance, int maxBuilders, std::unordered_map<model::BuildingType, model::BuildingProperties> buildingProperties);

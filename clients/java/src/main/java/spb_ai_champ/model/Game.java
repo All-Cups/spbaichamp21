@@ -3,185 +3,185 @@ package spb_ai_champ.model;
 import spb_ai_champ.util.StreamUtil;
 
 /**
- * TODO - Document
+ * Current game's state
  */
 public class Game {
     /**
-     * TODO - Document
+     * Your player's index
      */
     private int myIndex;
 
     /**
-     * TODO - Document
+     * Your player's index
      */
     public int getMyIndex() {
         return myIndex;
     }
 
     /**
-     * TODO - Document
+     * Your player's index
      */
     public void setMyIndex(int value) {
         this.myIndex = value;
     }
     /**
-     * TODO - Document
+     * Current tick number
      */
     private int currentTick;
 
     /**
-     * TODO - Document
+     * Current tick number
      */
     public int getCurrentTick() {
         return currentTick;
     }
 
     /**
-     * TODO - Document
+     * Current tick number
      */
     public void setCurrentTick(int value) {
         this.currentTick = value;
     }
     /**
-     * TODO - Document
+     * Max number of ticks in the game
      */
     private int maxTickCount;
 
     /**
-     * TODO - Document
+     * Max number of ticks in the game
      */
     public int getMaxTickCount() {
         return maxTickCount;
     }
 
     /**
-     * TODO - Document
+     * Max number of ticks in the game
      */
     public void setMaxTickCount(int value) {
         this.maxTickCount = value;
     }
     /**
-     * TODO - Document
+     * List of players
      */
     private spb_ai_champ.model.Player[] players;
 
     /**
-     * TODO - Document
+     * List of players
      */
     public spb_ai_champ.model.Player[] getPlayers() {
         return players;
     }
 
     /**
-     * TODO - Document
+     * List of players
      */
     public void setPlayers(spb_ai_champ.model.Player[] value) {
         this.players = value;
     }
     /**
-     * TODO - Document
+     * List of planets
      */
     private spb_ai_champ.model.Planet[] planets;
 
     /**
-     * TODO - Document
+     * List of planets
      */
     public spb_ai_champ.model.Planet[] getPlanets() {
         return planets;
     }
 
     /**
-     * TODO - Document
+     * List of planets
      */
     public void setPlanets(spb_ai_champ.model.Planet[] value) {
         this.planets = value;
     }
     /**
-     * TODO - Document
+     * List of flying worker groups
      */
     private spb_ai_champ.model.FlyingWorkerGroup[] flyingWorkerGroups;
 
     /**
-     * TODO - Document
+     * List of flying worker groups
      */
     public spb_ai_champ.model.FlyingWorkerGroup[] getFlyingWorkerGroups() {
         return flyingWorkerGroups;
     }
 
     /**
-     * TODO - Document
+     * List of flying worker groups
      */
     public void setFlyingWorkerGroups(spb_ai_champ.model.FlyingWorkerGroup[] value) {
         this.flyingWorkerGroups = value;
     }
     /**
-     * TODO - Document
+     * Max number of flying worker groups for one player
      */
     private int maxFlyingWorkerGroups;
 
     /**
-     * TODO - Document
+     * Max number of flying worker groups for one player
      */
     public int getMaxFlyingWorkerGroups() {
         return maxFlyingWorkerGroups;
     }
 
     /**
-     * TODO - Document
+     * Max number of flying worker groups for one player
      */
     public void setMaxFlyingWorkerGroups(int value) {
         this.maxFlyingWorkerGroups = value;
     }
     /**
-     * TODO - Document
+     * Max distance of direct travel between planets
      */
     private int maxTravelDistance;
 
     /**
-     * TODO - Document
+     * Max distance of direct travel between planets
      */
     public int getMaxTravelDistance() {
         return maxTravelDistance;
     }
 
     /**
-     * TODO - Document
+     * Max distance of direct travel between planets
      */
     public void setMaxTravelDistance(int value) {
         this.maxTravelDistance = value;
     }
     /**
-     * TODO - Document
+     * Max number of workers performing building on one planet
      */
     private int maxBuilders;
 
     /**
-     * TODO - Document
+     * Max number of workers performing building on one planet
      */
     public int getMaxBuilders() {
         return maxBuilders;
     }
 
     /**
-     * TODO - Document
+     * Max number of workers performing building on one planet
      */
     public void setMaxBuilders(int value) {
         this.maxBuilders = value;
     }
     /**
-     * TODO - Document
+     * Properties of every building type
      */
     private java.util.Map<spb_ai_champ.model.BuildingType, spb_ai_champ.model.BuildingProperties> buildingProperties;
 
     /**
-     * TODO - Document
+     * Properties of every building type
      */
     public java.util.Map<spb_ai_champ.model.BuildingType, spb_ai_champ.model.BuildingProperties> getBuildingProperties() {
         return buildingProperties;
     }
 
     /**
-     * TODO - Document
+     * Properties of every building type
      */
     public void setBuildingProperties(java.util.Map<spb_ai_champ.model.BuildingType, spb_ai_champ.model.BuildingProperties> value) {
         this.buildingProperties = value;

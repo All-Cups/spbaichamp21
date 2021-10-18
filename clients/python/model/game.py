@@ -8,7 +8,7 @@ from typing import Dict
 from typing import List
 
 class Game:
-    """TODO - Document"""
+    """Current game's state"""
 
     __slots__ = ("my_index","current_tick","max_tick_count","players","planets","flying_worker_groups","max_flying_worker_groups","max_travel_distance","max_builders","building_properties",)
 
@@ -25,25 +25,25 @@ class Game:
 
     def __init__(self, my_index: int, current_tick: int, max_tick_count: int, players: List[Player], planets: List[Planet], flying_worker_groups: List[FlyingWorkerGroup], max_flying_worker_groups: int, max_travel_distance: int, max_builders: int, building_properties: Dict[BuildingType, BuildingProperties]):
         self.my_index = my_index
-        """TODO - Document"""
+        """Your player's index"""
         self.current_tick = current_tick
-        """TODO - Document"""
+        """Current tick number"""
         self.max_tick_count = max_tick_count
-        """TODO - Document"""
+        """Max number of ticks in the game"""
         self.players = players
-        """TODO - Document"""
+        """List of players"""
         self.planets = planets
-        """TODO - Document"""
+        """List of planets"""
         self.flying_worker_groups = flying_worker_groups
-        """TODO - Document"""
+        """List of flying worker groups"""
         self.max_flying_worker_groups = max_flying_worker_groups
-        """TODO - Document"""
+        """Max number of flying worker groups for one player"""
         self.max_travel_distance = max_travel_distance
-        """TODO - Document"""
+        """Max distance of direct travel between planets"""
         self.max_builders = max_builders
-        """TODO - Document"""
+        """Max number of workers performing building on one planet"""
         self.building_properties = building_properties
-        """TODO - Document"""
+        """Properties of every building type"""
 
     @staticmethod
     def read_from(stream: StreamWrapper) -> "Game":

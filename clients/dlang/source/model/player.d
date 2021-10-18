@@ -5,9 +5,9 @@ import std.conv;
 import std.typecons : Nullable;
 
 
-/// TODO - Document
+/// Player (game participant)
 struct Player {
-    /// TODO - Document
+    /// Current score points
     int score;
 
     this(int score) {

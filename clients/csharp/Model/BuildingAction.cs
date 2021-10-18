@@ -1,16 +1,16 @@
 namespace SpbAiChamp.Model
 {
     /// <summary>
-    /// TODO - Document
+    /// Building order
     /// </summary>
     public struct BuildingAction
     {
         /// <summary>
-        /// TODO - Document
+        /// Id of the planet where the action needs to be performed
         /// </summary>
         public int Planet { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Type of a building to build. If absent, current building will be destroyed
         /// </summary>
         public Model.BuildingType? BuildingType { get; set; }
     

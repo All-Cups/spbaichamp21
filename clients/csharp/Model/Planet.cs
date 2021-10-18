@@ -1,36 +1,36 @@
 namespace SpbAiChamp.Model
 {
     /// <summary>
-    /// TODO - Document
+    /// A planet
     /// </summary>
     public struct Planet
     {
         /// <summary>
-        /// TODO - Document
+        /// Unique identifier of the planet
         /// </summary>
         public int Id { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// X coordinate
         /// </summary>
         public int X { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Y coordinate
         /// </summary>
         public int Y { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Resource that can be harvested on the planet
         /// </summary>
         public Model.Resource? HarvestableResource { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// List of worker groups
         /// </summary>
         public Model.WorkerGroup[] WorkerGroups { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Resources stored on the planet
         /// </summary>
         public System.Collections.Generic.IDictionary<Model.Resource, int> Resources { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Building on the planet
         /// </summary>
         public Model.Building? Building { get; set; }
     

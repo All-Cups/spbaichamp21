@@ -3,23 +3,23 @@ package spb_ai_champ.model
 import spb_ai_champ.util.StreamUtil
 
 /**
- * TODO - Document
+ * Movement order
  */
 class MoveAction {
     /**
-     * TODO - Document
+     * Id of the planet where workers need to be sent from
      */
     var startPlanet: Int
     /**
-     * TODO - Document
+     * Id of the target planet
      */
     var targetPlanet: Int
     /**
-     * TODO - Document
+     * Number of workers to send
      */
     var workerNumber: Int
     /**
-     * TODO - Document
+     * Resource workers should carry
      */
     var takeResource: spb_ai_champ.model.Resource?
 

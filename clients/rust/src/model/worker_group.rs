@@ -1,11 +1,11 @@
 use super::*;
 
-/// TODO - Document
+/// Group of workers on a planet
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub struct WorkerGroup {
-    /// TODO - Document
+    /// Index of player controlling the workers
     pub player_index: i32,
-    /// TODO - Document
+    /// Number of workers in the group
     pub number: i32,
 }
 

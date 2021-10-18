@@ -15,22 +15,22 @@
 
 namespace model {
 
-// TODO - Document
+// A planet
 class Planet {
 public:
-    // TODO - Document
+    // Unique identifier of the planet
     int id;
-    // TODO - Document
+    // X coordinate
     int x;
-    // TODO - Document
+    // Y coordinate
     int y;
-    // TODO - Document
+    // Resource that can be harvested on the planet
     std::optional<model::Resource> harvestableResource;
-    // TODO - Document
+    // List of worker groups
     std::vector<model::WorkerGroup> workerGroups;
-    // TODO - Document
+    // Resources stored on the planet
     std::unordered_map<model::Resource, int> resources;
-    // TODO - Document
+    // Building on the planet
     std::optional<model::Building> building;
 
     Planet(int id, int x, int y, std::optional<model::Resource> harvestableResource, std::vector<model::WorkerGroup> workerGroups, std::unordered_map<model::Resource, int> resources, std::optional<model::Building> building);

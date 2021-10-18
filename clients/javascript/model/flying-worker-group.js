@@ -1,38 +1,38 @@
 const Resource = require.main.require('./model/resource');
 /**
- * TODO - Document
+ * A flying worker group
  */
 class FlyingWorkerGroup {
     /**
-     * TODO - Document
+     * Index of player controlling workers
      */
     playerIndex;
     /**
-     * TODO - Document
+     * Number of workers in the group
      */
     number;
     /**
-     * TODO - Document
+     * Tick when workers left previous planet on their path
      */
     departureTick;
     /**
-     * TODO - Document
+     * Id of the previous planet on the path
      */
     departurePlanet;
     /**
-     * TODO - Document
+     * Tick when workers will arrive to the next planet in their path
      */
     nextPlanetArrivalTick;
     /**
-     * TODO - Document
+     * Id of the next planet in the path
      */
     nextPlanet;
     /**
-     * TODO - Document
+     * Id of the target planet
      */
     targetPlanet;
     /**
-     * TODO - Document
+     * Resource that workers are carrying
      */
     resource;
 

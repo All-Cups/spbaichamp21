@@ -5,13 +5,13 @@ namespace SpbAiChamp.Model
 
 open SpbAiChamp
 
-/// TODO - Document
+/// A building
 type Building = {
-    /// TODO - Document
+    /// Building's type
     BuildingType: Model.BuildingType;
-    /// TODO - Document
+    /// Current health
     Health: int;
-    /// TODO - Document
+    /// Amount of work done for current task
     WorkDone: int;
 } with
 

@@ -3,47 +3,47 @@ package spb_ai_champ.model;
 import spb_ai_champ.util.StreamUtil;
 
 /**
- * TODO - Document
+ * Building type
  */
 public enum BuildingType {
     /**
-     * TODO - Document
+     * Quarry harvests stone
      */
     QUARRY(0),
     /**
-     * TODO - Document
+     * Mines harvests ore
      */
     MINES(1),
     /**
-     * TODO - Document
+     * Career harvest sand
      */
     CAREER(2),
     /**
-     * TODO - Document
+     * Farm harvests organics
      */
     FARM(3),
     /**
-     * TODO - Document
+     * Foundry produces metal
      */
     FOUNDRY(4),
     /**
-     * TODO - Document
+     * Furnace produces silicon
      */
     FURNACE(5),
     /**
-     * TODO - Document
+     * Bioreactor produces plastic
      */
     BIOREACTOR(6),
     /**
-     * TODO - Document
+     * Chip factory produces chips
      */
     CHIP_FACTORY(7),
     /**
-     * TODO - Document
+     * Accumulator factory produces accumulators
      */
     ACCUMULATOR_FACTORY(8),
     /**
-     * TODO - Document
+     * Replicator produces new workers
      */
     REPLICATOR(9);
 

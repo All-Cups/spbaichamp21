@@ -5,9 +5,9 @@ namespace SpbAiChamp.Model
 
 open SpbAiChamp
 
-/// TODO - Document
+/// Player (game participant)
 type Player = {
-    /// TODO - Document
+    /// Current score points
     Score: int;
 } with
 

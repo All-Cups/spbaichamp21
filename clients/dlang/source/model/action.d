@@ -6,11 +6,11 @@ import std.typecons : Nullable;
 import model.building_action;
 import model.move_action;
 
-/// TODO - Document
+/// Player's actions
 struct Action {
-    /// TODO - Document
+    /// List of movement orders
     model.MoveAction[] moves;
-    /// TODO - Document
+    /// List of building orders
     model.BuildingAction[] buildings;
 
     this(model.MoveAction[] moves, model.BuildingAction[] buildings) {

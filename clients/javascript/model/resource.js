@@ -1,5 +1,5 @@
 /**
- * TODO - Document
+ * Resource type
  */
 class Resource {
     constructor(name, tag) {
@@ -8,39 +8,39 @@ class Resource {
     }
 
     /**
-     * TODO - Document
+     * Stone
      */
     static STONE = new Resource("STONE", 0);
     /**
-     * TODO - Document
+     * Ore
      */
     static ORE = new Resource("ORE", 1);
     /**
-     * TODO - Document
+     * Sand
      */
     static SAND = new Resource("SAND", 2);
     /**
-     * TODO - Document
+     * Organics
      */
     static ORGANICS = new Resource("ORGANICS", 3);
     /**
-     * TODO - Document
+     * Metal
      */
     static METAL = new Resource("METAL", 4);
     /**
-     * TODO - Document
+     * Silicon
      */
     static SILICON = new Resource("SILICON", 5);
     /**
-     * TODO - Document
+     * Plastic
      */
     static PLASTIC = new Resource("PLASTIC", 6);
     /**
-     * TODO - Document
+     * Chip
      */
     static CHIP = new Resource("CHIP", 7);
     /**
-     * TODO - Document
+     * Accumulator
      */
     static ACCUMULATOR = new Resource("ACCUMULATOR", 8);
 

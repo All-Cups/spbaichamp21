@@ -3,11 +3,11 @@ package spb_ai_champ.model
 import spb_ai_champ.util.StreamUtil
 
 /**
- * TODO - Document
+ * A building
  *
- * @param buildingType TODO - Document
- * @param health TODO - Document
- * @param workDone TODO - Document
+ * @param buildingType Building's type
+ * @param health Current health
+ * @param workDone Amount of work done for current task
  */
 case class Building(buildingType: spb_ai_champ.model.BuildingType, health: Int, workDone: Int) {
     /**

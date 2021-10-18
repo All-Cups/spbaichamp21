@@ -4,9 +4,9 @@ import "fmt"
 import "io"
 import . "spb_ai_champ/stream"
 
-// TODO - Document
+// Player (game participant)
 type Player struct {
-    // TODO - Document
+    // Current score points
     Score int32
 }
 

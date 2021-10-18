@@ -4,47 +4,47 @@ const FlyingWorkerGroup = require.main.require('./model/flying-worker-group');
 const Planet = require.main.require('./model/planet');
 const Player = require.main.require('./model/player');
 /**
- * TODO - Document
+ * Current game's state
  */
 class Game {
     /**
-     * TODO - Document
+     * Your player's index
      */
     myIndex;
     /**
-     * TODO - Document
+     * Current tick number
      */
     currentTick;
     /**
-     * TODO - Document
+     * Max number of ticks in the game
      */
     maxTickCount;
     /**
-     * TODO - Document
+     * List of players
      */
     players;
     /**
-     * TODO - Document
+     * List of planets
      */
     planets;
     /**
-     * TODO - Document
+     * List of flying worker groups
      */
     flyingWorkerGroups;
     /**
-     * TODO - Document
+     * Max number of flying worker groups for one player
      */
     maxFlyingWorkerGroups;
     /**
-     * TODO - Document
+     * Max distance of direct travel between planets
      */
     maxTravelDistance;
     /**
-     * TODO - Document
+     * Max number of workers performing building on one planet
      */
     maxBuilders;
     /**
-     * TODO - Document
+     * Properties of every building type
      */
     buildingProperties;
 

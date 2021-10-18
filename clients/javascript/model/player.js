@@ -1,9 +1,9 @@
 /**
- * TODO - Document
+ * Player (game participant)
  */
 class Player {
     /**
-     * TODO - Document
+     * Current score points
      */
     score;
 

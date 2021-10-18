@@ -1,11 +1,11 @@
 use super::*;
 
-/// TODO - Document
+/// Building order
 #[derive(Clone, Debug)]
 pub struct BuildingAction {
-    /// TODO - Document
+    /// Id of the planet where the action needs to be performed
     pub planet: i32,
-    /// TODO - Document
+    /// Type of a building to build. If absent, current building will be destroyed
     pub building_type: Option<model::BuildingType>,
 }
 

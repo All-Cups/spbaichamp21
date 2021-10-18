@@ -3,7 +3,7 @@ package spb_ai_champ.model
 import spb_ai_champ.util.StreamUtil
 
 /**
- * TODO - Document
+ * Building type
  */
 sealed abstract class BuildingType (val tag: Int) {
     /**
@@ -16,43 +16,43 @@ sealed abstract class BuildingType (val tag: Int) {
 
 object BuildingType {
     /**
-     * TODO - Document
+     * Quarry harvests stone
      */
     case object QUARRY extends BuildingType(0)
     /**
-     * TODO - Document
+     * Mines harvests ore
      */
     case object MINES extends BuildingType(1)
     /**
-     * TODO - Document
+     * Career harvest sand
      */
     case object CAREER extends BuildingType(2)
     /**
-     * TODO - Document
+     * Farm harvests organics
      */
     case object FARM extends BuildingType(3)
     /**
-     * TODO - Document
+     * Foundry produces metal
      */
     case object FOUNDRY extends BuildingType(4)
     /**
-     * TODO - Document
+     * Furnace produces silicon
      */
     case object FURNACE extends BuildingType(5)
     /**
-     * TODO - Document
+     * Bioreactor produces plastic
      */
     case object BIOREACTOR extends BuildingType(6)
     /**
-     * TODO - Document
+     * Chip factory produces chips
      */
     case object CHIP_FACTORY extends BuildingType(7)
     /**
-     * TODO - Document
+     * Accumulator factory produces accumulators
      */
     case object ACCUMULATOR_FACTORY extends BuildingType(8)
     /**
-     * TODO - Document
+     * Replicator produces new workers
      */
     case object REPLICATOR extends BuildingType(9)
 

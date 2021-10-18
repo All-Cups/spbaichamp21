@@ -2,23 +2,23 @@ require './model/resource'
 
 module Model
 
-# TODO - Document
+# A flying worker group
 class FlyingWorkerGroup
-    # TODO - Document
+    # Index of player controlling workers
     attr_accessor :player_index
-    # TODO - Document
+    # Number of workers in the group
     attr_accessor :number
-    # TODO - Document
+    # Tick when workers left previous planet on their path
     attr_accessor :departure_tick
-    # TODO - Document
+    # Id of the previous planet on the path
     attr_accessor :departure_planet
-    # TODO - Document
+    # Tick when workers will arrive to the next planet in their path
     attr_accessor :next_planet_arrival_tick
-    # TODO - Document
+    # Id of the next planet in the path
     attr_accessor :next_planet
-    # TODO - Document
+    # Id of the target planet
     attr_accessor :target_planet
-    # TODO - Document
+    # Resource that workers are carrying
     attr_accessor :resource
 
     def initialize(player_index, number, departure_tick, departure_planet, next_planet_arrival_tick, next_planet, target_planet, resource)

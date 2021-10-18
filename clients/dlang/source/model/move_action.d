@@ -5,15 +5,15 @@ import std.conv;
 import std.typecons : Nullable;
 import model.resource;
 
-/// TODO - Document
+/// Movement order
 struct MoveAction {
-    /// TODO - Document
+    /// Id of the planet where workers need to be sent from
     int startPlanet;
-    /// TODO - Document
+    /// Id of the target planet
     int targetPlanet;
-    /// TODO - Document
+    /// Number of workers to send
     int workerNumber;
-    /// TODO - Document
+    /// Resource workers should carry
     Nullable!(model.Resource) takeResource;
 
     this(int startPlanet, int targetPlanet, int workerNumber, Nullable!(model.Resource) takeResource) {

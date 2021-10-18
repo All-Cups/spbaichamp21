@@ -1,18 +1,18 @@
 const BuildingType = require.main.require('./model/building-type');
 /**
- * TODO - Document
+ * A building
  */
 class Building {
     /**
-     * TODO - Document
+     * Building's type
      */
     buildingType;
     /**
-     * TODO - Document
+     * Current health
      */
     health;
     /**
-     * TODO - Document
+     * Amount of work done for current task
      */
     workDone;
 

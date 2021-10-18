@@ -1,7 +1,7 @@
 from stream_wrapper import StreamWrapper
 
 class WorkerGroup:
-    """TODO - Document"""
+    """Group of workers on a planet"""
 
     __slots__ = ("player_index","number",)
 
@@ -10,9 +10,9 @@ class WorkerGroup:
 
     def __init__(self, player_index: int, number: int):
         self.player_index = player_index
-        """TODO - Document"""
+        """Index of player controlling the workers"""
         self.number = number
-        """TODO - Document"""
+        """Number of workers in the group"""
 
     @staticmethod
     def read_from(stream: StreamWrapper) -> "WorkerGroup":

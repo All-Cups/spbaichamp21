@@ -1,28 +1,28 @@
 from enum import IntEnum
 
 class BuildingType(IntEnum):
-    """TODO - Document"""
+    """Building type"""
 
     QUARRY = 0
-    """TODO - Document"""
+    """Quarry harvests stone"""
     MINES = 1
-    """TODO - Document"""
+    """Mines harvests ore"""
     CAREER = 2
-    """TODO - Document"""
+    """Career harvest sand"""
     FARM = 3
-    """TODO - Document"""
+    """Farm harvests organics"""
     FOUNDRY = 4
-    """TODO - Document"""
+    """Foundry produces metal"""
     FURNACE = 5
-    """TODO - Document"""
+    """Furnace produces silicon"""
     BIOREACTOR = 6
-    """TODO - Document"""
+    """Bioreactor produces plastic"""
     CHIP_FACTORY = 7
-    """TODO - Document"""
+    """Chip factory produces chips"""
     ACCUMULATOR_FACTORY = 8
-    """TODO - Document"""
+    """Accumulator factory produces accumulators"""
     REPLICATOR = 9
-    """TODO - Document"""
+    """Replicator produces new workers"""
 
     def __repr__(self):
         return str(self)

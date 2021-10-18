@@ -3,29 +3,29 @@ package model
 import "io"
 import . "spb_ai_champ/stream"
 
-// TODO - Document
+// Building type
 type BuildingType int32
 
 const (
-    // TODO - Document
+    // Quarry harvests stone
     BuildingTypeQuarry BuildingType = 0
-    // TODO - Document
+    // Mines harvests ore
     BuildingTypeMines BuildingType = 1
-    // TODO - Document
+    // Career harvest sand
     BuildingTypeCareer BuildingType = 2
-    // TODO - Document
+    // Farm harvests organics
     BuildingTypeFarm BuildingType = 3
-    // TODO - Document
+    // Foundry produces metal
     BuildingTypeFoundry BuildingType = 4
-    // TODO - Document
+    // Furnace produces silicon
     BuildingTypeFurnace BuildingType = 5
-    // TODO - Document
+    // Bioreactor produces plastic
     BuildingTypeBioreactor BuildingType = 6
-    // TODO - Document
+    // Chip factory produces chips
     BuildingTypeChipFactory BuildingType = 7
-    // TODO - Document
+    // Accumulator factory produces accumulators
     BuildingTypeAccumulatorFactory BuildingType = 8
-    // TODO - Document
+    // Replicator produces new workers
     BuildingTypeReplicator BuildingType = 9
 )
 

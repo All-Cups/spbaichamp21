@@ -2,13 +2,13 @@ require './model/building_type'
 
 module Model
 
-# TODO - Document
+# A building
 class Building
-    # TODO - Document
+    # Building's type
     attr_accessor :building_type
-    # TODO - Document
+    # Current health
     attr_accessor :health
-    # TODO - Document
+    # Amount of work done for current task
     attr_accessor :work_done
 
     def initialize(building_type, health, work_done)

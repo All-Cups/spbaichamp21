@@ -3,185 +3,185 @@ package spb_ai_champ.model;
 import spb_ai_champ.util.StreamUtil;
 
 /**
- * TODO - Document
+ * Building properties
  */
 public class BuildingProperties {
     /**
-     * TODO - Document
+     * Resources required for building
      */
     private java.util.Map<spb_ai_champ.model.Resource, Integer> buildResources;
 
     /**
-     * TODO - Document
+     * Resources required for building
      */
     public java.util.Map<spb_ai_champ.model.Resource, Integer> getBuildResources() {
         return buildResources;
     }
 
     /**
-     * TODO - Document
+     * Resources required for building
      */
     public void setBuildResources(java.util.Map<spb_ai_champ.model.Resource, Integer> value) {
         this.buildResources = value;
     }
     /**
-     * TODO - Document
+     * Max health points of the building
      */
     private int maxHealth;
 
     /**
-     * TODO - Document
+     * Max health points of the building
      */
     public int getMaxHealth() {
         return maxHealth;
     }
 
     /**
-     * TODO - Document
+     * Max health points of the building
      */
     public void setMaxHealth(int value) {
         this.maxHealth = value;
     }
     /**
-     * TODO - Document
+     * Max number of workers in the building
      */
     private int maxWorkers;
 
     /**
-     * TODO - Document
+     * Max number of workers in the building
      */
     public int getMaxWorkers() {
         return maxWorkers;
     }
 
     /**
-     * TODO - Document
+     * Max number of workers in the building
      */
     public void setMaxWorkers(int value) {
         this.maxWorkers = value;
     }
     /**
-     * TODO - Document
+     * Resources required to start another task
      */
     private java.util.Map<spb_ai_champ.model.Resource, Integer> workResources;
 
     /**
-     * TODO - Document
+     * Resources required to start another task
      */
     public java.util.Map<spb_ai_champ.model.Resource, Integer> getWorkResources() {
         return workResources;
     }
 
     /**
-     * TODO - Document
+     * Resources required to start another task
      */
     public void setWorkResources(java.util.Map<spb_ai_champ.model.Resource, Integer> value) {
         this.workResources = value;
     }
     /**
-     * TODO - Document
+     * Whether performing a task spawn new workers
      */
     private boolean produceWorker;
 
     /**
-     * TODO - Document
+     * Whether performing a task spawn new workers
      */
     public boolean isProduceWorker() {
         return produceWorker;
     }
 
     /**
-     * TODO - Document
+     * Whether performing a task spawn new workers
      */
     public void setProduceWorker(boolean value) {
         this.produceWorker = value;
     }
     /**
-     * TODO - Document
+     * Resource produced when performing a task
      */
     private spb_ai_champ.model.Resource produceResource;
 
     /**
-     * TODO - Document
+     * Resource produced when performing a task
      */
     public spb_ai_champ.model.Resource getProduceResource() {
         return produceResource;
     }
 
     /**
-     * TODO - Document
+     * Resource produced when performing a task
      */
     public void setProduceResource(spb_ai_champ.model.Resource value) {
         this.produceResource = value;
     }
     /**
-     * TODO - Document
+     * Amount of resources/workers produced when performing one task
      */
     private int produceAmount;
 
     /**
-     * TODO - Document
+     * Amount of resources/workers produced when performing one task
      */
     public int getProduceAmount() {
         return produceAmount;
     }
 
     /**
-     * TODO - Document
+     * Amount of resources/workers produced when performing one task
      */
     public void setProduceAmount(int value) {
         this.produceAmount = value;
     }
     /**
-     * TODO - Document
+     * Score points given for performing one task
      */
     private int produceScore;
 
     /**
-     * TODO - Document
+     * Score points given for performing one task
      */
     public int getProduceScore() {
         return produceScore;
     }
 
     /**
-     * TODO - Document
+     * Score points given for performing one task
      */
     public void setProduceScore(int value) {
         this.produceScore = value;
     }
     /**
-     * TODO - Document
+     * Whether building is harvesting. In this case resource can only be produced if it is harvestable on the planet
      */
     private boolean harvest;
 
     /**
-     * TODO - Document
+     * Whether building is harvesting. In this case resource can only be produced if it is harvestable on the planet
      */
     public boolean isHarvest() {
         return harvest;
     }
 
     /**
-     * TODO - Document
+     * Whether building is harvesting. In this case resource can only be produced if it is harvestable on the planet
      */
     public void setHarvest(boolean value) {
         this.harvest = value;
     }
     /**
-     * TODO - Document
+     * Amount of work needed to finish one task
      */
     private int workAmount;
 
     /**
-     * TODO - Document
+     * Amount of work needed to finish one task
      */
     public int getWorkAmount() {
         return workAmount;
     }
 
     /**
-     * TODO - Document
+     * Amount of work needed to finish one task
      */
     public void setWorkAmount(int value) {
         this.workAmount = value;

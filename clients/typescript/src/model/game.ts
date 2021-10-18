@@ -6,47 +6,47 @@ import { Player } from "./player";
 import { Stream } from "../stream";
 
 /**
- * TODO - Document
+ * Current game's state
  */
 export class Game {
     /**
-     * TODO - Document
+     * Your player's index
      */
     myIndex: number
     /**
-     * TODO - Document
+     * Current tick number
      */
     currentTick: number
     /**
-     * TODO - Document
+     * Max number of ticks in the game
      */
     maxTickCount: number
     /**
-     * TODO - Document
+     * List of players
      */
     players: Array<Player>
     /**
-     * TODO - Document
+     * List of planets
      */
     planets: Array<Planet>
     /**
-     * TODO - Document
+     * List of flying worker groups
      */
     flyingWorkerGroups: Array<FlyingWorkerGroup>
     /**
-     * TODO - Document
+     * Max number of flying worker groups for one player
      */
     maxFlyingWorkerGroups: number
     /**
-     * TODO - Document
+     * Max distance of direct travel between planets
      */
     maxTravelDistance: number
     /**
-     * TODO - Document
+     * Max number of workers performing building on one planet
      */
     maxBuilders: number
     /**
-     * TODO - Document
+     * Properties of every building type
      */
     buildingProperties: Map<BuildingType, BuildingProperties>
 

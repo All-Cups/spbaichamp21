@@ -1,8 +1,8 @@
 module Model
 
-# TODO - Document
+# Player (game participant)
 class Player
-    # TODO - Document
+    # Current score points
     attr_accessor :score
 
     def initialize(score)

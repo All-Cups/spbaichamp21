@@ -3,18 +3,18 @@ package spb_ai_champ.model
 import spb_ai_champ.util.StreamUtil
 
 /**
- * TODO - Document
+ * Current game's state
  *
- * @param myIndex TODO - Document
- * @param currentTick TODO - Document
- * @param maxTickCount TODO - Document
- * @param players TODO - Document
- * @param planets TODO - Document
- * @param flyingWorkerGroups TODO - Document
- * @param maxFlyingWorkerGroups TODO - Document
- * @param maxTravelDistance TODO - Document
- * @param maxBuilders TODO - Document
- * @param buildingProperties TODO - Document
+ * @param myIndex Your player's index
+ * @param currentTick Current tick number
+ * @param maxTickCount Max number of ticks in the game
+ * @param players List of players
+ * @param planets List of planets
+ * @param flyingWorkerGroups List of flying worker groups
+ * @param maxFlyingWorkerGroups Max number of flying worker groups for one player
+ * @param maxTravelDistance Max distance of direct travel between planets
+ * @param maxBuilders Max number of workers performing building on one planet
+ * @param buildingProperties Properties of every building type
  */
 case class Game(myIndex: Int, currentTick: Int, maxTickCount: Int, players: Seq[spb_ai_champ.model.Player], planets: Seq[spb_ai_champ.model.Planet], flyingWorkerGroups: Seq[spb_ai_champ.model.FlyingWorkerGroup], maxFlyingWorkerGroups: Int, maxTravelDistance: Int, maxBuilders: Int, buildingProperties: Map[spb_ai_champ.model.BuildingType, spb_ai_champ.model.BuildingProperties]) {
     /**

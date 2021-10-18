@@ -10,16 +10,16 @@
 
 namespace model {
 
-// TODO - Document
+// Movement order
 class MoveAction {
 public:
-    // TODO - Document
+    // Id of the planet where workers need to be sent from
     int startPlanet;
-    // TODO - Document
+    // Id of the target planet
     int targetPlanet;
-    // TODO - Document
+    // Number of workers to send
     int workerNumber;
-    // TODO - Document
+    // Resource workers should carry
     std::optional<model::Resource> takeResource;
 
     MoveAction(int startPlanet, int targetPlanet, int workerNumber, std::optional<model::Resource> takeResource);

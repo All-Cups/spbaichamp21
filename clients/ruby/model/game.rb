@@ -6,27 +6,27 @@ require './model/player'
 
 module Model
 
-# TODO - Document
+# Current game's state
 class Game
-    # TODO - Document
+    # Your player's index
     attr_accessor :my_index
-    # TODO - Document
+    # Current tick number
     attr_accessor :current_tick
-    # TODO - Document
+    # Max number of ticks in the game
     attr_accessor :max_tick_count
-    # TODO - Document
+    # List of players
     attr_accessor :players
-    # TODO - Document
+    # List of planets
     attr_accessor :planets
-    # TODO - Document
+    # List of flying worker groups
     attr_accessor :flying_worker_groups
-    # TODO - Document
+    # Max number of flying worker groups for one player
     attr_accessor :max_flying_worker_groups
-    # TODO - Document
+    # Max distance of direct travel between planets
     attr_accessor :max_travel_distance
-    # TODO - Document
+    # Max number of workers performing building on one planet
     attr_accessor :max_builders
-    # TODO - Document
+    # Properties of every building type
     attr_accessor :building_properties
 
     def initialize(my_index, current_tick, max_tick_count, players, planets, flying_worker_groups, max_flying_worker_groups, max_travel_distance, max_builders, building_properties)

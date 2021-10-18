@@ -3,35 +3,35 @@ package spb_ai_champ.model
 import spb_ai_champ.util.StreamUtil
 
 /**
- * TODO - Document
+ * A planet
  */
 class Planet {
     /**
-     * TODO - Document
+     * Unique identifier of the planet
      */
     var id: Int
     /**
-     * TODO - Document
+     * X coordinate
      */
     var x: Int
     /**
-     * TODO - Document
+     * Y coordinate
      */
     var y: Int
     /**
-     * TODO - Document
+     * Resource that can be harvested on the planet
      */
     var harvestableResource: spb_ai_champ.model.Resource?
     /**
-     * TODO - Document
+     * List of worker groups
      */
     var workerGroups: Array<spb_ai_champ.model.WorkerGroup>
     /**
-     * TODO - Document
+     * Resources stored on the planet
      */
     var resources: MutableMap<spb_ai_champ.model.Resource, Int>
     /**
-     * TODO - Document
+     * Building on the planet
      */
     var building: spb_ai_champ.model.Building?
 

@@ -1,26 +1,26 @@
 from enum import IntEnum
 
 class Resource(IntEnum):
-    """TODO - Document"""
+    """Resource type"""
 
     STONE = 0
-    """TODO - Document"""
+    """Stone"""
     ORE = 1
-    """TODO - Document"""
+    """Ore"""
     SAND = 2
-    """TODO - Document"""
+    """Sand"""
     ORGANICS = 3
-    """TODO - Document"""
+    """Organics"""
     METAL = 4
-    """TODO - Document"""
+    """Metal"""
     SILICON = 5
-    """TODO - Document"""
+    """Silicon"""
     PLASTIC = 6
-    """TODO - Document"""
+    """Plastic"""
     CHIP = 7
-    """TODO - Document"""
+    """Chip"""
     ACCUMULATOR = 8
-    """TODO - Document"""
+    """Accumulator"""
 
     def __repr__(self):
         return str(self)

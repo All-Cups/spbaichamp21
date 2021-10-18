@@ -2,27 +2,27 @@ module model.building_type;
 
 import stream;
 
-/// TODO - Document
+/// Building type
 enum BuildingType : int {
-    /// TODO - Document
+    /// Quarry harvests stone
     Quarry = 0,
-    /// TODO - Document
+    /// Mines harvests ore
     Mines = 1,
-    /// TODO - Document
+    /// Career harvest sand
     Career = 2,
-    /// TODO - Document
+    /// Farm harvests organics
     Farm = 3,
-    /// TODO - Document
+    /// Foundry produces metal
     Foundry = 4,
-    /// TODO - Document
+    /// Furnace produces silicon
     Furnace = 5,
-    /// TODO - Document
+    /// Bioreactor produces plastic
     Bioreactor = 6,
-    /// TODO - Document
+    /// Chip factory produces chips
     ChipFactory = 7,
-    /// TODO - Document
+    /// Accumulator factory produces accumulators
     AccumulatorFactory = 8,
-    /// TODO - Document
+    /// Replicator produces new workers
     Replicator = 9,
 }
 

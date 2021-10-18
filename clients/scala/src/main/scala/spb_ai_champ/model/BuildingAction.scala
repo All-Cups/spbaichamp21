@@ -3,10 +3,10 @@ package spb_ai_champ.model
 import spb_ai_champ.util.StreamUtil
 
 /**
- * TODO - Document
+ * Building order
  *
- * @param planet TODO - Document
- * @param buildingType TODO - Document
+ * @param planet Id of the planet where the action needs to be performed
+ * @param buildingType Type of a building to build. If absent, current building will be destroyed
  */
 case class BuildingAction(planet: Int, buildingType: Option[spb_ai_champ.model.BuildingType]) {
     /**

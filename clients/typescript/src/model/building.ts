@@ -2,19 +2,19 @@ import { BuildingType } from "./building-type";
 import { Stream } from "../stream";
 
 /**
- * TODO - Document
+ * A building
  */
 export class Building {
     /**
-     * TODO - Document
+     * Building's type
      */
     buildingType: BuildingType
     /**
-     * TODO - Document
+     * Current health
      */
     health: number
     /**
-     * TODO - Document
+     * Amount of work done for current task
      */
     workDone: number
 

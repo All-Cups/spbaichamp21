@@ -1,7 +1,7 @@
 from stream_wrapper import StreamWrapper
 
 class Player:
-    """TODO - Document"""
+    """Player (game participant)"""
 
     __slots__ = ("score",)
 
@@ -9,7 +9,7 @@ class Player:
 
     def __init__(self, score: int):
         self.score = score
-        """TODO - Document"""
+        """Current score points"""
 
     @staticmethod
     def read_from(stream: StreamWrapper) -> "Player":

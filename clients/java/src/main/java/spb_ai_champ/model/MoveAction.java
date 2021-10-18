@@ -3,77 +3,77 @@ package spb_ai_champ.model;
 import spb_ai_champ.util.StreamUtil;
 
 /**
- * TODO - Document
+ * Movement order
  */
 public class MoveAction {
     /**
-     * TODO - Document
+     * Id of the planet where workers need to be sent from
      */
     private int startPlanet;
 
     /**
-     * TODO - Document
+     * Id of the planet where workers need to be sent from
      */
     public int getStartPlanet() {
         return startPlanet;
     }
 
     /**
-     * TODO - Document
+     * Id of the planet where workers need to be sent from
      */
     public void setStartPlanet(int value) {
         this.startPlanet = value;
     }
     /**
-     * TODO - Document
+     * Id of the target planet
      */
     private int targetPlanet;
 
     /**
-     * TODO - Document
+     * Id of the target planet
      */
     public int getTargetPlanet() {
         return targetPlanet;
     }
 
     /**
-     * TODO - Document
+     * Id of the target planet
      */
     public void setTargetPlanet(int value) {
         this.targetPlanet = value;
     }
     /**
-     * TODO - Document
+     * Number of workers to send
      */
     private int workerNumber;
 
     /**
-     * TODO - Document
+     * Number of workers to send
      */
     public int getWorkerNumber() {
         return workerNumber;
     }
 
     /**
-     * TODO - Document
+     * Number of workers to send
      */
     public void setWorkerNumber(int value) {
         this.workerNumber = value;
     }
     /**
-     * TODO - Document
+     * Resource workers should carry
      */
     private spb_ai_champ.model.Resource takeResource;
 
     /**
-     * TODO - Document
+     * Resource workers should carry
      */
     public spb_ai_champ.model.Resource getTakeResource() {
         return takeResource;
     }
 
     /**
-     * TODO - Document
+     * Resource workers should carry
      */
     public void setTakeResource(spb_ai_champ.model.Resource value) {
         this.takeResource = value;

@@ -3,15 +3,15 @@ import { MoveAction } from "./move-action";
 import { Stream } from "../stream";
 
 /**
- * TODO - Document
+ * Player's actions
  */
 export class Action {
     /**
-     * TODO - Document
+     * List of movement orders
      */
     moves: Array<MoveAction>
     /**
-     * TODO - Document
+     * List of building orders
      */
     buildings: Array<BuildingAction>
 

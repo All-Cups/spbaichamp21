@@ -3,41 +3,41 @@ package spb_ai_champ.model;
 import spb_ai_champ.util.StreamUtil;
 
 /**
- * TODO - Document
+ * Building order
  */
 public class BuildingAction {
     /**
-     * TODO - Document
+     * Id of the planet where the action needs to be performed
      */
     private int planet;
 
     /**
-     * TODO - Document
+     * Id of the planet where the action needs to be performed
      */
     public int getPlanet() {
         return planet;
     }
 
     /**
-     * TODO - Document
+     * Id of the planet where the action needs to be performed
      */
     public void setPlanet(int value) {
         this.planet = value;
     }
     /**
-     * TODO - Document
+     * Type of a building to build. If absent, current building will be destroyed
      */
     private spb_ai_champ.model.BuildingType buildingType;
 
     /**
-     * TODO - Document
+     * Type of a building to build. If absent, current building will be destroyed
      */
     public spb_ai_champ.model.BuildingType getBuildingType() {
         return buildingType;
     }
 
     /**
-     * TODO - Document
+     * Type of a building to build. If absent, current building will be destroyed
      */
     public void setBuildingType(spb_ai_champ.model.BuildingType value) {
         this.buildingType = value;

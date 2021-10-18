@@ -1,16 +1,16 @@
 namespace SpbAiChamp.Model
 {
     /// <summary>
-    /// TODO - Document
+    /// Player's actions
     /// </summary>
     public struct Action
     {
         /// <summary>
-        /// TODO - Document
+        /// List of movement orders
         /// </summary>
         public Model.MoveAction[] Moves { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// List of building orders
         /// </summary>
         public Model.BuildingAction[] Buildings { get; set; }
     

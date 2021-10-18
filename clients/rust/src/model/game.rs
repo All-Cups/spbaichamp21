@@ -1,27 +1,27 @@
 use super::*;
 
-/// TODO - Document
+/// Current game's state
 #[derive(Clone, Debug)]
 pub struct Game {
-    /// TODO - Document
+    /// Your player's index
     pub my_index: i32,
-    /// TODO - Document
+    /// Current tick number
     pub current_tick: i32,
-    /// TODO - Document
+    /// Max number of ticks in the game
     pub max_tick_count: i32,
-    /// TODO - Document
+    /// List of players
     pub players: Vec<model::Player>,
-    /// TODO - Document
+    /// List of planets
     pub planets: Vec<model::Planet>,
-    /// TODO - Document
+    /// List of flying worker groups
     pub flying_worker_groups: Vec<model::FlyingWorkerGroup>,
-    /// TODO - Document
+    /// Max number of flying worker groups for one player
     pub max_flying_worker_groups: i32,
-    /// TODO - Document
+    /// Max distance of direct travel between planets
     pub max_travel_distance: i32,
-    /// TODO - Document
+    /// Max number of workers performing building on one planet
     pub max_builders: i32,
-    /// TODO - Document
+    /// Properties of every building type
     pub building_properties: std::collections::HashMap<model::BuildingType, model::BuildingProperties>,
 }
 

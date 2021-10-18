@@ -4,27 +4,27 @@ import "fmt"
 import "io"
 import . "spb_ai_champ/stream"
 
-// TODO - Document
+// Current game's state
 type Game struct {
-    // TODO - Document
+    // Your player's index
     MyIndex int32
-    // TODO - Document
+    // Current tick number
     CurrentTick int32
-    // TODO - Document
+    // Max number of ticks in the game
     MaxTickCount int32
-    // TODO - Document
+    // List of players
     Players []Player
-    // TODO - Document
+    // List of planets
     Planets []Planet
-    // TODO - Document
+    // List of flying worker groups
     FlyingWorkerGroups []FlyingWorkerGroup
-    // TODO - Document
+    // Max number of flying worker groups for one player
     MaxFlyingWorkerGroups int32
-    // TODO - Document
+    // Max distance of direct travel between planets
     MaxTravelDistance int32
-    // TODO - Document
+    // Max number of workers performing building on one planet
     MaxBuilders int32
-    // TODO - Document
+    // Properties of every building type
     BuildingProperties map[BuildingType]BuildingProperties
 }
 

@@ -3,10 +3,10 @@ package spb_ai_champ.model
 import spb_ai_champ.util.StreamUtil
 
 /**
- * TODO - Document
+ * Group of workers on a planet
  *
- * @param playerIndex TODO - Document
- * @param number TODO - Document
+ * @param playerIndex Index of player controlling the workers
+ * @param number Number of workers in the group
  */
 case class WorkerGroup(playerIndex: Int, number: Int) {
     /**

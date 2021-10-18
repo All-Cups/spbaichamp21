@@ -1,44 +1,44 @@
 namespace SpbAiChamp.Model
 {
     /// <summary>
-    /// TODO - Document
+    /// Resource type
     /// </summary>
     public enum Resource
     {
         /// <summary>
-        /// TODO - Document
+        /// Stone
         /// </summary>
         Stone = 0,
         /// <summary>
-        /// TODO - Document
+        /// Ore
         /// </summary>
         Ore = 1,
         /// <summary>
-        /// TODO - Document
+        /// Sand
         /// </summary>
         Sand = 2,
         /// <summary>
-        /// TODO - Document
+        /// Organics
         /// </summary>
         Organics = 3,
         /// <summary>
-        /// TODO - Document
+        /// Metal
         /// </summary>
         Metal = 4,
         /// <summary>
-        /// TODO - Document
+        /// Silicon
         /// </summary>
         Silicon = 5,
         /// <summary>
-        /// TODO - Document
+        /// Plastic
         /// </summary>
         Plastic = 6,
         /// <summary>
-        /// TODO - Document
+        /// Chip
         /// </summary>
         Chip = 7,
         /// <summary>
-        /// TODO - Document
+        /// Accumulator
         /// </summary>
         Accumulator = 8,
     }

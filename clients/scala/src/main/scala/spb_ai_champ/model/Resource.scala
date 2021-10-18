@@ -3,7 +3,7 @@ package spb_ai_champ.model
 import spb_ai_champ.util.StreamUtil
 
 /**
- * TODO - Document
+ * Resource type
  */
 sealed abstract class Resource (val tag: Int) {
     /**
@@ -16,39 +16,39 @@ sealed abstract class Resource (val tag: Int) {
 
 object Resource {
     /**
-     * TODO - Document
+     * Stone
      */
     case object STONE extends Resource(0)
     /**
-     * TODO - Document
+     * Ore
      */
     case object ORE extends Resource(1)
     /**
-     * TODO - Document
+     * Sand
      */
     case object SAND extends Resource(2)
     /**
-     * TODO - Document
+     * Organics
      */
     case object ORGANICS extends Resource(3)
     /**
-     * TODO - Document
+     * Metal
      */
     case object METAL extends Resource(4)
     /**
-     * TODO - Document
+     * Silicon
      */
     case object SILICON extends Resource(5)
     /**
-     * TODO - Document
+     * Plastic
      */
     case object PLASTIC extends Resource(6)
     /**
-     * TODO - Document
+     * Chip
      */
     case object CHIP extends Resource(7)
     /**
-     * TODO - Document
+     * Accumulator
      */
     case object ACCUMULATOR extends Resource(8)
 

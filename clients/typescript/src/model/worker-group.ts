@@ -1,15 +1,15 @@
 import { Stream } from "../stream";
 
 /**
- * TODO - Document
+ * Group of workers on a planet
  */
 export class WorkerGroup {
     /**
-     * TODO - Document
+     * Index of player controlling the workers
      */
     playerIndex: number
     /**
-     * TODO - Document
+     * Number of workers in the group
      */
     number: number
 

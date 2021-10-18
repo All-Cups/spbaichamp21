@@ -1,48 +1,48 @@
 namespace SpbAiChamp.Model
 {
     /// <summary>
-    /// TODO - Document
+    /// Current game's state
     /// </summary>
     public struct Game
     {
         /// <summary>
-        /// TODO - Document
+        /// Your player's index
         /// </summary>
         public int MyIndex { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Current tick number
         /// </summary>
         public int CurrentTick { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Max number of ticks in the game
         /// </summary>
         public int MaxTickCount { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// List of players
         /// </summary>
         public Model.Player[] Players { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// List of planets
         /// </summary>
         public Model.Planet[] Planets { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// List of flying worker groups
         /// </summary>
         public Model.FlyingWorkerGroup[] FlyingWorkerGroups { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Max number of flying worker groups for one player
         /// </summary>
         public int MaxFlyingWorkerGroups { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Max distance of direct travel between planets
         /// </summary>
         public int MaxTravelDistance { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Max number of workers performing building on one planet
         /// </summary>
         public int MaxBuilders { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Properties of every building type
         /// </summary>
         public System.Collections.Generic.IDictionary<Model.BuildingType, Model.BuildingProperties> BuildingProperties { get; set; }
     

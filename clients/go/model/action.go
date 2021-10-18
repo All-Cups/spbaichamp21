@@ -3,11 +3,11 @@ package model
 import "io"
 import . "spb_ai_champ/stream"
 
-// TODO - Document
+// Player's actions
 type Action struct {
-    // TODO - Document
+    // List of movement orders
     Moves []MoveAction
-    // TODO - Document
+    // List of building orders
     Buildings []BuildingAction
 }
 

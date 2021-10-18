@@ -5,11 +5,11 @@ namespace SpbAiChamp.Model
 
 open SpbAiChamp
 
-/// TODO - Document
+/// Building order
 type BuildingAction = {
-    /// TODO - Document
+    /// Id of the planet where the action needs to be performed
     Planet: int;
-    /// TODO - Document
+    /// Type of a building to build. If absent, current building will be destroyed
     BuildingType: option<Model.BuildingType>;
 } with
 

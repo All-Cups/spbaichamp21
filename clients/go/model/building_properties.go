@@ -4,27 +4,27 @@ import "fmt"
 import "io"
 import . "spb_ai_champ/stream"
 
-// TODO - Document
+// Building properties
 type BuildingProperties struct {
-    // TODO - Document
+    // Resources required for building
     BuildResources map[Resource]int32
-    // TODO - Document
+    // Max health points of the building
     MaxHealth int32
-    // TODO - Document
+    // Max number of workers in the building
     MaxWorkers int32
-    // TODO - Document
+    // Resources required to start another task
     WorkResources map[Resource]int32
-    // TODO - Document
+    // Whether performing a task spawn new workers
     ProduceWorker bool
-    // TODO - Document
+    // Resource produced when performing a task
     ProduceResource *Resource
-    // TODO - Document
+    // Amount of resources/workers produced when performing one task
     ProduceAmount int32
-    // TODO - Document
+    // Score points given for performing one task
     ProduceScore int32
-    // TODO - Document
+    // Whether building is harvesting. In this case resource can only be produced if it is harvestable on the planet
     Harvest bool
-    // TODO - Document
+    // Amount of work needed to finish one task
     WorkAmount int32
 }
 

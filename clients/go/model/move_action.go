@@ -4,15 +4,15 @@ import "fmt"
 import "io"
 import . "spb_ai_champ/stream"
 
-// TODO - Document
+// Movement order
 type MoveAction struct {
-    // TODO - Document
+    // Id of the planet where workers need to be sent from
     StartPlanet int32
-    // TODO - Document
+    // Id of the target planet
     TargetPlanet int32
-    // TODO - Document
+    // Number of workers to send
     WorkerNumber int32
-    // TODO - Document
+    // Resource workers should carry
     TakeResource *Resource
 }
 

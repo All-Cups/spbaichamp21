@@ -3,41 +3,41 @@ package spb_ai_champ.model;
 import spb_ai_champ.util.StreamUtil;
 
 /**
- * TODO - Document
+ * Player's actions
  */
 public class Action {
     /**
-     * TODO - Document
+     * List of movement orders
      */
     private spb_ai_champ.model.MoveAction[] moves;
 
     /**
-     * TODO - Document
+     * List of movement orders
      */
     public spb_ai_champ.model.MoveAction[] getMoves() {
         return moves;
     }
 
     /**
-     * TODO - Document
+     * List of movement orders
      */
     public void setMoves(spb_ai_champ.model.MoveAction[] value) {
         this.moves = value;
     }
     /**
-     * TODO - Document
+     * List of building orders
      */
     private spb_ai_champ.model.BuildingAction[] buildings;
 
     /**
-     * TODO - Document
+     * List of building orders
      */
     public spb_ai_champ.model.BuildingAction[] getBuildings() {
         return buildings;
     }
 
     /**
-     * TODO - Document
+     * List of building orders
      */
     public void setBuildings(spb_ai_champ.model.BuildingAction[] value) {
         this.buildings = value;

@@ -1,27 +1,27 @@
 use super::*;
 
-/// TODO - Document
+/// Building type
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum BuildingType {
-    /// TODO - Document
+    /// Quarry harvests stone
     Quarry,
-    /// TODO - Document
+    /// Mines harvests ore
     Mines,
-    /// TODO - Document
+    /// Career harvest sand
     Career,
-    /// TODO - Document
+    /// Farm harvests organics
     Farm,
-    /// TODO - Document
+    /// Foundry produces metal
     Foundry,
-    /// TODO - Document
+    /// Furnace produces silicon
     Furnace,
-    /// TODO - Document
+    /// Bioreactor produces plastic
     Bioreactor,
-    /// TODO - Document
+    /// Chip factory produces chips
     ChipFactory,
-    /// TODO - Document
+    /// Accumulator factory produces accumulators
     AccumulatorFactory,
-    /// TODO - Document
+    /// Replicator produces new workers
     Replicator,
 }
 

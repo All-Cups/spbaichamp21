@@ -3,15 +3,15 @@ package spb_ai_champ.model
 import spb_ai_champ.util.StreamUtil
 
 /**
- * TODO - Document
+ * Group of workers on a planet
  */
 class WorkerGroup {
     /**
-     * TODO - Document
+     * Index of player controlling the workers
      */
     var playerIndex: Int
     /**
-     * TODO - Document
+     * Number of workers in the group
      */
     var number: Int
 

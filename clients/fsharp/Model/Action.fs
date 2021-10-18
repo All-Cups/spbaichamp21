@@ -5,11 +5,11 @@ namespace SpbAiChamp.Model
 
 open SpbAiChamp
 
-/// TODO - Document
+/// Player's actions
 type Action = {
-    /// TODO - Document
+    /// List of movement orders
     Moves: Model.MoveAction[];
-    /// TODO - Document
+    /// List of building orders
     Buildings: Model.BuildingAction[];
 } with
 

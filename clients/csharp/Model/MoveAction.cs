@@ -1,24 +1,24 @@
 namespace SpbAiChamp.Model
 {
     /// <summary>
-    /// TODO - Document
+    /// Movement order
     /// </summary>
     public struct MoveAction
     {
         /// <summary>
-        /// TODO - Document
+        /// Id of the planet where workers need to be sent from
         /// </summary>
         public int StartPlanet { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Id of the target planet
         /// </summary>
         public int TargetPlanet { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Number of workers to send
         /// </summary>
         public int WorkerNumber { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Resource workers should carry
         /// </summary>
         public Model.Resource? TakeResource { get; set; }
     

@@ -4,23 +4,23 @@ import "fmt"
 import "io"
 import . "spb_ai_champ/stream"
 
-// TODO - Document
+// A flying worker group
 type FlyingWorkerGroup struct {
-    // TODO - Document
+    // Index of player controlling workers
     PlayerIndex int32
-    // TODO - Document
+    // Number of workers in the group
     Number int32
-    // TODO - Document
+    // Tick when workers left previous planet on their path
     DepartureTick int32
-    // TODO - Document
+    // Id of the previous planet on the path
     DeparturePlanet int32
-    // TODO - Document
+    // Tick when workers will arrive to the next planet in their path
     NextPlanetArrivalTick int32
-    // TODO - Document
+    // Id of the next planet in the path
     NextPlanet int32
-    // TODO - Document
+    // Id of the target planet
     TargetPlanet int32
-    // TODO - Document
+    // Resource that workers are carrying
     Resource *Resource
 }
 

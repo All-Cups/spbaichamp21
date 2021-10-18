@@ -3,7 +3,7 @@ from stream_wrapper import StreamWrapper
 from typing import Optional
 
 class BuildingAction:
-    """TODO - Document"""
+    """Building order"""
 
     __slots__ = ("planet","building_type",)
 
@@ -12,9 +12,9 @@ class BuildingAction:
 
     def __init__(self, planet: int, building_type: Optional[BuildingType]):
         self.planet = planet
-        """TODO - Document"""
+        """Id of the planet where the action needs to be performed"""
         self.building_type = building_type
-        """TODO - Document"""
+        """Type of a building to build. If absent, current building will be destroyed"""
 
     @staticmethod
     def read_from(stream: StreamWrapper) -> "BuildingAction":

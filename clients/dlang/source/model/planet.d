@@ -7,21 +7,21 @@ import model.building;
 import model.resource;
 import model.worker_group;
 
-/// TODO - Document
+/// A planet
 struct Planet {
-    /// TODO - Document
+    /// Unique identifier of the planet
     int id;
-    /// TODO - Document
+    /// X coordinate
     int x;
-    /// TODO - Document
+    /// Y coordinate
     int y;
-    /// TODO - Document
+    /// Resource that can be harvested on the planet
     Nullable!(model.Resource) harvestableResource;
-    /// TODO - Document
+    /// List of worker groups
     model.WorkerGroup[] workerGroups;
-    /// TODO - Document
+    /// Resources stored on the planet
     int[model.Resource] resources;
-    /// TODO - Document
+    /// Building on the planet
     Nullable!(model.Building) building;
 
     this(int id, int x, int y, Nullable!(model.Resource) harvestableResource, model.WorkerGroup[] workerGroups, int[model.Resource] resources, Nullable!(model.Building) building) {

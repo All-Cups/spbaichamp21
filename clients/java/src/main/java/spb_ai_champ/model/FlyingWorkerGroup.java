@@ -3,149 +3,149 @@ package spb_ai_champ.model;
 import spb_ai_champ.util.StreamUtil;
 
 /**
- * TODO - Document
+ * A flying worker group
  */
 public class FlyingWorkerGroup {
     /**
-     * TODO - Document
+     * Index of player controlling workers
      */
     private int playerIndex;
 
     /**
-     * TODO - Document
+     * Index of player controlling workers
      */
     public int getPlayerIndex() {
         return playerIndex;
     }
 
     /**
-     * TODO - Document
+     * Index of player controlling workers
      */
     public void setPlayerIndex(int value) {
         this.playerIndex = value;
     }
     /**
-     * TODO - Document
+     * Number of workers in the group
      */
     private int number;
 
     /**
-     * TODO - Document
+     * Number of workers in the group
      */
     public int getNumber() {
         return number;
     }
 
     /**
-     * TODO - Document
+     * Number of workers in the group
      */
     public void setNumber(int value) {
         this.number = value;
     }
     /**
-     * TODO - Document
+     * Tick when workers left previous planet on their path
      */
     private int departureTick;
 
     /**
-     * TODO - Document
+     * Tick when workers left previous planet on their path
      */
     public int getDepartureTick() {
         return departureTick;
     }
 
     /**
-     * TODO - Document
+     * Tick when workers left previous planet on their path
      */
     public void setDepartureTick(int value) {
         this.departureTick = value;
     }
     /**
-     * TODO - Document
+     * Id of the previous planet on the path
      */
     private int departurePlanet;
 
     /**
-     * TODO - Document
+     * Id of the previous planet on the path
      */
     public int getDeparturePlanet() {
         return departurePlanet;
     }
 
     /**
-     * TODO - Document
+     * Id of the previous planet on the path
      */
     public void setDeparturePlanet(int value) {
         this.departurePlanet = value;
     }
     /**
-     * TODO - Document
+     * Tick when workers will arrive to the next planet in their path
      */
     private int nextPlanetArrivalTick;
 
     /**
-     * TODO - Document
+     * Tick when workers will arrive to the next planet in their path
      */
     public int getNextPlanetArrivalTick() {
         return nextPlanetArrivalTick;
     }
 
     /**
-     * TODO - Document
+     * Tick when workers will arrive to the next planet in their path
      */
     public void setNextPlanetArrivalTick(int value) {
         this.nextPlanetArrivalTick = value;
     }
     /**
-     * TODO - Document
+     * Id of the next planet in the path
      */
     private int nextPlanet;
 
     /**
-     * TODO - Document
+     * Id of the next planet in the path
      */
     public int getNextPlanet() {
         return nextPlanet;
     }
 
     /**
-     * TODO - Document
+     * Id of the next planet in the path
      */
     public void setNextPlanet(int value) {
         this.nextPlanet = value;
     }
     /**
-     * TODO - Document
+     * Id of the target planet
      */
     private int targetPlanet;
 
     /**
-     * TODO - Document
+     * Id of the target planet
      */
     public int getTargetPlanet() {
         return targetPlanet;
     }
 
     /**
-     * TODO - Document
+     * Id of the target planet
      */
     public void setTargetPlanet(int value) {
         this.targetPlanet = value;
     }
     /**
-     * TODO - Document
+     * Resource that workers are carrying
      */
     private spb_ai_champ.model.Resource resource;
 
     /**
-     * TODO - Document
+     * Resource that workers are carrying
      */
     public spb_ai_champ.model.Resource getResource() {
         return resource;
     }
 
     /**
-     * TODO - Document
+     * Resource that workers are carrying
      */
     public void setResource(spb_ai_champ.model.Resource value) {
         this.resource = value;

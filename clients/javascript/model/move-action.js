@@ -1,22 +1,22 @@
 const Resource = require.main.require('./model/resource');
 /**
- * TODO - Document
+ * Movement order
  */
 class MoveAction {
     /**
-     * TODO - Document
+     * Id of the planet where workers need to be sent from
      */
     startPlanet;
     /**
-     * TODO - Document
+     * Id of the target planet
      */
     targetPlanet;
     /**
-     * TODO - Document
+     * Number of workers to send
      */
     workerNumber;
     /**
-     * TODO - Document
+     * Resource workers should carry
      */
     takeResource;
 

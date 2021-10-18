@@ -1,20 +1,20 @@
 namespace SpbAiChamp.Model
 {
     /// <summary>
-    /// TODO - Document
+    /// A building
     /// </summary>
     public struct Building
     {
         /// <summary>
-        /// TODO - Document
+        /// Building's type
         /// </summary>
         public Model.BuildingType BuildingType { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Current health
         /// </summary>
         public int Health { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Amount of work done for current task
         /// </summary>
         public int WorkDone { get; set; }
     

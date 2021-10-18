@@ -5,23 +5,23 @@ namespace SpbAiChamp.Model
 
 open SpbAiChamp
 
-/// TODO - Document
+/// A flying worker group
 type FlyingWorkerGroup = {
-    /// TODO - Document
+    /// Index of player controlling workers
     PlayerIndex: int;
-    /// TODO - Document
+    /// Number of workers in the group
     Number: int;
-    /// TODO - Document
+    /// Tick when workers left previous planet on their path
     DepartureTick: int;
-    /// TODO - Document
+    /// Id of the previous planet on the path
     DeparturePlanet: int;
-    /// TODO - Document
+    /// Tick when workers will arrive to the next planet in their path
     NextPlanetArrivalTick: int;
-    /// TODO - Document
+    /// Id of the next planet in the path
     NextPlanet: int;
-    /// TODO - Document
+    /// Id of the target planet
     TargetPlanet: int;
-    /// TODO - Document
+    /// Resource that workers are carrying
     Resource: option<Model.Resource>;
 } with
 

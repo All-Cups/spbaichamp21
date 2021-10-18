@@ -9,27 +9,27 @@ import model.flying_worker_group;
 import model.planet;
 import model.player;
 
-/// TODO - Document
+/// Current game's state
 struct Game {
-    /// TODO - Document
+    /// Your player's index
     int myIndex;
-    /// TODO - Document
+    /// Current tick number
     int currentTick;
-    /// TODO - Document
+    /// Max number of ticks in the game
     int maxTickCount;
-    /// TODO - Document
+    /// List of players
     model.Player[] players;
-    /// TODO - Document
+    /// List of planets
     model.Planet[] planets;
-    /// TODO - Document
+    /// List of flying worker groups
     model.FlyingWorkerGroup[] flyingWorkerGroups;
-    /// TODO - Document
+    /// Max number of flying worker groups for one player
     int maxFlyingWorkerGroups;
-    /// TODO - Document
+    /// Max distance of direct travel between planets
     int maxTravelDistance;
-    /// TODO - Document
+    /// Max number of workers performing building on one planet
     int maxBuilders;
-    /// TODO - Document
+    /// Properties of every building type
     model.BuildingProperties[model.BuildingType] buildingProperties;
 
     this(int myIndex, int currentTick, int maxTickCount, model.Player[] players, model.Planet[] planets, model.FlyingWorkerGroup[] flyingWorkerGroups, int maxFlyingWorkerGroups, int maxTravelDistance, int maxBuilders, model.BuildingProperties[model.BuildingType] buildingProperties) {

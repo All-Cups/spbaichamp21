@@ -1,23 +1,23 @@
 use super::*;
 
-/// TODO - Document
+/// A flying worker group
 #[derive(Clone, Debug)]
 pub struct FlyingWorkerGroup {
-    /// TODO - Document
+    /// Index of player controlling workers
     pub player_index: i32,
-    /// TODO - Document
+    /// Number of workers in the group
     pub number: i32,
-    /// TODO - Document
+    /// Tick when workers left previous planet on their path
     pub departure_tick: i32,
-    /// TODO - Document
+    /// Id of the previous planet on the path
     pub departure_planet: i32,
-    /// TODO - Document
+    /// Tick when workers will arrive to the next planet in their path
     pub next_planet_arrival_tick: i32,
-    /// TODO - Document
+    /// Id of the next planet in the path
     pub next_planet: i32,
-    /// TODO - Document
+    /// Id of the target planet
     pub target_planet: i32,
-    /// TODO - Document
+    /// Resource that workers are carrying
     pub resource: Option<model::Resource>,
 }
 

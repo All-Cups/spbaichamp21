@@ -1,11 +1,11 @@
 use super::*;
 
-/// TODO - Document
+/// Player's actions
 #[derive(Clone, Debug)]
 pub struct Action {
-    /// TODO - Document
+    /// List of movement orders
     pub moves: Vec<model::MoveAction>,
-    /// TODO - Document
+    /// List of building orders
     pub buildings: Vec<model::BuildingAction>,
 }
 

@@ -3,10 +3,10 @@ package spb_ai_champ.model
 import spb_ai_champ.util.StreamUtil
 
 /**
- * TODO - Document
+ * Player's actions
  *
- * @param moves TODO - Document
- * @param buildings TODO - Document
+ * @param moves List of movement orders
+ * @param buildings List of building orders
  */
 case class Action(moves: Seq[spb_ai_champ.model.MoveAction], buildings: Seq[spb_ai_champ.model.BuildingAction]) {
     /**

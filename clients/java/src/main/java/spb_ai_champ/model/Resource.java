@@ -3,43 +3,43 @@ package spb_ai_champ.model;
 import spb_ai_champ.util.StreamUtil;
 
 /**
- * TODO - Document
+ * Resource type
  */
 public enum Resource {
     /**
-     * TODO - Document
+     * Stone
      */
     STONE(0),
     /**
-     * TODO - Document
+     * Ore
      */
     ORE(1),
     /**
-     * TODO - Document
+     * Sand
      */
     SAND(2),
     /**
-     * TODO - Document
+     * Organics
      */
     ORGANICS(3),
     /**
-     * TODO - Document
+     * Metal
      */
     METAL(4),
     /**
-     * TODO - Document
+     * Silicon
      */
     SILICON(5),
     /**
-     * TODO - Document
+     * Plastic
      */
     PLASTIC(6),
     /**
-     * TODO - Document
+     * Chip
      */
     CHIP(7),
     /**
-     * TODO - Document
+     * Accumulator
      */
     ACCUMULATOR(8);
 

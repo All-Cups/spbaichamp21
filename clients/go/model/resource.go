@@ -3,27 +3,27 @@ package model
 import "io"
 import . "spb_ai_champ/stream"
 
-// TODO - Document
+// Resource type
 type Resource int32
 
 const (
-    // TODO - Document
+    // Stone
     ResourceStone Resource = 0
-    // TODO - Document
+    // Ore
     ResourceOre Resource = 1
-    // TODO - Document
+    // Sand
     ResourceSand Resource = 2
-    // TODO - Document
+    // Organics
     ResourceOrganics Resource = 3
-    // TODO - Document
+    // Metal
     ResourceMetal Resource = 4
-    // TODO - Document
+    // Silicon
     ResourceSilicon Resource = 5
-    // TODO - Document
+    // Plastic
     ResourcePlastic Resource = 6
-    // TODO - Document
+    // Chip
     ResourceChip Resource = 7
-    // TODO - Document
+    // Accumulator
     ResourceAccumulator Resource = 8
 )
 

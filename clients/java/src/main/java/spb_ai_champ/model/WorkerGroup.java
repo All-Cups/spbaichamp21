@@ -3,41 +3,41 @@ package spb_ai_champ.model;
 import spb_ai_champ.util.StreamUtil;
 
 /**
- * TODO - Document
+ * Group of workers on a planet
  */
 public class WorkerGroup {
     /**
-     * TODO - Document
+     * Index of player controlling the workers
      */
     private int playerIndex;
 
     /**
-     * TODO - Document
+     * Index of player controlling the workers
      */
     public int getPlayerIndex() {
         return playerIndex;
     }
 
     /**
-     * TODO - Document
+     * Index of player controlling the workers
      */
     public void setPlayerIndex(int value) {
         this.playerIndex = value;
     }
     /**
-     * TODO - Document
+     * Number of workers in the group
      */
     private int number;
 
     /**
-     * TODO - Document
+     * Number of workers in the group
      */
     public int getNumber() {
         return number;
     }
 
     /**
-     * TODO - Document
+     * Number of workers in the group
      */
     public void setNumber(int value) {
         this.number = value;

@@ -1,15 +1,15 @@
 use super::*;
 
-/// TODO - Document
+/// Movement order
 #[derive(Clone, Debug)]
 pub struct MoveAction {
-    /// TODO - Document
+    /// Id of the planet where workers need to be sent from
     pub start_planet: i32,
-    /// TODO - Document
+    /// Id of the target planet
     pub target_planet: i32,
-    /// TODO - Document
+    /// Number of workers to send
     pub worker_number: i32,
-    /// TODO - Document
+    /// Resource workers should carry
     pub take_resource: Option<model::Resource>,
 }
 

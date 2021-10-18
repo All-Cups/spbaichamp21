@@ -3,9 +3,9 @@ package spb_ai_champ.model
 import spb_ai_champ.util.StreamUtil
 
 /**
- * TODO - Document
+ * Player (game participant)
  *
- * @param score TODO - Document
+ * @param score Current score points
  */
 case class Player(score: Int) {
     /**

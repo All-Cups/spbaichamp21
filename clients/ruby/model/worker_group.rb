@@ -1,10 +1,10 @@
 module Model
 
-# TODO - Document
+# Group of workers on a planet
 class WorkerGroup
-    # TODO - Document
+    # Index of player controlling the workers
     attr_accessor :player_index
-    # TODO - Document
+    # Number of workers in the group
     attr_accessor :number
 
     def initialize(player_index, number)

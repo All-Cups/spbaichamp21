@@ -10,12 +10,12 @@
 
 namespace model {
 
-// TODO - Document
+// Building order
 class BuildingAction {
 public:
-    // TODO - Document
+    // Id of the planet where the action needs to be performed
     int planet;
-    // TODO - Document
+    // Type of a building to build. If absent, current building will be destroyed
     std::optional<model::BuildingType> buildingType;
 
     BuildingAction(int planet, std::optional<model::BuildingType> buildingType);

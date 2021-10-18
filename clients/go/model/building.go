@@ -4,13 +4,13 @@ import "fmt"
 import "io"
 import . "spb_ai_champ/stream"
 
-// TODO - Document
+// A building
 type Building struct {
-    // TODO - Document
+    // Building's type
     BuildingType BuildingType
-    // TODO - Document
+    // Current health
     Health int32
-    // TODO - Document
+    // Amount of work done for current task
     WorkDone int32
 }
 

@@ -3,19 +3,19 @@ package spb_ai_champ.model
 import spb_ai_champ.util.StreamUtil
 
 /**
- * TODO - Document
+ * A building
  */
 class Building {
     /**
-     * TODO - Document
+     * Building's type
      */
     var buildingType: spb_ai_champ.model.BuildingType
     /**
-     * TODO - Document
+     * Current health
      */
     var health: Int
     /**
-     * TODO - Document
+     * Amount of work done for current task
      */
     var workDone: Int
 

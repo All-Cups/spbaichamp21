@@ -7,12 +7,12 @@
 
 namespace model {
 
-// TODO - Document
+// Group of workers on a planet
 class WorkerGroup {
 public:
-    // TODO - Document
+    // Index of player controlling the workers
     int playerIndex;
-    // TODO - Document
+    // Number of workers in the group
     int number;
 
     WorkerGroup(int playerIndex, int number);

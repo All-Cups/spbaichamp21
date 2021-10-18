@@ -1,9 +1,9 @@
 use super::*;
 
-/// TODO - Document
+/// Player (game participant)
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub struct Player {
-    /// TODO - Document
+    /// Current score points
     pub score: i32,
 }
 

@@ -3,16 +3,16 @@ package spb_ai_champ.model
 import spb_ai_champ.util.StreamUtil
 
 /**
- * TODO - Document
+ * A flying worker group
  *
- * @param playerIndex TODO - Document
- * @param number TODO - Document
- * @param departureTick TODO - Document
- * @param departurePlanet TODO - Document
- * @param nextPlanetArrivalTick TODO - Document
- * @param nextPlanet TODO - Document
- * @param targetPlanet TODO - Document
- * @param resource TODO - Document
+ * @param playerIndex Index of player controlling workers
+ * @param number Number of workers in the group
+ * @param departureTick Tick when workers left previous planet on their path
+ * @param departurePlanet Id of the previous planet on the path
+ * @param nextPlanetArrivalTick Tick when workers will arrive to the next planet in their path
+ * @param nextPlanet Id of the next planet in the path
+ * @param targetPlanet Id of the target planet
+ * @param resource Resource that workers are carrying
  */
 case class FlyingWorkerGroup(playerIndex: Int, number: Int, departureTick: Int, departurePlanet: Int, nextPlanetArrivalTick: Int, nextPlanet: Int, targetPlanet: Int, resource: Option[spb_ai_champ.model.Resource]) {
     /**

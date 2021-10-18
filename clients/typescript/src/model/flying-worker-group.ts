@@ -2,39 +2,39 @@ import { Resource } from "./resource";
 import { Stream } from "../stream";
 
 /**
- * TODO - Document
+ * A flying worker group
  */
 export class FlyingWorkerGroup {
     /**
-     * TODO - Document
+     * Index of player controlling workers
      */
     playerIndex: number
     /**
-     * TODO - Document
+     * Number of workers in the group
      */
     number: number
     /**
-     * TODO - Document
+     * Tick when workers left previous planet on their path
      */
     departureTick: number
     /**
-     * TODO - Document
+     * Id of the previous planet on the path
      */
     departurePlanet: number
     /**
-     * TODO - Document
+     * Tick when workers will arrive to the next planet in their path
      */
     nextPlanetArrivalTick: number
     /**
-     * TODO - Document
+     * Id of the next planet in the path
      */
     nextPlanet: number
     /**
-     * TODO - Document
+     * Id of the target planet
      */
     targetPlanet: number
     /**
-     * TODO - Document
+     * Resource that workers are carrying
      */
     resource: Resource | null
 

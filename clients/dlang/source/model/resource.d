@@ -2,25 +2,25 @@ module model.resource;
 
 import stream;
 
-/// TODO - Document
+/// Resource type
 enum Resource : int {
-    /// TODO - Document
+    /// Stone
     Stone = 0,
-    /// TODO - Document
+    /// Ore
     Ore = 1,
-    /// TODO - Document
+    /// Sand
     Sand = 2,
-    /// TODO - Document
+    /// Organics
     Organics = 3,
-    /// TODO - Document
+    /// Metal
     Metal = 4,
-    /// TODO - Document
+    /// Silicon
     Silicon = 5,
-    /// TODO - Document
+    /// Plastic
     Plastic = 6,
-    /// TODO - Document
+    /// Chip
     Chip = 7,
-    /// TODO - Document
+    /// Accumulator
     Accumulator = 8,
 }
 

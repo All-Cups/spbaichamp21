@@ -3,39 +3,39 @@ package spb_ai_champ.model
 import spb_ai_champ.util.StreamUtil
 
 /**
- * TODO - Document
+ * A flying worker group
  */
 class FlyingWorkerGroup {
     /**
-     * TODO - Document
+     * Index of player controlling workers
      */
     var playerIndex: Int
     /**
-     * TODO - Document
+     * Number of workers in the group
      */
     var number: Int
     /**
-     * TODO - Document
+     * Tick when workers left previous planet on their path
      */
     var departureTick: Int
     /**
-     * TODO - Document
+     * Id of the previous planet on the path
      */
     var departurePlanet: Int
     /**
-     * TODO - Document
+     * Tick when workers will arrive to the next planet in their path
      */
     var nextPlanetArrivalTick: Int
     /**
-     * TODO - Document
+     * Id of the next planet in the path
      */
     var nextPlanet: Int
     /**
-     * TODO - Document
+     * Id of the target planet
      */
     var targetPlanet: Int
     /**
-     * TODO - Document
+     * Resource that workers are carrying
      */
     var resource: spb_ai_champ.model.Resource?
 

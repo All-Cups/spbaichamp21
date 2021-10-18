@@ -7,7 +7,7 @@ from typing import List
 from typing import Optional
 
 class Planet:
-    """TODO - Document"""
+    """A planet"""
 
     __slots__ = ("id","x","y","harvestable_resource","worker_groups","resources","building",)
 
@@ -21,19 +21,19 @@ class Planet:
 
     def __init__(self, id: int, x: int, y: int, harvestable_resource: Optional[Resource], worker_groups: List[WorkerGroup], resources: Dict[Resource, int], building: Optional[Building]):
         self.id = id
-        """TODO - Document"""
+        """Unique identifier of the planet"""
         self.x = x
-        """TODO - Document"""
+        """X coordinate"""
         self.y = y
-        """TODO - Document"""
+        """Y coordinate"""
         self.harvestable_resource = harvestable_resource
-        """TODO - Document"""
+        """Resource that can be harvested on the planet"""
         self.worker_groups = worker_groups
-        """TODO - Document"""
+        """List of worker groups"""
         self.resources = resources
-        """TODO - Document"""
+        """Resources stored on the planet"""
         self.building = building
-        """TODO - Document"""
+        """Building on the planet"""
 
     @staticmethod
     def read_from(stream: StreamWrapper) -> "Planet":

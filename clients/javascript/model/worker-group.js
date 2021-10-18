@@ -1,13 +1,13 @@
 /**
- * TODO - Document
+ * Group of workers on a planet
  */
 class WorkerGroup {
     /**
-     * TODO - Document
+     * Index of player controlling the workers
      */
     playerIndex;
     /**
-     * TODO - Document
+     * Number of workers in the group
      */
     number;
 

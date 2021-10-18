@@ -1,7 +1,7 @@
 import { Stream } from "../stream";
 
 /**
- * TODO - Document
+ * Building type
  */
 export class BuildingType {
     readonly name: string;
@@ -13,43 +13,43 @@ export class BuildingType {
     }
 
     /**
-     * TODO - Document
+     * Quarry harvests stone
      */
     static readonly QUARRY = new BuildingType("QUARRY", 0);
     /**
-     * TODO - Document
+     * Mines harvests ore
      */
     static readonly MINES = new BuildingType("MINES", 1);
     /**
-     * TODO - Document
+     * Career harvest sand
      */
     static readonly CAREER = new BuildingType("CAREER", 2);
     /**
-     * TODO - Document
+     * Farm harvests organics
      */
     static readonly FARM = new BuildingType("FARM", 3);
     /**
-     * TODO - Document
+     * Foundry produces metal
      */
     static readonly FOUNDRY = new BuildingType("FOUNDRY", 4);
     /**
-     * TODO - Document
+     * Furnace produces silicon
      */
     static readonly FURNACE = new BuildingType("FURNACE", 5);
     /**
-     * TODO - Document
+     * Bioreactor produces plastic
      */
     static readonly BIOREACTOR = new BuildingType("BIOREACTOR", 6);
     /**
-     * TODO - Document
+     * Chip factory produces chips
      */
     static readonly CHIP_FACTORY = new BuildingType("CHIP_FACTORY", 7);
     /**
-     * TODO - Document
+     * Accumulator factory produces accumulators
      */
     static readonly ACCUMULATOR_FACTORY = new BuildingType("ACCUMULATOR_FACTORY", 8);
     /**
-     * TODO - Document
+     * Replicator produces new workers
      */
     static readonly REPLICATOR = new BuildingType("REPLICATOR", 9);
 

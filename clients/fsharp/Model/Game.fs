@@ -5,27 +5,27 @@ namespace SpbAiChamp.Model
 
 open SpbAiChamp
 
-/// TODO - Document
+/// Current game's state
 type Game = {
-    /// TODO - Document
+    /// Your player's index
     MyIndex: int;
-    /// TODO - Document
+    /// Current tick number
     CurrentTick: int;
-    /// TODO - Document
+    /// Max number of ticks in the game
     MaxTickCount: int;
-    /// TODO - Document
+    /// List of players
     Players: Model.Player[];
-    /// TODO - Document
+    /// List of planets
     Planets: Model.Planet[];
-    /// TODO - Document
+    /// List of flying worker groups
     FlyingWorkerGroups: Model.FlyingWorkerGroup[];
-    /// TODO - Document
+    /// Max number of flying worker groups for one player
     MaxFlyingWorkerGroups: int;
-    /// TODO - Document
+    /// Max distance of direct travel between planets
     MaxTravelDistance: int;
-    /// TODO - Document
+    /// Max number of workers performing building on one planet
     MaxBuilders: int;
-    /// TODO - Document
+    /// Properties of every building type
     BuildingProperties: Map<Model.BuildingType, Model.BuildingProperties>;
 } with
 

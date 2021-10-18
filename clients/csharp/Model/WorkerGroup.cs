@@ -1,16 +1,16 @@
 namespace SpbAiChamp.Model
 {
     /// <summary>
-    /// TODO - Document
+    /// Group of workers on a planet
     /// </summary>
     public struct WorkerGroup
     {
         /// <summary>
-        /// TODO - Document
+        /// Index of player controlling the workers
         /// </summary>
         public int PlayerIndex { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Number of workers in the group
         /// </summary>
         public int Number { get; set; }
     

@@ -3,23 +3,23 @@ package spb_ai_champ.model;
 import spb_ai_champ.util.StreamUtil;
 
 /**
- * TODO - Document
+ * Player (game participant)
  */
 public class Player {
     /**
-     * TODO - Document
+     * Current score points
      */
     private int score;
 
     /**
-     * TODO - Document
+     * Current score points
      */
     public int getScore() {
         return score;
     }
 
     /**
-     * TODO - Document
+     * Current score points
      */
     public void setScore(int value) {
         this.score = value;

@@ -10,24 +10,24 @@
 
 namespace model {
 
-// TODO - Document
+// A flying worker group
 class FlyingWorkerGroup {
 public:
-    // TODO - Document
+    // Index of player controlling workers
     int playerIndex;
-    // TODO - Document
+    // Number of workers in the group
     int number;
-    // TODO - Document
+    // Tick when workers left previous planet on their path
     int departureTick;
-    // TODO - Document
+    // Id of the previous planet on the path
     int departurePlanet;
-    // TODO - Document
+    // Tick when workers will arrive to the next planet in their path
     int nextPlanetArrivalTick;
-    // TODO - Document
+    // Id of the next planet in the path
     int nextPlanet;
-    // TODO - Document
+    // Id of the target planet
     int targetPlanet;
-    // TODO - Document
+    // Resource that workers are carrying
     std::optional<model::Resource> resource;
 
     FlyingWorkerGroup(int playerIndex, int number, int departureTick, int departurePlanet, int nextPlanetArrivalTick, int nextPlanet, int targetPlanet, std::optional<model::Resource> resource);

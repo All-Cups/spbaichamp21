@@ -3,15 +3,15 @@ package spb_ai_champ.model
 import spb_ai_champ.util.StreamUtil
 
 /**
- * TODO - Document
+ * Player's actions
  */
 class Action {
     /**
-     * TODO - Document
+     * List of movement orders
      */
     var moves: Array<spb_ai_champ.model.MoveAction>
     /**
-     * TODO - Document
+     * List of building orders
      */
     var buildings: Array<spb_ai_champ.model.BuildingAction>
 

@@ -5,27 +5,27 @@ import std.conv;
 import std.typecons : Nullable;
 import model.resource;
 
-/// TODO - Document
+/// Building properties
 struct BuildingProperties {
-    /// TODO - Document
+    /// Resources required for building
     int[model.Resource] buildResources;
-    /// TODO - Document
+    /// Max health points of the building
     int maxHealth;
-    /// TODO - Document
+    /// Max number of workers in the building
     int maxWorkers;
-    /// TODO - Document
+    /// Resources required to start another task
     int[model.Resource] workResources;
-    /// TODO - Document
+    /// Whether performing a task spawn new workers
     bool produceWorker;
-    /// TODO - Document
+    /// Resource produced when performing a task
     Nullable!(model.Resource) produceResource;
-    /// TODO - Document
+    /// Amount of resources/workers produced when performing one task
     int produceAmount;
-    /// TODO - Document
+    /// Score points given for performing one task
     int produceScore;
-    /// TODO - Document
+    /// Whether building is harvesting. In this case resource can only be produced if it is harvestable on the planet
     bool harvest;
-    /// TODO - Document
+    /// Amount of work needed to finish one task
     int workAmount;
 
     this(int[model.Resource] buildResources, int maxHealth, int maxWorkers, int[model.Resource] workResources, bool produceWorker, Nullable!(model.Resource) produceResource, int produceAmount, int produceScore, bool harvest, int workAmount) {

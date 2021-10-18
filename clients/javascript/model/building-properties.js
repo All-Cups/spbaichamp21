@@ -1,46 +1,46 @@
 const Resource = require.main.require('./model/resource');
 /**
- * TODO - Document
+ * Building properties
  */
 class BuildingProperties {
     /**
-     * TODO - Document
+     * Resources required for building
      */
     buildResources;
     /**
-     * TODO - Document
+     * Max health points of the building
      */
     maxHealth;
     /**
-     * TODO - Document
+     * Max number of workers in the building
      */
     maxWorkers;
     /**
-     * TODO - Document
+     * Resources required to start another task
      */
     workResources;
     /**
-     * TODO - Document
+     * Whether performing a task spawn new workers
      */
     produceWorker;
     /**
-     * TODO - Document
+     * Resource produced when performing a task
      */
     produceResource;
     /**
-     * TODO - Document
+     * Amount of resources/workers produced when performing one task
      */
     produceAmount;
     /**
-     * TODO - Document
+     * Score points given for performing one task
      */
     produceScore;
     /**
-     * TODO - Document
+     * Whether building is harvesting. In this case resource can only be produced if it is harvestable on the planet
      */
     harvest;
     /**
-     * TODO - Document
+     * Amount of work needed to finish one task
      */
     workAmount;
 

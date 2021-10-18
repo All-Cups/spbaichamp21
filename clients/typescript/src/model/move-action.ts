@@ -2,23 +2,23 @@ import { Resource } from "./resource";
 import { Stream } from "../stream";
 
 /**
- * TODO - Document
+ * Movement order
  */
 export class MoveAction {
     /**
-     * TODO - Document
+     * Id of the planet where workers need to be sent from
      */
     startPlanet: number
     /**
-     * TODO - Document
+     * Id of the target planet
      */
     targetPlanet: number
     /**
-     * TODO - Document
+     * Number of workers to send
      */
     workerNumber: number
     /**
-     * TODO - Document
+     * Resource workers should carry
      */
     takeResource: Resource | null
 

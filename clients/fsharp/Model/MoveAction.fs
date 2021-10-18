@@ -5,15 +5,15 @@ namespace SpbAiChamp.Model
 
 open SpbAiChamp
 
-/// TODO - Document
+/// Movement order
 type MoveAction = {
-    /// TODO - Document
+    /// Id of the planet where workers need to be sent from
     StartPlanet: int;
-    /// TODO - Document
+    /// Id of the target planet
     TargetPlanet: int;
-    /// TODO - Document
+    /// Number of workers to send
     WorkerNumber: int;
-    /// TODO - Document
+    /// Resource workers should carry
     TakeResource: option<Model.Resource>;
 } with
 

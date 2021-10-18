@@ -1,27 +1,27 @@
 use super::*;
 
-/// TODO - Document
+/// Building properties
 #[derive(Clone, Debug)]
 pub struct BuildingProperties {
-    /// TODO - Document
+    /// Resources required for building
     pub build_resources: std::collections::HashMap<model::Resource, i32>,
-    /// TODO - Document
+    /// Max health points of the building
     pub max_health: i32,
-    /// TODO - Document
+    /// Max number of workers in the building
     pub max_workers: i32,
-    /// TODO - Document
+    /// Resources required to start another task
     pub work_resources: std::collections::HashMap<model::Resource, i32>,
-    /// TODO - Document
+    /// Whether performing a task spawn new workers
     pub produce_worker: bool,
-    /// TODO - Document
+    /// Resource produced when performing a task
     pub produce_resource: Option<model::Resource>,
-    /// TODO - Document
+    /// Amount of resources/workers produced when performing one task
     pub produce_amount: i32,
-    /// TODO - Document
+    /// Score points given for performing one task
     pub produce_score: i32,
-    /// TODO - Document
+    /// Whether building is harvesting. In this case resource can only be produced if it is harvestable on the planet
     pub harvest: bool,
-    /// TODO - Document
+    /// Amount of work needed to finish one task
     pub work_amount: i32,
 }
 

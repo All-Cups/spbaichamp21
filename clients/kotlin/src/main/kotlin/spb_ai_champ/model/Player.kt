@@ -3,11 +3,11 @@ package spb_ai_champ.model
 import spb_ai_champ.util.StreamUtil
 
 /**
- * TODO - Document
+ * Player (game participant)
  */
 class Player {
     /**
-     * TODO - Document
+     * Current score points
      */
     var score: Int
 

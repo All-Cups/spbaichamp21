@@ -5,13 +5,13 @@ import std.conv;
 import std.typecons : Nullable;
 import model.building_type;
 
-/// TODO - Document
+/// A building
 struct Building {
-    /// TODO - Document
+    /// Building's type
     model.BuildingType buildingType;
-    /// TODO - Document
+    /// Current health
     int health;
-    /// TODO - Document
+    /// Amount of work done for current task
     int workDone;
 
     this(model.BuildingType buildingType, int health, int workDone) {

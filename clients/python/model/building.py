@@ -2,7 +2,7 @@ from model.building_type import BuildingType
 from stream_wrapper import StreamWrapper
 
 class Building:
-    """TODO - Document"""
+    """A building"""
 
     __slots__ = ("building_type","health","work_done",)
 
@@ -12,11 +12,11 @@ class Building:
 
     def __init__(self, building_type: BuildingType, health: int, work_done: int):
         self.building_type = building_type
-        """TODO - Document"""
+        """Building's type"""
         self.health = health
-        """TODO - Document"""
+        """Current health"""
         self.work_done = work_done
-        """TODO - Document"""
+        """Amount of work done for current task"""
 
     @staticmethod
     def read_from(stream: StreamWrapper) -> "Building":

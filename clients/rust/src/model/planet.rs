@@ -1,21 +1,21 @@
 use super::*;
 
-/// TODO - Document
+/// A planet
 #[derive(Clone, Debug)]
 pub struct Planet {
-    /// TODO - Document
+    /// Unique identifier of the planet
     pub id: i32,
-    /// TODO - Document
+    /// X coordinate
     pub x: i32,
-    /// TODO - Document
+    /// Y coordinate
     pub y: i32,
-    /// TODO - Document
+    /// Resource that can be harvested on the planet
     pub harvestable_resource: Option<model::Resource>,
-    /// TODO - Document
+    /// List of worker groups
     pub worker_groups: Vec<model::WorkerGroup>,
-    /// TODO - Document
+    /// Resources stored on the planet
     pub resources: std::collections::HashMap<model::Resource, i32>,
-    /// TODO - Document
+    /// Building on the planet
     pub building: Option<model::Building>,
 }
 

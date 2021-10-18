@@ -1,48 +1,48 @@
 namespace SpbAiChamp.Model
 {
     /// <summary>
-    /// TODO - Document
+    /// Building properties
     /// </summary>
     public struct BuildingProperties
     {
         /// <summary>
-        /// TODO - Document
+        /// Resources required for building
         /// </summary>
         public System.Collections.Generic.IDictionary<Model.Resource, int> BuildResources { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Max health points of the building
         /// </summary>
         public int MaxHealth { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Max number of workers in the building
         /// </summary>
         public int MaxWorkers { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Resources required to start another task
         /// </summary>
         public System.Collections.Generic.IDictionary<Model.Resource, int> WorkResources { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Whether performing a task spawn new workers
         /// </summary>
         public bool ProduceWorker { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Resource produced when performing a task
         /// </summary>
         public Model.Resource? ProduceResource { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Amount of resources/workers produced when performing one task
         /// </summary>
         public int ProduceAmount { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Score points given for performing one task
         /// </summary>
         public int ProduceScore { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Whether building is harvesting. In this case resource can only be produced if it is harvestable on the planet
         /// </summary>
         public bool Harvest { get; set; }
         /// <summary>
-        /// TODO - Document
+        /// Amount of work needed to finish one task
         /// </summary>
         public int WorkAmount { get; set; }
     

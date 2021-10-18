@@ -3,18 +3,18 @@ package spb_ai_champ.model
 import spb_ai_champ.util.StreamUtil
 
 /**
- * TODO - Document
+ * Building properties
  *
- * @param buildResources TODO - Document
- * @param maxHealth TODO - Document
- * @param maxWorkers TODO - Document
- * @param workResources TODO - Document
- * @param produceWorker TODO - Document
- * @param produceResource TODO - Document
- * @param produceAmount TODO - Document
- * @param produceScore TODO - Document
- * @param harvest TODO - Document
- * @param workAmount TODO - Document
+ * @param buildResources Resources required for building
+ * @param maxHealth Max health points of the building
+ * @param maxWorkers Max number of workers in the building
+ * @param workResources Resources required to start another task
+ * @param produceWorker Whether performing a task spawn new workers
+ * @param produceResource Resource produced when performing a task
+ * @param produceAmount Amount of resources/workers produced when performing one task
+ * @param produceScore Score points given for performing one task
+ * @param harvest Whether building is harvesting. In this case resource can only be produced if it is harvestable on the planet
+ * @param workAmount Amount of work needed to finish one task
  */
 case class BuildingProperties(buildResources: Map[spb_ai_champ.model.Resource, Int], maxHealth: Int, maxWorkers: Int, workResources: Map[spb_ai_champ.model.Resource, Int], produceWorker: Boolean, produceResource: Option[spb_ai_champ.model.Resource], produceAmount: Int, produceScore: Int, harvest: Boolean, workAmount: Int) {
     /**

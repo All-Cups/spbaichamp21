@@ -4,7 +4,7 @@ from stream_wrapper import StreamWrapper
 from typing import List
 
 class Action:
-    """TODO - Document"""
+    """Player's actions"""
 
     __slots__ = ("moves","buildings",)
 
@@ -13,9 +13,9 @@ class Action:
 
     def __init__(self, moves: List[MoveAction], buildings: List[BuildingAction]):
         self.moves = moves
-        """TODO - Document"""
+        """List of movement orders"""
         self.buildings = buildings
-        """TODO - Document"""
+        """List of building orders"""
 
     @staticmethod
     def read_from(stream: StreamWrapper) -> "Action":

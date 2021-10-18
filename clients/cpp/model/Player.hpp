@@ -7,10 +7,10 @@
 
 namespace model {
 
-// TODO - Document
+// Player (game participant)
 class Player {
 public:
-    // TODO - Document
+    // Current score points
     int score;
 
     Player(int score);

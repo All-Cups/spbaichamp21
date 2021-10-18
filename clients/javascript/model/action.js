@@ -1,15 +1,15 @@
 const BuildingAction = require.main.require('./model/building-action');
 const MoveAction = require.main.require('./model/move-action');
 /**
- * TODO - Document
+ * Player's actions
  */
 class Action {
     /**
-     * TODO - Document
+     * List of movement orders
      */
     moves;
     /**
-     * TODO - Document
+     * List of building orders
      */
     buildings;
 

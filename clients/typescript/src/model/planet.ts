@@ -4,35 +4,40 @@ import { WorkerGroup } from "./worker-group";
 import { Stream } from "../stream";
 
 /**
- * TODO - Document
+ * A planet
  */
 export class Planet {
     /**
-     * TODO - Document
+     * Unique identifier of the planet
+     */
+    id: number
+    /**
+     * X coordinate
      */
     x: number
     /**
-     * TODO - Document
+     * Y coordinate
      */
     y: number
     /**
-     * TODO - Document
+     * Resource that can be harvested on the planet
      */
     harvestableResource: Resource | null
     /**
-     * TODO - Document
+     * List of worker groups
      */
     workerGroups: Array<WorkerGroup>
     /**
-     * TODO - Document
+     * Resources stored on the planet
      */
     resources: Map<Resource, number>
     /**
-     * TODO - Document
+     * Building on the planet
      */
     building: Building | null
 
-    constructor(x: number, y: number, harvestableResource: Resource | null, workerGroups: Array<WorkerGroup>, resources: Map<Resource, number>, building: Building | null) {
+    constructor(id: number, x: number, y: number, harvestableResource: Resource | null, workerGroups: Array<WorkerGroup>, resources: Map<Resource, number>, building: Building | null) {
+        this.id = id;
         this.x = x;
         this.y = y;
         this.harvestableResource = harvestableResource;
@@ -45,6 +50,8 @@ export class Planet {
      * Read Planet from input stream
      */
     static async readFrom(stream: Stream): Promise<Planet> {
+        let id;
+        id = await stream.readInt();
         let x;
         x = await stream.readInt();
         let y;
@@ -77,13 +84,15 @@ export class Planet {
         } else {
             building = null;
         }
-        return new Planet(x, y, harvestableResource, workerGroups, resources, building)
+        return new Planet(id, x, y, harvestableResource, workerGroups, resources, building)
     }
 
     /**
      * Write Planet to output stream
      */
     async writeTo(stream: Stream) {
+        let id = this.id;
+        await stream.writeInt(id);
         let x = this.x;
         await stream.writeInt(x);
         let y = this.y;

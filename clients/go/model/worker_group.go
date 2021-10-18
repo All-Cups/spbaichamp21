@@ -4,11 +4,11 @@ import "fmt"
 import "io"
 import . "spb_ai_champ/stream"
 
-// TODO - Document
+// Group of workers on a planet
 type WorkerGroup struct {
-    // TODO - Document
+    // Index of player controlling the workers
     PlayerIndex int32
-    // TODO - Document
+    // Number of workers in the group
     Number int32
 }
 

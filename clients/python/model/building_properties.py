@@ -4,7 +4,7 @@ from typing import Dict
 from typing import Optional
 
 class BuildingProperties:
-    """TODO - Document"""
+    """Building properties"""
 
     __slots__ = ("build_resources","max_health","max_workers","work_resources","produce_worker","produce_resource","produce_amount","produce_score","harvest","work_amount",)
 
@@ -21,25 +21,25 @@ class BuildingProperties:
 
     def __init__(self, build_resources: Dict[Resource, int], max_health: int, max_workers: int, work_resources: Dict[Resource, int], produce_worker: bool, produce_resource: Optional[Resource], produce_amount: int, produce_score: int, harvest: bool, work_amount: int):
         self.build_resources = build_resources
-        """TODO - Document"""
+        """Resources required for building"""
         self.max_health = max_health
-        """TODO - Document"""
+        """Max health points of the building"""
         self.max_workers = max_workers
-        """TODO - Document"""
+        """Max number of workers in the building"""
         self.work_resources = work_resources
-        """TODO - Document"""
+        """Resources required to start another task"""
         self.produce_worker = produce_worker
-        """TODO - Document"""
+        """Whether performing a task spawn new workers"""
         self.produce_resource = produce_resource
-        """TODO - Document"""
+        """Resource produced when performing a task"""
         self.produce_amount = produce_amount
-        """TODO - Document"""
+        """Amount of resources/workers produced when performing one task"""
         self.produce_score = produce_score
-        """TODO - Document"""
+        """Score points given for performing one task"""
         self.harvest = harvest
-        """TODO - Document"""
+        """Whether building is harvesting. In this case resource can only be produced if it is harvestable on the planet"""
         self.work_amount = work_amount
-        """TODO - Document"""
+        """Amount of work needed to finish one task"""
 
     @staticmethod
     def read_from(stream: StreamWrapper) -> "BuildingProperties":

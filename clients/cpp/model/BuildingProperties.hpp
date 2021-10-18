@@ -11,28 +11,28 @@
 
 namespace model {
 
-// TODO - Document
+// Building properties
 class BuildingProperties {
 public:
-    // TODO - Document
+    // Resources required for building
     std::unordered_map<model::Resource, int> buildResources;
-    // TODO - Document
+    // Max health points of the building
     int maxHealth;
-    // TODO - Document
+    // Max number of workers in the building
     int maxWorkers;
-    // TODO - Document
+    // Resources required to start another task
     std::unordered_map<model::Resource, int> workResources;
-    // TODO - Document
+    // Whether performing a task spawn new workers
     bool produceWorker;
-    // TODO - Document
+    // Resource produced when performing a task
     std::optional<model::Resource> produceResource;
-    // TODO - Document
+    // Amount of resources/workers produced when performing one task
     int produceAmount;
-    // TODO - Document
+    // Score points given for performing one task
     int produceScore;
-    // TODO - Document
+    // Whether building is harvesting. In this case resource can only be produced if it is harvestable on the planet
     bool harvest;
-    // TODO - Document
+    // Amount of work needed to finish one task
     int workAmount;
 
     BuildingProperties(std::unordered_map<model::Resource, int> buildResources, int maxHealth, int maxWorkers, std::unordered_map<model::Resource, int> workResources, bool produceWorker, std::optional<model::Resource> produceResource, int produceAmount, int produceScore, bool harvest, int workAmount);

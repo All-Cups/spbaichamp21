@@ -2,35 +2,35 @@ const Building = require.main.require('./model/building');
 const Resource = require.main.require('./model/resource');
 const WorkerGroup = require.main.require('./model/worker-group');
 /**
- * TODO - Document
+ * A planet
  */
 class Planet {
     /**
-     * TODO - Document
+     * Unique identifier of the planet
      */
     id;
     /**
-     * TODO - Document
+     * X coordinate
      */
     x;
     /**
-     * TODO - Document
+     * Y coordinate
      */
     y;
     /**
-     * TODO - Document
+     * Resource that can be harvested on the planet
      */
     harvestableResource;
     /**
-     * TODO - Document
+     * List of worker groups
      */
     workerGroups;
     /**
-     * TODO - Document
+     * Resources stored on the planet
      */
     resources;
     /**
-     * TODO - Document
+     * Building on the planet
      */
     building;
 

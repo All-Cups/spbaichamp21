@@ -4,21 +4,21 @@ require './model/worker_group'
 
 module Model
 
-# TODO - Document
+# A planet
 class Planet
-    # TODO - Document
+    # Unique identifier of the planet
     attr_accessor :id
-    # TODO - Document
+    # X coordinate
     attr_accessor :x
-    # TODO - Document
+    # Y coordinate
     attr_accessor :y
-    # TODO - Document
+    # Resource that can be harvested on the planet
     attr_accessor :harvestable_resource
-    # TODO - Document
+    # List of worker groups
     attr_accessor :worker_groups
-    # TODO - Document
+    # Resources stored on the planet
     attr_accessor :resources
-    # TODO - Document
+    # Building on the planet
     attr_accessor :building
 
     def initialize(id, x, y, harvestable_resource, worker_groups, resources, building)

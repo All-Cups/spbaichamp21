@@ -1,11 +1,11 @@
 import { Stream } from "../stream";
 
 /**
- * TODO - Document
+ * Player (game participant)
  */
 export class Player {
     /**
-     * TODO - Document
+     * Current score points
      */
     score: number
 

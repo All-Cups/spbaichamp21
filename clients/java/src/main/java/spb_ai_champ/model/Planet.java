@@ -3,131 +3,131 @@ package spb_ai_champ.model;
 import spb_ai_champ.util.StreamUtil;
 
 /**
- * TODO - Document
+ * A planet
  */
 public class Planet {
     /**
-     * TODO - Document
+     * Unique identifier of the planet
      */
     private int id;
 
     /**
-     * TODO - Document
+     * Unique identifier of the planet
      */
     public int getId() {
         return id;
     }
 
     /**
-     * TODO - Document
+     * Unique identifier of the planet
      */
     public void setId(int value) {
         this.id = value;
     }
     /**
-     * TODO - Document
+     * X coordinate
      */
     private int x;
 
     /**
-     * TODO - Document
+     * X coordinate
      */
     public int getX() {
         return x;
     }
 
     /**
-     * TODO - Document
+     * X coordinate
      */
     public void setX(int value) {
         this.x = value;
     }
     /**
-     * TODO - Document
+     * Y coordinate
      */
     private int y;
 
     /**
-     * TODO - Document
+     * Y coordinate
      */
     public int getY() {
         return y;
     }
 
     /**
-     * TODO - Document
+     * Y coordinate
      */
     public void setY(int value) {
         this.y = value;
     }
     /**
-     * TODO - Document
+     * Resource that can be harvested on the planet
      */
     private spb_ai_champ.model.Resource harvestableResource;
 
     /**
-     * TODO - Document
+     * Resource that can be harvested on the planet
      */
     public spb_ai_champ.model.Resource getHarvestableResource() {
         return harvestableResource;
     }
 
     /**
-     * TODO - Document
+     * Resource that can be harvested on the planet
      */
     public void setHarvestableResource(spb_ai_champ.model.Resource value) {
         this.harvestableResource = value;
     }
     /**
-     * TODO - Document
+     * List of worker groups
      */
     private spb_ai_champ.model.WorkerGroup[] workerGroups;
 
     /**
-     * TODO - Document
+     * List of worker groups
      */
     public spb_ai_champ.model.WorkerGroup[] getWorkerGroups() {
         return workerGroups;
     }
 
     /**
-     * TODO - Document
+     * List of worker groups
      */
     public void setWorkerGroups(spb_ai_champ.model.WorkerGroup[] value) {
         this.workerGroups = value;
     }
     /**
-     * TODO - Document
+     * Resources stored on the planet
      */
     private java.util.Map<spb_ai_champ.model.Resource, Integer> resources;
 
     /**
-     * TODO - Document
+     * Resources stored on the planet
      */
     public java.util.Map<spb_ai_champ.model.Resource, Integer> getResources() {
         return resources;
     }
 
     /**
-     * TODO - Document
+     * Resources stored on the planet
      */
     public void setResources(java.util.Map<spb_ai_champ.model.Resource, Integer> value) {
         this.resources = value;
     }
     /**
-     * TODO - Document
+     * Building on the planet
      */
     private spb_ai_champ.model.Building building;
 
     /**
-     * TODO - Document
+     * Building on the planet
      */
     public spb_ai_champ.model.Building getBuilding() {
         return building;
     }
 
     /**
-     * TODO - Document
+     * Building on the planet
      */
     public void setBuilding(spb_ai_champ.model.Building value) {
         this.building = value;

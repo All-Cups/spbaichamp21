@@ -5,11 +5,11 @@ import std.conv;
 import std.typecons : Nullable;
 import model.building_type;
 
-/// TODO - Document
+/// Building order
 struct BuildingAction {
-    /// TODO - Document
+    /// Id of the planet where the action needs to be performed
     int planet;
-    /// TODO - Document
+    /// Type of a building to build. If absent, current building will be destroyed
     Nullable!(model.BuildingType) buildingType;
 
     this(int planet, Nullable!(model.BuildingType) buildingType) {

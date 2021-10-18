@@ -2,15 +2,15 @@ import { BuildingType } from "./building-type";
 import { Stream } from "../stream";
 
 /**
- * TODO - Document
+ * Building order
  */
 export class BuildingAction {
     /**
-     * TODO - Document
+     * Id of the planet where the action needs to be performed
      */
     planet: number
     /**
-     * TODO - Document
+     * Type of a building to build. If absent, current building will be destroyed
      */
     buildingType: BuildingType | null
 

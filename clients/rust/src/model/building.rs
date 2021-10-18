@@ -1,13 +1,13 @@
 use super::*;
 
-/// TODO - Document
+/// A building
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub struct Building {
-    /// TODO - Document
+    /// Building's type
     pub building_type: model::BuildingType,
-    /// TODO - Document
+    /// Current health
     pub health: i32,
-    /// TODO - Document
+    /// Amount of work done for current task
     pub work_done: i32,
 }
 

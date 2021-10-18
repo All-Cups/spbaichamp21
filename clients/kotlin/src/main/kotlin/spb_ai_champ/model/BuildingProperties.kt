@@ -3,47 +3,47 @@ package spb_ai_champ.model
 import spb_ai_champ.util.StreamUtil
 
 /**
- * TODO - Document
+ * Building properties
  */
 class BuildingProperties {
     /**
-     * TODO - Document
+     * Resources required for building
      */
     var buildResources: MutableMap<spb_ai_champ.model.Resource, Int>
     /**
-     * TODO - Document
+     * Max health points of the building
      */
     var maxHealth: Int
     /**
-     * TODO - Document
+     * Max number of workers in the building
      */
     var maxWorkers: Int
     /**
-     * TODO - Document
+     * Resources required to start another task
      */
     var workResources: MutableMap<spb_ai_champ.model.Resource, Int>
     /**
-     * TODO - Document
+     * Whether performing a task spawn new workers
      */
     var produceWorker: Boolean
     /**
-     * TODO - Document
+     * Resource produced when performing a task
      */
     var produceResource: spb_ai_champ.model.Resource?
     /**
-     * TODO - Document
+     * Amount of resources/workers produced when performing one task
      */
     var produceAmount: Int
     /**
-     * TODO - Document
+     * Score points given for performing one task
      */
     var produceScore: Int
     /**
-     * TODO - Document
+     * Whether building is harvesting. In this case resource can only be produced if it is harvestable on the planet
      */
     var harvest: Boolean
     /**
-     * TODO - Document
+     * Amount of work needed to finish one task
      */
     var workAmount: Int
 

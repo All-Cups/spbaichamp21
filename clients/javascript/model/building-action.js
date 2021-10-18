@@ -1,14 +1,14 @@
 const BuildingType = require.main.require('./model/building-type');
 /**
- * TODO - Document
+ * Building order
  */
 class BuildingAction {
     /**
-     * TODO - Document
+     * Id of the planet where the action needs to be performed
      */
     planet;
     /**
-     * TODO - Document
+     * Type of a building to build. If absent, current building will be destroyed
      */
     buildingType;
 
