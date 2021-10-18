@@ -1,0 +1,1 @@
+require_relative 'debugging/debug_command'

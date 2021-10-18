@@ -1,0 +1,8 @@
+[package]
+name = "spb-ai-champ"
+version = "0.3.0"
+edition = "2018"
+
+[dependencies]
+anyhow = "1"
+byteorder = "1"
