@@ -10,6 +10,7 @@
 #include "model/Planet.hpp"
 #include "model/Player.hpp"
 #include "model/Resource.hpp"
+#include "model/Specialty.hpp"
 #include "model/WorkerGroup.hpp"
 #include <memory>
 #include <optional>

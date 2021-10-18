@@ -22,13 +22,23 @@ type Game struct {
     MaxFlyingWorkerGroups int32
     // Max distance of direct travel between planets
     MaxTravelDistance int32
+    // Additional distance of direct travel between planets for player with Logistics specialty
+    LogisticsUpgrade int32
+    // Additional work done by player with Production specialty (in percent)
+    ProductionUpgrade int32
+    // Additional strength workers for player with Combat specialty (in percent)
+    CombatUpgrade int32
     // Max number of workers performing building on one planet
     MaxBuilders int32
     // Properties of every building type
     BuildingProperties map[BuildingType]BuildingProperties
+    // Whether choosing specialties is allowed
+    SpecialtiesAllowed bool
+    // View distance
+    ViewDistance *int32
 }
 
-func NewGame(myIndex int32, currentTick int32, maxTickCount int32, players []Player, planets []Planet, flyingWorkerGroups []FlyingWorkerGroup, maxFlyingWorkerGroups int32, maxTravelDistance int32, maxBuilders int32, buildingProperties map[BuildingType]BuildingProperties) Game {
+func NewGame(myIndex int32, currentTick int32, maxTickCount int32, players []Player, planets []Planet, flyingWorkerGroups []FlyingWorkerGroup, maxFlyingWorkerGroups int32, maxTravelDistance int32, logisticsUpgrade int32, productionUpgrade int32, combatUpgrade int32, maxBuilders int32, buildingProperties map[BuildingType]BuildingProperties, specialtiesAllowed bool, viewDistance *int32) Game {
     return Game {
         MyIndex: myIndex,
         CurrentTick: currentTick,
@@ -38,8 +48,13 @@ func NewGame(myIndex int32, currentTick int32, maxTickCount int32, players []Pla
         FlyingWorkerGroups: flyingWorkerGroups,
         MaxFlyingWorkerGroups: maxFlyingWorkerGroups,
         MaxTravelDistance: maxTravelDistance,
+        LogisticsUpgrade: logisticsUpgrade,
+        ProductionUpgrade: productionUpgrade,
+        CombatUpgrade: combatUpgrade,
         MaxBuilders: maxBuilders,
         BuildingProperties: buildingProperties,
+        SpecialtiesAllowed: specialtiesAllowed,
+        ViewDistance: viewDistance,
     }
 }
 
@@ -76,6 +91,12 @@ func ReadGame(reader io.Reader) Game {
     maxFlyingWorkerGroups = ReadInt32(reader)
     var maxTravelDistance int32
     maxTravelDistance = ReadInt32(reader)
+    var logisticsUpgrade int32
+    logisticsUpgrade = ReadInt32(reader)
+    var productionUpgrade int32
+    productionUpgrade = ReadInt32(reader)
+    var combatUpgrade int32
+    combatUpgrade = ReadInt32(reader)
     var maxBuilders int32
     maxBuilders = ReadInt32(reader)
     var buildingProperties map[BuildingType]BuildingProperties
@@ -88,6 +109,16 @@ func ReadGame(reader io.Reader) Game {
         buildingPropertiesValue = ReadBuildingProperties(reader)
         buildingProperties[buildingPropertiesKey] = buildingPropertiesValue
     }
+    var specialtiesAllowed bool
+    specialtiesAllowed = ReadBool(reader)
+    var viewDistance *int32
+    if ReadBool(reader) {
+        var viewDistanceValue int32
+        viewDistanceValue = ReadInt32(reader)
+        viewDistance = &viewDistanceValue
+    } else {
+        viewDistance = nil
+    }
     return Game {
         MyIndex: myIndex,
         CurrentTick: currentTick,
@@ -97,8 +128,13 @@ func ReadGame(reader io.Reader) Game {
         FlyingWorkerGroups: flyingWorkerGroups,
         MaxFlyingWorkerGroups: maxFlyingWorkerGroups,
         MaxTravelDistance: maxTravelDistance,
+        LogisticsUpgrade: logisticsUpgrade,
+        ProductionUpgrade: productionUpgrade,
+        CombatUpgrade: combatUpgrade,
         MaxBuilders: maxBuilders,
         BuildingProperties: buildingProperties,
+        SpecialtiesAllowed: specialtiesAllowed,
+        ViewDistance: viewDistance,
     }
 }
 
@@ -129,6 +165,12 @@ func (game Game) Write(writer io.Writer) {
     WriteInt32(writer, maxFlyingWorkerGroups)
     maxTravelDistance := game.MaxTravelDistance
     WriteInt32(writer, maxTravelDistance)
+    logisticsUpgrade := game.LogisticsUpgrade
+    WriteInt32(writer, logisticsUpgrade)
+    productionUpgrade := game.ProductionUpgrade
+    WriteInt32(writer, productionUpgrade)
+    combatUpgrade := game.CombatUpgrade
+    WriteInt32(writer, combatUpgrade)
     maxBuilders := game.MaxBuilders
     WriteInt32(writer, maxBuilders)
     buildingProperties := game.BuildingProperties
@@ -136,6 +178,16 @@ func (game Game) Write(writer io.Writer) {
     for buildingPropertiesKey, buildingPropertiesValue := range buildingProperties {
         WriteInt32(writer, int32(buildingPropertiesKey))
         buildingPropertiesValue.Write(writer)
+    }
+    specialtiesAllowed := game.SpecialtiesAllowed
+    WriteBool(writer, specialtiesAllowed)
+    viewDistance := game.ViewDistance
+    if viewDistance == nil {
+        WriteBool(writer, false)
+    } else {
+        WriteBool(writer, true)
+        viewDistanceValue := *viewDistance
+        WriteInt32(writer, viewDistanceValue)
     }
 }
 
@@ -195,6 +247,18 @@ func (game Game) String() string {
     maxTravelDistance := game.MaxTravelDistance
     stringResult += fmt.Sprint(maxTravelDistance)
     stringResult += ", "
+    stringResult += "LogisticsUpgrade: "
+    logisticsUpgrade := game.LogisticsUpgrade
+    stringResult += fmt.Sprint(logisticsUpgrade)
+    stringResult += ", "
+    stringResult += "ProductionUpgrade: "
+    productionUpgrade := game.ProductionUpgrade
+    stringResult += fmt.Sprint(productionUpgrade)
+    stringResult += ", "
+    stringResult += "CombatUpgrade: "
+    combatUpgrade := game.CombatUpgrade
+    stringResult += fmt.Sprint(combatUpgrade)
+    stringResult += ", "
     stringResult += "MaxBuilders: "
     maxBuilders := game.MaxBuilders
     stringResult += fmt.Sprint(maxBuilders)
@@ -213,6 +277,19 @@ func (game Game) String() string {
         buildingPropertiesIndex++
     }
     stringResult += " ]"
+    stringResult += ", "
+    stringResult += "SpecialtiesAllowed: "
+    specialtiesAllowed := game.SpecialtiesAllowed
+    stringResult += fmt.Sprint(specialtiesAllowed)
+    stringResult += ", "
+    stringResult += "ViewDistance: "
+    viewDistance := game.ViewDistance
+    if viewDistance == nil {
+        stringResult += "nil"
+    } else {
+        viewDistanceValue := *viewDistance
+        stringResult += fmt.Sprint(viewDistanceValue)
+    }
     stringResult += " }"
     return stringResult
 }

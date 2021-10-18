@@ -5,6 +5,7 @@ import spb_ai_champ.util.StreamUtil
 /**
  * Building properties
  *
+ * @param baseBuilding Building type that this building can be upgraded from
  * @param buildResources Resources required for building
  * @param maxHealth Max health points of the building
  * @param maxWorkers Max number of workers in the building
@@ -16,11 +17,18 @@ import spb_ai_champ.util.StreamUtil
  * @param harvest Whether building is harvesting. In this case resource can only be produced if it is harvestable on the planet
  * @param workAmount Amount of work needed to finish one task
  */
-case class BuildingProperties(buildResources: Map[spb_ai_champ.model.Resource, Int], maxHealth: Int, maxWorkers: Int, workResources: Map[spb_ai_champ.model.Resource, Int], produceWorker: Boolean, produceResource: Option[spb_ai_champ.model.Resource], produceAmount: Int, produceScore: Int, harvest: Boolean, workAmount: Int) {
+case class BuildingProperties(baseBuilding: Option[spb_ai_champ.model.BuildingType], buildResources: Map[spb_ai_champ.model.Resource, Int], maxHealth: Int, maxWorkers: Int, workResources: Map[spb_ai_champ.model.Resource, Int], produceWorker: Boolean, produceResource: Option[spb_ai_champ.model.Resource], produceAmount: Int, produceScore: Int, harvest: Boolean, workAmount: Int) {
     /**
      * Write BuildingProperties to output stream
      */
     def writeTo(stream: java.io.OutputStream) {
+        baseBuilding match {
+            case None => StreamUtil.writeBoolean(stream, false)
+            case Some(value) => {
+                StreamUtil.writeBoolean(stream, true)
+                value.writeTo(stream)
+            }
+        }
         StreamUtil.writeInt(stream, buildResources.size)
         buildResources.foreach { case (key, value) =>
             key.writeTo(stream)
@@ -52,6 +60,9 @@ case class BuildingProperties(buildResources: Map[spb_ai_champ.model.Resource, I
      */
     override def toString(): String = {
         var stringBuilder = new StringBuilder("BuildingProperties { ")
+        stringBuilder.append("baseBuilding: ")
+        stringBuilder.append(baseBuilding)
+        stringBuilder.append(", ")
         stringBuilder.append("buildResources: ")
         stringBuilder.append(buildResources)
         stringBuilder.append(", ")
@@ -91,6 +102,9 @@ object BuildingProperties {
      * Read BuildingProperties from input stream
      */
     def readFrom(stream: java.io.InputStream): BuildingProperties = BuildingProperties(
+        if (StreamUtil.readBoolean(stream)) Some(
+            spb_ai_champ.model.BuildingType.readFrom(stream)
+        ) else None,
         (0 until StreamUtil.readInt(stream)).map { _ => (
             spb_ai_champ.model.Resource.readFrom(stream),
             StreamUtil.readInt(stream)

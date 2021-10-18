@@ -18,7 +18,7 @@ class Runner:
         self.token = token
         self.writer.write_string(self.token)
         self.writer.write_int(0)
-        self.writer.write_int(3)
+        self.writer.write_int(4)
         self.writer.write_int(0)
         self.writer.flush()
 

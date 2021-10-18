@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Compile Include="Model/Specialty.fs" />
         <Compile Include="Model/Player.fs" />
         <Compile Include="Model/Resource.fs" />
         <Compile Include="Model/WorkerGroup.fs" />

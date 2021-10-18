@@ -7,6 +7,10 @@ import spb_ai_champ.util.StreamUtil
  */
 class BuildingProperties {
     /**
+     * Building type that this building can be upgraded from
+     */
+    var baseBuilding: spb_ai_champ.model.BuildingType?
+    /**
      * Resources required for building
      */
     var buildResources: MutableMap<spb_ai_champ.model.Resource, Int>
@@ -47,7 +51,8 @@ class BuildingProperties {
      */
     var workAmount: Int
 
-    constructor(buildResources: MutableMap<spb_ai_champ.model.Resource, Int>, maxHealth: Int, maxWorkers: Int, workResources: MutableMap<spb_ai_champ.model.Resource, Int>, produceWorker: Boolean, produceResource: spb_ai_champ.model.Resource?, produceAmount: Int, produceScore: Int, harvest: Boolean, workAmount: Int) {
+    constructor(baseBuilding: spb_ai_champ.model.BuildingType?, buildResources: MutableMap<spb_ai_champ.model.Resource, Int>, maxHealth: Int, maxWorkers: Int, workResources: MutableMap<spb_ai_champ.model.Resource, Int>, produceWorker: Boolean, produceResource: spb_ai_champ.model.Resource?, produceAmount: Int, produceScore: Int, harvest: Boolean, workAmount: Int) {
+        this.baseBuilding = baseBuilding
         this.buildResources = buildResources
         this.maxHealth = maxHealth
         this.maxWorkers = maxWorkers
@@ -65,6 +70,13 @@ class BuildingProperties {
      */
     @Throws(java.io.IOException::class)
     fun writeTo(stream: java.io.OutputStream) {
+        val baseBuildingValue = baseBuilding
+        if (baseBuildingValue == null) {
+            StreamUtil.writeBoolean(stream, false)
+        } else {
+            StreamUtil.writeBoolean(stream, true)
+            StreamUtil.writeInt(stream, baseBuildingValue.tag)
+        }
         StreamUtil.writeInt(stream, buildResources.size)
         for (buildResourcesEntry in buildResources) {
             val buildResourcesKey = buildResourcesEntry.key
@@ -100,6 +112,9 @@ class BuildingProperties {
      */
     override fun toString(): String {
         var stringBuilder = StringBuilder("BuildingProperties { ")
+        stringBuilder.append("baseBuilding: ")
+        stringBuilder.append(baseBuilding)
+        stringBuilder.append(", ")
         stringBuilder.append("buildResources: ")
         stringBuilder.append(buildResources)
         stringBuilder.append(", ")
@@ -139,6 +154,12 @@ class BuildingProperties {
          */
         @Throws(java.io.IOException::class)
         fun readFrom(stream: java.io.InputStream): BuildingProperties {
+            var baseBuilding: spb_ai_champ.model.BuildingType?
+            if (StreamUtil.readBoolean(stream)) {
+                baseBuilding = spb_ai_champ.model.BuildingType.readFrom(stream)
+            } else {
+                baseBuilding = null
+            }
             var buildResources: MutableMap<spb_ai_champ.model.Resource, Int>
             val buildResourcesSize = StreamUtil.readInt(stream)
             buildResources = mutableMapOf();
@@ -179,7 +200,7 @@ class BuildingProperties {
             harvest = StreamUtil.readBoolean(stream)
             var workAmount: Int
             workAmount = StreamUtil.readInt(stream)
-            return BuildingProperties(buildResources, maxHealth, maxWorkers, workResources, produceWorker, produceResource, produceAmount, produceScore, harvest, workAmount)
+            return BuildingProperties(baseBuilding, buildResources, maxHealth, maxWorkers, workResources, produceWorker, produceResource, produceAmount, produceScore, harvest, workAmount)
         }
     }
 }

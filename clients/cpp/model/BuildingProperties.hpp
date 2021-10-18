@@ -2,6 +2,7 @@
 #define __MODEL_BUILDING_PROPERTIES_HPP__
 
 #include "Stream.hpp"
+#include "model/BuildingType.hpp"
 #include "model/Resource.hpp"
 #include <optional>
 #include <sstream>
@@ -14,6 +15,8 @@ namespace model {
 // Building properties
 class BuildingProperties {
 public:
+    // Building type that this building can be upgraded from
+    std::optional<model::BuildingType> baseBuilding;
     // Resources required for building
     std::unordered_map<model::Resource, int> buildResources;
     // Max health points of the building
@@ -35,7 +38,7 @@ public:
     // Amount of work needed to finish one task
     int workAmount;
 
-    BuildingProperties(std::unordered_map<model::Resource, int> buildResources, int maxHealth, int maxWorkers, std::unordered_map<model::Resource, int> workResources, bool produceWorker, std::optional<model::Resource> produceResource, int produceAmount, int produceScore, bool harvest, int workAmount);
+    BuildingProperties(std::optional<model::BuildingType> baseBuilding, std::unordered_map<model::Resource, int> buildResources, int maxHealth, int maxWorkers, std::unordered_map<model::Resource, int> workResources, bool produceWorker, std::optional<model::Resource> produceResource, int produceAmount, int produceScore, bool harvest, int workAmount);
 
     // Read BuildingProperties from input stream
     static BuildingProperties readFrom(InputStream& stream);

@@ -2,7 +2,7 @@
 
 namespace model {
 
-Game::Game(int myIndex, int currentTick, int maxTickCount, std::vector<model::Player> players, std::vector<model::Planet> planets, std::vector<model::FlyingWorkerGroup> flyingWorkerGroups, int maxFlyingWorkerGroups, int maxTravelDistance, int maxBuilders, std::unordered_map<model::BuildingType, model::BuildingProperties> buildingProperties) : myIndex(myIndex), currentTick(currentTick), maxTickCount(maxTickCount), players(players), planets(planets), flyingWorkerGroups(flyingWorkerGroups), maxFlyingWorkerGroups(maxFlyingWorkerGroups), maxTravelDistance(maxTravelDistance), maxBuilders(maxBuilders), buildingProperties(buildingProperties) { }
+Game::Game(int myIndex, int currentTick, int maxTickCount, std::vector<model::Player> players, std::vector<model::Planet> planets, std::vector<model::FlyingWorkerGroup> flyingWorkerGroups, int maxFlyingWorkerGroups, int maxTravelDistance, int logisticsUpgrade, int productionUpgrade, int combatUpgrade, int maxBuilders, std::unordered_map<model::BuildingType, model::BuildingProperties> buildingProperties, bool specialtiesAllowed, std::optional<int> viewDistance) : myIndex(myIndex), currentTick(currentTick), maxTickCount(maxTickCount), players(players), planets(planets), flyingWorkerGroups(flyingWorkerGroups), maxFlyingWorkerGroups(maxFlyingWorkerGroups), maxTravelDistance(maxTravelDistance), logisticsUpgrade(logisticsUpgrade), productionUpgrade(productionUpgrade), combatUpgrade(combatUpgrade), maxBuilders(maxBuilders), buildingProperties(buildingProperties), specialtiesAllowed(specialtiesAllowed), viewDistance(viewDistance) { }
 
 // Read Game from input stream
 Game Game::readFrom(InputStream& stream) {
@@ -32,6 +32,9 @@ Game Game::readFrom(InputStream& stream) {
     }
     int maxFlyingWorkerGroups = stream.readInt();
     int maxTravelDistance = stream.readInt();
+    int logisticsUpgrade = stream.readInt();
+    int productionUpgrade = stream.readInt();
+    int combatUpgrade = stream.readInt();
     int maxBuilders = stream.readInt();
     size_t buildingPropertiesSize = stream.readInt();
     std::unordered_map<model::BuildingType, model::BuildingProperties> buildingProperties = std::unordered_map<model::BuildingType, model::BuildingProperties>();
@@ -41,7 +44,13 @@ Game Game::readFrom(InputStream& stream) {
         model::BuildingProperties buildingPropertiesValue = model::BuildingProperties::readFrom(stream);
         buildingProperties.emplace(std::make_pair(buildingPropertiesKey, buildingPropertiesValue));
     }
-    return Game(myIndex, currentTick, maxTickCount, players, planets, flyingWorkerGroups, maxFlyingWorkerGroups, maxTravelDistance, maxBuilders, buildingProperties);
+    bool specialtiesAllowed = stream.readBool();
+    std::optional<int> viewDistance = std::optional<int>();
+    if (stream.readBool()) {
+        int viewDistanceValue = stream.readInt();
+        viewDistance.emplace(viewDistanceValue);
+    }
+    return Game(myIndex, currentTick, maxTickCount, players, planets, flyingWorkerGroups, maxFlyingWorkerGroups, maxTravelDistance, logisticsUpgrade, productionUpgrade, combatUpgrade, maxBuilders, buildingProperties, specialtiesAllowed, viewDistance);
 }
 
 // Write Game to output stream
@@ -63,6 +72,9 @@ void Game::writeTo(OutputStream& stream) const {
     }
     stream.write(maxFlyingWorkerGroups);
     stream.write(maxTravelDistance);
+    stream.write(logisticsUpgrade);
+    stream.write(productionUpgrade);
+    stream.write(combatUpgrade);
     stream.write(maxBuilders);
     stream.write((int)(buildingProperties.size()));
     for (const auto& buildingPropertiesEntry : buildingProperties) {
@@ -70,6 +82,14 @@ void Game::writeTo(OutputStream& stream) const {
         const model::BuildingProperties& buildingPropertiesValue = buildingPropertiesEntry.second;
         stream.write((int)(buildingPropertiesKey));
         buildingPropertiesValue.writeTo(stream);
+    }
+    stream.write(specialtiesAllowed);
+    if (viewDistance) {
+        stream.write(true);
+        const int& viewDistanceValue = *viewDistance;
+        stream.write(viewDistanceValue);
+    } else {
+        stream.write(false);
     }
 }
 
@@ -125,6 +145,15 @@ std::string Game::toString() const {
     ss << "maxTravelDistance: ";
     ss << maxTravelDistance;
     ss << ", ";
+    ss << "logisticsUpgrade: ";
+    ss << logisticsUpgrade;
+    ss << ", ";
+    ss << "productionUpgrade: ";
+    ss << productionUpgrade;
+    ss << ", ";
+    ss << "combatUpgrade: ";
+    ss << combatUpgrade;
+    ss << ", ";
     ss << "maxBuilders: ";
     ss << maxBuilders;
     ss << ", ";
@@ -143,6 +172,17 @@ std::string Game::toString() const {
         buildingPropertiesIndex++;
     }
     ss << " }";
+    ss << ", ";
+    ss << "specialtiesAllowed: ";
+    ss << specialtiesAllowed;
+    ss << ", ";
+    ss << "viewDistance: ";
+    if (viewDistance) {
+        const int& viewDistanceValue = *viewDistance;
+        ss << viewDistanceValue;
+    } else {
+        ss << "none";
+    }
     ss << " }";
     return ss.str();
 }

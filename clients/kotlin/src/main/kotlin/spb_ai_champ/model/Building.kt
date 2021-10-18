@@ -18,11 +18,16 @@ class Building {
      * Amount of work done for current task
      */
     var workDone: Int
+    /**
+     * Number of tasks finished since last tick
+     */
+    var lastTickTasksDone: Int
 
-    constructor(buildingType: spb_ai_champ.model.BuildingType, health: Int, workDone: Int) {
+    constructor(buildingType: spb_ai_champ.model.BuildingType, health: Int, workDone: Int, lastTickTasksDone: Int) {
         this.buildingType = buildingType
         this.health = health
         this.workDone = workDone
+        this.lastTickTasksDone = lastTickTasksDone
     }
 
     /**
@@ -33,6 +38,7 @@ class Building {
         StreamUtil.writeInt(stream, buildingType.tag)
         StreamUtil.writeInt(stream, health)
         StreamUtil.writeInt(stream, workDone)
+        StreamUtil.writeInt(stream, lastTickTasksDone)
     }
 
     /**
@@ -48,6 +54,9 @@ class Building {
         stringBuilder.append(", ")
         stringBuilder.append("workDone: ")
         stringBuilder.append(workDone)
+        stringBuilder.append(", ")
+        stringBuilder.append("lastTickTasksDone: ")
+        stringBuilder.append(lastTickTasksDone)
         stringBuilder.append(" }")
         return stringBuilder.toString()
     }
@@ -64,7 +73,9 @@ class Building {
             health = StreamUtil.readInt(stream)
             var workDone: Int
             workDone = StreamUtil.readInt(stream)
-            return Building(buildingType, health, workDone)
+            var lastTickTasksDone: Int
+            lastTickTasksDone = StreamUtil.readInt(stream)
+            return Building(buildingType, health, workDone, lastTickTasksDone)
         }
     }
 }

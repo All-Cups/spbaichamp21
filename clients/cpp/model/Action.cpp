@@ -2,7 +2,7 @@
 
 namespace model {
 
-Action::Action(std::vector<model::MoveAction> moves, std::vector<model::BuildingAction> buildings) : moves(moves), buildings(buildings) { }
+Action::Action(std::vector<model::MoveAction> moves, std::vector<model::BuildingAction> buildings, std::optional<model::Specialty> chooseSpecialty) : moves(moves), buildings(buildings), chooseSpecialty(chooseSpecialty) { }
 
 // Read Action from input stream
 Action Action::readFrom(InputStream& stream) {
@@ -20,7 +20,12 @@ Action Action::readFrom(InputStream& stream) {
         model::BuildingAction buildingsElement = model::BuildingAction::readFrom(stream);
         buildings.emplace_back(buildingsElement);
     }
-    return Action(moves, buildings);
+    std::optional<model::Specialty> chooseSpecialty = std::optional<model::Specialty>();
+    if (stream.readBool()) {
+        model::Specialty chooseSpecialtyValue = readSpecialty(stream);
+        chooseSpecialty.emplace(chooseSpecialtyValue);
+    }
+    return Action(moves, buildings, chooseSpecialty);
 }
 
 // Write Action to output stream
@@ -32,6 +37,13 @@ void Action::writeTo(OutputStream& stream) const {
     stream.write((int)(buildings.size()));
     for (const model::BuildingAction& buildingsElement : buildings) {
         buildingsElement.writeTo(stream);
+    }
+    if (chooseSpecialty) {
+        stream.write(true);
+        const model::Specialty& chooseSpecialtyValue = *chooseSpecialty;
+        stream.write((int)(chooseSpecialtyValue));
+    } else {
+        stream.write(false);
     }
 }
 
@@ -60,6 +72,14 @@ std::string Action::toString() const {
         ss << buildingsElement.toString();
     }
     ss << " ]";
+    ss << ", ";
+    ss << "chooseSpecialty: ";
+    if (chooseSpecialty) {
+        const model::Specialty& chooseSpecialtyValue = *chooseSpecialty;
+        ss << specialtyToString(chooseSpecialtyValue);
+    } else {
+        ss << "none";
+    }
     ss << " }";
     return ss.str();
 }

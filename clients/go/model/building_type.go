@@ -27,6 +27,10 @@ const (
     BuildingTypeAccumulatorFactory BuildingType = 8
     // Replicator produces new workers
     BuildingTypeReplicator BuildingType = 9
+    // Second level replicator
+    BuildingTypeReplicator2 BuildingType = 10
+    // Third level replicator
+    BuildingTypeReplicator3 BuildingType = 11
 )
 
 // Read BuildingType from reader
@@ -52,6 +56,10 @@ func ReadBuildingType(reader io.Reader) BuildingType {
         return BuildingTypeAccumulatorFactory
     case 9:
         return BuildingTypeReplicator
+    case 10:
+        return BuildingTypeReplicator2
+    case 11:
+        return BuildingTypeReplicator3
     }
     panic("Unexpected tag value")
 }
@@ -79,6 +87,10 @@ func BuildingTypeToString(buildingType BuildingType) string {
         return "AccumulatorFactory"
     case BuildingTypeReplicator:
         return "Replicator"
+    case BuildingTypeReplicator2:
+        return "Replicator2"
+    case BuildingTypeReplicator3:
+        return "Replicator3"
     }
     panic("Impossible happened")
 }

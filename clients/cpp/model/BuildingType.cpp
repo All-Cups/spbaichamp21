@@ -26,6 +26,10 @@ BuildingType readBuildingType(InputStream& stream) {
         return BuildingType::ACCUMULATOR_FACTORY;
     case 9:
         return BuildingType::REPLICATOR;
+    case 10:
+        return BuildingType::REPLICATOR2;
+    case 11:
+        return BuildingType::REPLICATOR3;
     default:
         throw std::runtime_error("Unexpected tag value");
     }
@@ -54,6 +58,10 @@ std::string buildingTypeToString(BuildingType value) {
         return "ACCUMULATOR_FACTORY";
     case BuildingType::REPLICATOR:
         return "REPLICATOR";
+    case BuildingType::REPLICATOR2:
+        return "REPLICATOR2";
+    case BuildingType::REPLICATOR3:
+        return "REPLICATOR3";
     default:
         throw std::runtime_error("Impossible happened");
     }

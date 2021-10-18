@@ -27,6 +27,7 @@ set(HEADERS
     "model/Planet.hpp"
     "model/Player.hpp"
     "model/Resource.hpp"
+    "model/Specialty.hpp"
     "model/WorkerGroup.hpp"
 )
 set (SRC
@@ -49,6 +50,7 @@ set (SRC
     "model/Planet.cpp"
     "model/Player.cpp"
     "model/Resource.cpp"
+    "model/Specialty.cpp"
     "model/WorkerGroup.cpp"
 )
 SET_SOURCE_FILES_PROPERTIES(${HEADERS} PROPERTIES HEADER_FILE_ONLY TRUE)

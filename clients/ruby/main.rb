@@ -10,7 +10,7 @@ class Runner
         @token = token
         @stream.write_string(@token)
         @stream.write_int(0)
-        @stream.write_int(3)
+        @stream.write_int(4)
         @stream.write_int(0)
         @stream.flush()
     end

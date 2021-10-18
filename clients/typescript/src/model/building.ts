@@ -17,11 +17,16 @@ export class Building {
      * Amount of work done for current task
      */
     workDone: number
+    /**
+     * Number of tasks finished since last tick
+     */
+    lastTickTasksDone: number
 
-    constructor(buildingType: BuildingType, health: number, workDone: number) {
+    constructor(buildingType: BuildingType, health: number, workDone: number, lastTickTasksDone: number) {
         this.buildingType = buildingType;
         this.health = health;
         this.workDone = workDone;
+        this.lastTickTasksDone = lastTickTasksDone;
     }
 
     /**
@@ -34,7 +39,9 @@ export class Building {
         health = await stream.readInt();
         let workDone;
         workDone = await stream.readInt();
-        return new Building(buildingType, health, workDone)
+        let lastTickTasksDone;
+        lastTickTasksDone = await stream.readInt();
+        return new Building(buildingType, health, workDone, lastTickTasksDone)
     }
 
     /**
@@ -47,5 +54,7 @@ export class Building {
         await stream.writeInt(health);
         let workDone = this.workDone;
         await stream.writeInt(workDone);
+        let lastTickTasksDone = this.lastTickTasksDone;
+        await stream.writeInt(lastTickTasksDone);
     }
 }

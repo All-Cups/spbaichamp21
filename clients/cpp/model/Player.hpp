@@ -2,7 +2,10 @@
 #define __MODEL_PLAYER_HPP__
 
 #include "Stream.hpp"
+#include "model/Specialty.hpp"
+#include <optional>
 #include <sstream>
+#include <stdexcept>
 #include <string>
 
 namespace model {
@@ -10,10 +13,14 @@ namespace model {
 // Player (game participant)
 class Player {
 public:
+    // Team index
+    int teamIndex;
     // Current score points
     int score;
+    // Player's specialty
+    std::optional<model::Specialty> specialty;
 
-    Player(int score);
+    Player(int teamIndex, int score, std::optional<model::Specialty> specialty);
 
     // Read Player from input stream
     static Player readFrom(InputStream& stream);
@@ -23,17 +30,8 @@ public:
 
     // Get string representation of Player
     std::string toString() const;
-
-    bool operator ==(const Player& other) const;
 };
 
-}
-
-namespace std {
-    template<>
-    struct hash<model::Player> {
-        size_t operator ()(const model::Player& value) const;
-    };
 }
 
 #endif

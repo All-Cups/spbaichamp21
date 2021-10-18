@@ -18,8 +18,10 @@ public:
     int health;
     // Amount of work done for current task
     int workDone;
+    // Number of tasks finished since last tick
+    int lastTickTasksDone;
 
-    Building(model::BuildingType buildingType, int health, int workDone);
+    Building(model::BuildingType buildingType, int health, int workDone, int lastTickTasksDone);
 
     // Read Building from input stream
     static Building readFrom(InputStream& stream);

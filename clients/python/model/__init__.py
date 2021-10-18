@@ -10,4 +10,5 @@ from .move_action import MoveAction
 from .planet import Planet
 from .player import Player
 from .resource import Resource
+from .specialty import Specialty
 from .worker_group import WorkerGroup

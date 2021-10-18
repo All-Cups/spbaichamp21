@@ -13,6 +13,8 @@ type Building = {
     Health: int;
     /// Amount of work done for current task
     WorkDone: int;
+    /// Number of tasks finished since last tick
+    LastTickTasksDone: int;
 } with
 
     /// Write Building to writer
@@ -20,6 +22,7 @@ type Building = {
         writer.Write (int this.BuildingType)
         writer.Write this.Health
         writer.Write this.WorkDone
+        writer.Write this.LastTickTasksDone
         ()
 
     /// Read Building from reader
@@ -27,4 +30,5 @@ type Building = {
         BuildingType = reader.ReadInt32() |> enum
         Health = reader.ReadInt32()
         WorkDone = reader.ReadInt32()
+        LastTickTasksDone = reader.ReadInt32()
     }

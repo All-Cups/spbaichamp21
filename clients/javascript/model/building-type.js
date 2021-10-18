@@ -47,6 +47,14 @@ class BuildingType {
      * Replicator produces new workers
      */
     static REPLICATOR = new BuildingType("REPLICATOR", 9);
+    /**
+     * Second level replicator
+     */
+    static REPLICATOR2 = new BuildingType("REPLICATOR2", 10);
+    /**
+     * Third level replicator
+     */
+    static REPLICATOR3 = new BuildingType("REPLICATOR3", 11);
 
     /**
      * Read BuildingType from input stream
@@ -82,6 +90,12 @@ class BuildingType {
         }
         if (tag == BuildingType.REPLICATOR.tag) {
             return BuildingType.REPLICATOR;
+        }
+        if (tag == BuildingType.REPLICATOR2.tag) {
+            return BuildingType.REPLICATOR2;
+        }
+        if (tag == BuildingType.REPLICATOR3.tag) {
+            return BuildingType.REPLICATOR3;
         }
         throw new Error("Unexpected tag value");
     }

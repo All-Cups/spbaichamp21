@@ -42,10 +42,29 @@ public class Action {
     public void setBuildings(spb_ai_champ.model.BuildingAction[] value) {
         this.buildings = value;
     }
+    /**
+     * Choosing specialty
+     */
+    private spb_ai_champ.model.Specialty chooseSpecialty;
 
-    public Action(spb_ai_champ.model.MoveAction[] moves, spb_ai_champ.model.BuildingAction[] buildings) {
+    /**
+     * Choosing specialty
+     */
+    public spb_ai_champ.model.Specialty getChooseSpecialty() {
+        return chooseSpecialty;
+    }
+
+    /**
+     * Choosing specialty
+     */
+    public void setChooseSpecialty(spb_ai_champ.model.Specialty value) {
+        this.chooseSpecialty = value;
+    }
+
+    public Action(spb_ai_champ.model.MoveAction[] moves, spb_ai_champ.model.BuildingAction[] buildings, spb_ai_champ.model.Specialty chooseSpecialty) {
         this.moves = moves;
         this.buildings = buildings;
+        this.chooseSpecialty = chooseSpecialty;
     }
 
     /**
@@ -66,7 +85,13 @@ public class Action {
             buildingsElement = spb_ai_champ.model.BuildingAction.readFrom(stream);
             buildings[buildingsIndex] = buildingsElement;
         }
-        return new Action(moves, buildings);
+        spb_ai_champ.model.Specialty chooseSpecialty;
+        if (StreamUtil.readBoolean(stream)) {
+            chooseSpecialty = spb_ai_champ.model.Specialty.readFrom(stream);
+        } else {
+            chooseSpecialty = null;
+        }
+        return new Action(moves, buildings, chooseSpecialty);
     }
 
     /**
@@ -80,6 +105,12 @@ public class Action {
         StreamUtil.writeInt(stream, buildings.length);
         for (spb_ai_champ.model.BuildingAction buildingsElement : buildings) {
             buildingsElement.writeTo(stream);
+        }
+        if (chooseSpecialty == null) {
+            StreamUtil.writeBoolean(stream, false);
+        } else {
+            StreamUtil.writeBoolean(stream, true);
+            StreamUtil.writeInt(stream, chooseSpecialty.tag);
         }
     }
 
@@ -110,6 +141,9 @@ public class Action {
             stringBuilder.append(String.valueOf(buildingsElement));
         }
         stringBuilder.append(" ]");
+        stringBuilder.append(", ");
+        stringBuilder.append("chooseSpecialty: ");
+        stringBuilder.append(String.valueOf(chooseSpecialty));
         stringBuilder.append(" }");
         return stringBuilder.toString();
     }

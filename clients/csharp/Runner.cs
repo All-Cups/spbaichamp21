@@ -21,7 +21,7 @@ namespace SpbAiChamp
             writer.Write(tokenData.Length);
             writer.Write(tokenData);
             writer.Write((int) 0);
-            writer.Write((int) 3);
+            writer.Write((int) 4);
             writer.Write((int) 0);
             writer.Flush();
         }

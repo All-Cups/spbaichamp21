@@ -1,8 +1,13 @@
+const BuildingType = require.main.require('./model/building-type');
 const Resource = require.main.require('./model/resource');
 /**
  * Building properties
  */
 class BuildingProperties {
+    /**
+     * Building type that this building can be upgraded from
+     */
+    baseBuilding;
     /**
      * Resources required for building
      */
@@ -44,7 +49,8 @@ class BuildingProperties {
      */
     workAmount;
 
-    constructor(buildResources, maxHealth, maxWorkers, workResources, produceWorker, produceResource, produceAmount, produceScore, harvest, workAmount) {
+    constructor(baseBuilding, buildResources, maxHealth, maxWorkers, workResources, produceWorker, produceResource, produceAmount, produceScore, harvest, workAmount) {
+        this.baseBuilding = baseBuilding;
         this.buildResources = buildResources;
         this.maxHealth = maxHealth;
         this.maxWorkers = maxWorkers;
@@ -61,6 +67,12 @@ class BuildingProperties {
      * Read BuildingProperties from input stream
      */
     static async readFrom(stream) {
+        let baseBuilding;
+        if (await stream.readBool()) {
+            baseBuilding = await BuildingType.readFrom(stream);
+        } else {
+            baseBuilding = null;
+        }
         let buildResources;
         buildResources = new Map();
         for (let buildResourcesCount = await stream.readInt(); buildResourcesCount > 0; buildResourcesCount--) {
@@ -99,13 +111,20 @@ class BuildingProperties {
         harvest = await stream.readBool();
         let workAmount;
         workAmount = await stream.readInt();
-        return new BuildingProperties(buildResources, maxHealth, maxWorkers, workResources, produceWorker, produceResource, produceAmount, produceScore, harvest, workAmount);
+        return new BuildingProperties(baseBuilding, buildResources, maxHealth, maxWorkers, workResources, produceWorker, produceResource, produceAmount, produceScore, harvest, workAmount);
     }
 
     /**
      * Write BuildingProperties to output stream
      */
     async writeTo(stream) {
+        let baseBuilding = this.baseBuilding;
+        if (baseBuilding === null) {
+            await stream.writeBool(false);
+        } else {
+            await stream.writeBool(true);
+            await baseBuilding.writeTo(stream);
+        }
         let buildResources = this.buildResources;
         await stream.writeInt(buildResources.size);
         for (let [buildResourcesKey, buildResourcesValue] of buildResources) {

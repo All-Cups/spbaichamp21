@@ -6,6 +6,10 @@ namespace SpbAiChamp.Model
     public struct BuildingProperties
     {
         /// <summary>
+        /// Building type that this building can be upgraded from
+        /// </summary>
+        public Model.BuildingType? BaseBuilding { get; set; }
+        /// <summary>
         /// Resources required for building
         /// </summary>
         public System.Collections.Generic.IDictionary<Model.Resource, int> BuildResources { get; set; }
@@ -46,8 +50,9 @@ namespace SpbAiChamp.Model
         /// </summary>
         public int WorkAmount { get; set; }
     
-        public BuildingProperties(System.Collections.Generic.IDictionary<Model.Resource, int> buildResources, int maxHealth, int maxWorkers, System.Collections.Generic.IDictionary<Model.Resource, int> workResources, bool produceWorker, Model.Resource? produceResource, int produceAmount, int produceScore, bool harvest, int workAmount)
+        public BuildingProperties(Model.BuildingType? baseBuilding, System.Collections.Generic.IDictionary<Model.Resource, int> buildResources, int maxHealth, int maxWorkers, System.Collections.Generic.IDictionary<Model.Resource, int> workResources, bool produceWorker, Model.Resource? produceResource, int produceAmount, int produceScore, bool harvest, int workAmount)
         {
+            this.BaseBuilding = baseBuilding;
             this.BuildResources = buildResources;
             this.MaxHealth = maxHealth;
             this.MaxWorkers = maxWorkers;
@@ -64,6 +69,13 @@ namespace SpbAiChamp.Model
         public static BuildingProperties ReadFrom(System.IO.BinaryReader reader)
         {
             var result = new BuildingProperties();
+            if (reader.ReadBoolean())
+            {
+                result.BaseBuilding = BuildingTypeHelper.ReadFrom(reader);
+            } else
+            {
+                result.BaseBuilding = null;
+            }
             int buildResourcesSize = reader.ReadInt32();
             result.BuildResources = new System.Collections.Generic.Dictionary<Model.Resource, int>(buildResourcesSize);
             for (int buildResourcesIndex = 0; buildResourcesIndex < buildResourcesSize; buildResourcesIndex++)
@@ -104,6 +116,14 @@ namespace SpbAiChamp.Model
         /// <summary> Write BuildingProperties to writer </summary>
         public void WriteTo(System.IO.BinaryWriter writer)
         {
+            if (!BaseBuilding.HasValue)
+            {
+                writer.Write(false);
+            } else
+            {
+                writer.Write(true);
+                writer.Write((int) (BaseBuilding.Value));
+            }
             writer.Write(BuildResources.Count);
             foreach (var buildResourcesEntry in BuildResources)
             {
@@ -140,6 +160,15 @@ namespace SpbAiChamp.Model
         /// <summary> Get string representation of BuildingProperties </summary>
         public override string ToString() {
             string stringResult = "BuildingProperties { ";
+            stringResult += "BaseBuilding: ";
+            if (!BaseBuilding.HasValue)
+            {
+                stringResult += "null";
+            } else
+            {
+                stringResult += BaseBuilding.Value.ToString();
+            }
+            stringResult += ", ";
             stringResult += "BuildResources: ";
             stringResult += "{ ";
             int buildResourcesIndex = 0;

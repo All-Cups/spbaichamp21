@@ -6,6 +6,7 @@
 #include "model/BuildingType.hpp"
 #include "model/MoveAction.hpp"
 #include "model/Resource.hpp"
+#include "model/Specialty.hpp"
 #include <optional>
 #include <sstream>
 #include <stdexcept>
@@ -21,8 +22,10 @@ public:
     std::vector<model::MoveAction> moves;
     // List of building orders
     std::vector<model::BuildingAction> buildings;
+    // Choosing specialty
+    std::optional<model::Specialty> chooseSpecialty;
 
-    Action(std::vector<model::MoveAction> moves, std::vector<model::BuildingAction> buildings);
+    Action(std::vector<model::MoveAction> moves, std::vector<model::BuildingAction> buildings, std::optional<model::Specialty> chooseSpecialty);
 
     // Read Action from input stream
     static Action readFrom(InputStream& stream);

@@ -7,6 +7,24 @@ import spb_ai_champ.util.StreamUtil;
  */
 public class BuildingProperties {
     /**
+     * Building type that this building can be upgraded from
+     */
+    private spb_ai_champ.model.BuildingType baseBuilding;
+
+    /**
+     * Building type that this building can be upgraded from
+     */
+    public spb_ai_champ.model.BuildingType getBaseBuilding() {
+        return baseBuilding;
+    }
+
+    /**
+     * Building type that this building can be upgraded from
+     */
+    public void setBaseBuilding(spb_ai_champ.model.BuildingType value) {
+        this.baseBuilding = value;
+    }
+    /**
      * Resources required for building
      */
     private java.util.Map<spb_ai_champ.model.Resource, Integer> buildResources;
@@ -187,7 +205,8 @@ public class BuildingProperties {
         this.workAmount = value;
     }
 
-    public BuildingProperties(java.util.Map<spb_ai_champ.model.Resource, Integer> buildResources, int maxHealth, int maxWorkers, java.util.Map<spb_ai_champ.model.Resource, Integer> workResources, boolean produceWorker, spb_ai_champ.model.Resource produceResource, int produceAmount, int produceScore, boolean harvest, int workAmount) {
+    public BuildingProperties(spb_ai_champ.model.BuildingType baseBuilding, java.util.Map<spb_ai_champ.model.Resource, Integer> buildResources, int maxHealth, int maxWorkers, java.util.Map<spb_ai_champ.model.Resource, Integer> workResources, boolean produceWorker, spb_ai_champ.model.Resource produceResource, int produceAmount, int produceScore, boolean harvest, int workAmount) {
+        this.baseBuilding = baseBuilding;
         this.buildResources = buildResources;
         this.maxHealth = maxHealth;
         this.maxWorkers = maxWorkers;
@@ -204,6 +223,12 @@ public class BuildingProperties {
      * Read BuildingProperties from input stream
      */
     public static BuildingProperties readFrom(java.io.InputStream stream) throws java.io.IOException {
+        spb_ai_champ.model.BuildingType baseBuilding;
+        if (StreamUtil.readBoolean(stream)) {
+            baseBuilding = spb_ai_champ.model.BuildingType.readFrom(stream);
+        } else {
+            baseBuilding = null;
+        }
         java.util.Map<spb_ai_champ.model.Resource, Integer> buildResources;
         int buildResourcesSize = StreamUtil.readInt(stream);
         buildResources = new java.util.HashMap<>(buildResourcesSize);
@@ -244,13 +269,19 @@ public class BuildingProperties {
         harvest = StreamUtil.readBoolean(stream);
         int workAmount;
         workAmount = StreamUtil.readInt(stream);
-        return new BuildingProperties(buildResources, maxHealth, maxWorkers, workResources, produceWorker, produceResource, produceAmount, produceScore, harvest, workAmount);
+        return new BuildingProperties(baseBuilding, buildResources, maxHealth, maxWorkers, workResources, produceWorker, produceResource, produceAmount, produceScore, harvest, workAmount);
     }
 
     /**
      * Write BuildingProperties to output stream
      */
     public void writeTo(java.io.OutputStream stream) throws java.io.IOException {
+        if (baseBuilding == null) {
+            StreamUtil.writeBoolean(stream, false);
+        } else {
+            StreamUtil.writeBoolean(stream, true);
+            StreamUtil.writeInt(stream, baseBuilding.tag);
+        }
         StreamUtil.writeInt(stream, buildResources.size());
         for (java.util.Map.Entry<spb_ai_champ.model.Resource, Integer> buildResourcesEntry : buildResources.entrySet()) {
             spb_ai_champ.model.Resource buildResourcesKey = buildResourcesEntry.getKey();
@@ -286,6 +317,9 @@ public class BuildingProperties {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder("BuildingProperties { ");
+        stringBuilder.append("baseBuilding: ");
+        stringBuilder.append(String.valueOf(baseBuilding));
+        stringBuilder.append(", ");
         stringBuilder.append("buildResources: ");
         stringBuilder.append(String.valueOf(buildResources));
         stringBuilder.append(", ");

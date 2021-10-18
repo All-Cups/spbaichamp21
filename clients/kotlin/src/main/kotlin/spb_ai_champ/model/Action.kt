@@ -14,10 +14,15 @@ class Action {
      * List of building orders
      */
     var buildings: Array<spb_ai_champ.model.BuildingAction>
+    /**
+     * Choosing specialty
+     */
+    var chooseSpecialty: spb_ai_champ.model.Specialty?
 
-    constructor(moves: Array<spb_ai_champ.model.MoveAction>, buildings: Array<spb_ai_champ.model.BuildingAction>) {
+    constructor(moves: Array<spb_ai_champ.model.MoveAction>, buildings: Array<spb_ai_champ.model.BuildingAction>, chooseSpecialty: spb_ai_champ.model.Specialty?) {
         this.moves = moves
         this.buildings = buildings
+        this.chooseSpecialty = chooseSpecialty
     }
 
     /**
@@ -32,6 +37,13 @@ class Action {
         StreamUtil.writeInt(stream, buildings.size)
         for (buildingsElement in buildings) {
             buildingsElement.writeTo(stream)
+        }
+        val chooseSpecialtyValue = chooseSpecialty
+        if (chooseSpecialtyValue == null) {
+            StreamUtil.writeBoolean(stream, false)
+        } else {
+            StreamUtil.writeBoolean(stream, true)
+            StreamUtil.writeInt(stream, chooseSpecialtyValue.tag)
         }
     }
 
@@ -63,6 +75,9 @@ class Action {
             buildingsIndex++
         }
         stringBuilder.append(" ]")
+        stringBuilder.append(", ")
+        stringBuilder.append("chooseSpecialty: ")
+        stringBuilder.append(chooseSpecialty)
         stringBuilder.append(" }")
         return stringBuilder.toString()
     }
@@ -85,7 +100,13 @@ class Action {
                 buildingsElement = spb_ai_champ.model.BuildingAction.readFrom(stream)
                 buildingsElement
             })
-            return Action(moves, buildings)
+            var chooseSpecialty: spb_ai_champ.model.Specialty?
+            if (StreamUtil.readBoolean(stream)) {
+                chooseSpecialty = spb_ai_champ.model.Specialty.readFrom(stream)
+            } else {
+                chooseSpecialty = null
+            }
+            return Action(moves, buildings, chooseSpecialty)
         }
     }
 }

@@ -27,12 +27,22 @@ struct Game {
     int maxFlyingWorkerGroups;
     /// Max distance of direct travel between planets
     int maxTravelDistance;
+    /// Additional distance of direct travel between planets for player with Logistics specialty
+    int logisticsUpgrade;
+    /// Additional work done by player with Production specialty (in percent)
+    int productionUpgrade;
+    /// Additional strength workers for player with Combat specialty (in percent)
+    int combatUpgrade;
     /// Max number of workers performing building on one planet
     int maxBuilders;
     /// Properties of every building type
     model.BuildingProperties[model.BuildingType] buildingProperties;
+    /// Whether choosing specialties is allowed
+    bool specialtiesAllowed;
+    /// View distance
+    Nullable!(int) viewDistance;
 
-    this(int myIndex, int currentTick, int maxTickCount, model.Player[] players, model.Planet[] planets, model.FlyingWorkerGroup[] flyingWorkerGroups, int maxFlyingWorkerGroups, int maxTravelDistance, int maxBuilders, model.BuildingProperties[model.BuildingType] buildingProperties) {
+    this(int myIndex, int currentTick, int maxTickCount, model.Player[] players, model.Planet[] planets, model.FlyingWorkerGroup[] flyingWorkerGroups, int maxFlyingWorkerGroups, int maxTravelDistance, int logisticsUpgrade, int productionUpgrade, int combatUpgrade, int maxBuilders, model.BuildingProperties[model.BuildingType] buildingProperties, bool specialtiesAllowed, Nullable!(int) viewDistance) {
         this.myIndex = myIndex;
         this.currentTick = currentTick;
         this.maxTickCount = maxTickCount;
@@ -41,8 +51,13 @@ struct Game {
         this.flyingWorkerGroups = flyingWorkerGroups;
         this.maxFlyingWorkerGroups = maxFlyingWorkerGroups;
         this.maxTravelDistance = maxTravelDistance;
+        this.logisticsUpgrade = logisticsUpgrade;
+        this.productionUpgrade = productionUpgrade;
+        this.combatUpgrade = combatUpgrade;
         this.maxBuilders = maxBuilders;
         this.buildingProperties = buildingProperties;
+        this.specialtiesAllowed = specialtiesAllowed;
+        this.viewDistance = viewDistance;
     }
 
     /// Read Game from reader
@@ -78,6 +93,12 @@ struct Game {
         maxFlyingWorkerGroups = reader.readInt();
         int maxTravelDistance;
         maxTravelDistance = reader.readInt();
+        int logisticsUpgrade;
+        logisticsUpgrade = reader.readInt();
+        int productionUpgrade;
+        productionUpgrade = reader.readInt();
+        int combatUpgrade;
+        combatUpgrade = reader.readInt();
         int maxBuilders;
         maxBuilders = reader.readInt();
         model.BuildingProperties[model.BuildingType] buildingProperties;
@@ -90,7 +111,15 @@ struct Game {
             buildingPropertiesValue = model.BuildingProperties.readFrom(reader);
             buildingProperties[buildingPropertiesKey] = buildingPropertiesValue;
         }
-        return Game(myIndex, currentTick, maxTickCount, players, planets, flyingWorkerGroups, maxFlyingWorkerGroups, maxTravelDistance, maxBuilders, buildingProperties);
+        bool specialtiesAllowed;
+        specialtiesAllowed = reader.readBool();
+        Nullable!(int) viewDistance;
+        if (reader.readBool()) {
+            viewDistance = reader.readInt();
+        } else {
+            viewDistance.nullify();
+        }
+        return Game(myIndex, currentTick, maxTickCount, players, planets, flyingWorkerGroups, maxFlyingWorkerGroups, maxTravelDistance, logisticsUpgrade, productionUpgrade, combatUpgrade, maxBuilders, buildingProperties, specialtiesAllowed, viewDistance);
     }
 
     /// Write Game to writer
@@ -112,11 +141,22 @@ struct Game {
         }
         writer.write(maxFlyingWorkerGroups);
         writer.write(maxTravelDistance);
+        writer.write(logisticsUpgrade);
+        writer.write(productionUpgrade);
+        writer.write(combatUpgrade);
         writer.write(maxBuilders);
         writer.write(cast(int)(buildingProperties.length));
         foreach (buildingPropertiesKey, buildingPropertiesValue; buildingProperties) {
             writer.write(cast(int)(buildingPropertiesKey));
             buildingPropertiesValue.writeTo(writer);
+        }
+        writer.write(specialtiesAllowed);
+        if (viewDistance.isNull()) {
+            writer.write(false);
+        } else {
+            writer.write(true);
+            auto viewDistanceValue = viewDistance.get;
+            writer.write(viewDistanceValue);
         }
     }
 }

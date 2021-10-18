@@ -1,5 +1,6 @@
 require './model/building_action'
 require './model/move_action'
+require './model/specialty'
 
 module Model
 
@@ -9,10 +10,13 @@ class Action
     attr_accessor :moves
     # List of building orders
     attr_accessor :buildings
+    # Choosing specialty
+    attr_accessor :choose_specialty
 
-    def initialize(moves, buildings)
+    def initialize(moves, buildings, choose_specialty)
         @moves = moves
         @buildings = buildings
+        @choose_specialty = choose_specialty
     end
 
     # Read Action from input stream
@@ -27,7 +31,12 @@ class Action
             buildings_element = Model::BuildingAction.read_from(stream)
             buildings.push(buildings_element)
         end
-        Action.new(moves, buildings)
+        if stream.read_bool()
+            choose_specialty = Model::Specialty.read_from(stream)
+        else
+            choose_specialty = nil
+        end
+        Action.new(moves, buildings, choose_specialty)
     end
 
     # Write Action to output stream
@@ -39,6 +48,12 @@ class Action
         stream.write_int(@buildings.length())
         @buildings.each do |buildings_element|
             buildings_element.write_to(stream)
+        end
+        if @choose_specialty.nil?
+            stream.write_bool(false)
+        else
+            stream.write_bool(true)
+            stream.write_int(@choose_specialty)
         end
     end
 
@@ -67,6 +82,13 @@ class Action
             buildings_index += 1
         end
         string_result += " ]"
+        string_result += ", "
+        string_result += "choose_specialty: "
+        if @choose_specialty.nil?
+            string_result += "nil"
+        else
+            string_result += Specialty.to_s(@choose_specialty)
+        end
         string_result += " }"
         string_result
     end

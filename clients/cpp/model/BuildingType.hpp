@@ -26,7 +26,11 @@ enum class BuildingType {
     // Accumulator factory produces accumulators
     ACCUMULATOR_FACTORY = 8,
     // Replicator produces new workers
-    REPLICATOR = 9
+    REPLICATOR = 9,
+    // Second level replicator
+    REPLICATOR2 = 10,
+    // Third level replicator
+    REPLICATOR3 = 11
 };
 
 // Read BuildingType from input stream

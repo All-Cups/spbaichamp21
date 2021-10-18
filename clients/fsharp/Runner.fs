@@ -17,7 +17,7 @@ module Runner =
             writer.Write tokenData.Length
             writer.Write tokenData
             writer.Write 0
-            writer.Write 3
+            writer.Write 4
             writer.Write 0
             writer.Flush()
 

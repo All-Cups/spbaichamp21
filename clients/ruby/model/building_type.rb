@@ -22,11 +22,15 @@ module BuildingType
     ACCUMULATOR_FACTORY = 8
     # Replicator produces new workers
     REPLICATOR = 9
+    # Second level replicator
+    REPLICATOR2 = 10
+    # Third level replicator
+    REPLICATOR3 = 11
 
     # Read BuildingType from input stream
     def self.read_from(stream)
         result = stream.read_int()
-        if result < 0 || result >= 10
+        if result < 0 || result >= 12
             raise "Unexpected tag value"
         end
         result
@@ -62,6 +66,12 @@ module BuildingType
         end
         if value == REPLICATOR
             return "REPLICATOR"
+        end
+        if value == REPLICATOR2
+            return "REPLICATOR2"
+        end
+        if value == REPLICATOR3
+            return "REPLICATOR3"
         end
         raise "Impossible happened"
     end

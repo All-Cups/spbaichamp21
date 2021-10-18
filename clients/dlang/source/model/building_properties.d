@@ -3,10 +3,13 @@ module model.building_properties;
 import stream;
 import std.conv;
 import std.typecons : Nullable;
+import model.building_type;
 import model.resource;
 
 /// Building properties
 struct BuildingProperties {
+    /// Building type that this building can be upgraded from
+    Nullable!(model.BuildingType) baseBuilding;
     /// Resources required for building
     int[model.Resource] buildResources;
     /// Max health points of the building
@@ -28,7 +31,8 @@ struct BuildingProperties {
     /// Amount of work needed to finish one task
     int workAmount;
 
-    this(int[model.Resource] buildResources, int maxHealth, int maxWorkers, int[model.Resource] workResources, bool produceWorker, Nullable!(model.Resource) produceResource, int produceAmount, int produceScore, bool harvest, int workAmount) {
+    this(Nullable!(model.BuildingType) baseBuilding, int[model.Resource] buildResources, int maxHealth, int maxWorkers, int[model.Resource] workResources, bool produceWorker, Nullable!(model.Resource) produceResource, int produceAmount, int produceScore, bool harvest, int workAmount) {
+        this.baseBuilding = baseBuilding;
         this.buildResources = buildResources;
         this.maxHealth = maxHealth;
         this.maxWorkers = maxWorkers;
@@ -43,6 +47,12 @@ struct BuildingProperties {
 
     /// Read BuildingProperties from reader
     static BuildingProperties readFrom(Stream reader) {
+        Nullable!(model.BuildingType) baseBuilding;
+        if (reader.readBool()) {
+            baseBuilding = readBuildingType(reader);
+        } else {
+            baseBuilding.nullify();
+        }
         int[model.Resource] buildResources;
         int buildResourcesSize = reader.readInt();
         buildResources.clear();
@@ -83,11 +93,18 @@ struct BuildingProperties {
         harvest = reader.readBool();
         int workAmount;
         workAmount = reader.readInt();
-        return BuildingProperties(buildResources, maxHealth, maxWorkers, workResources, produceWorker, produceResource, produceAmount, produceScore, harvest, workAmount);
+        return BuildingProperties(baseBuilding, buildResources, maxHealth, maxWorkers, workResources, produceWorker, produceResource, produceAmount, produceScore, harvest, workAmount);
     }
 
     /// Write BuildingProperties to writer
     void writeTo(Stream writer) const {
+        if (baseBuilding.isNull()) {
+            writer.write(false);
+        } else {
+            writer.write(true);
+            auto baseBuildingValue = baseBuilding.get;
+            writer.write(cast(int)(baseBuildingValue));
+        }
         writer.write(cast(int)(buildResources.length));
         foreach (buildResourcesKey, buildResourcesValue; buildResources) {
             writer.write(cast(int)(buildResourcesKey));

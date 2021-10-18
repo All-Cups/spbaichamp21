@@ -23,6 +23,10 @@ class BuildingType(IntEnum):
     """Accumulator factory produces accumulators"""
     REPLICATOR = 9
     """Replicator produces new workers"""
+    REPLICATOR2 = 10
+    """Second level replicator"""
+    REPLICATOR3 = 11
+    """Third level replicator"""
 
     def __repr__(self):
         return str(self)

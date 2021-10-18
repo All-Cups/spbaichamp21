@@ -1,9 +1,12 @@
+require './model/building_type'
 require './model/resource'
 
 module Model
 
 # Building properties
 class BuildingProperties
+    # Building type that this building can be upgraded from
+    attr_accessor :base_building
     # Resources required for building
     attr_accessor :build_resources
     # Max health points of the building
@@ -25,7 +28,8 @@ class BuildingProperties
     # Amount of work needed to finish one task
     attr_accessor :work_amount
 
-    def initialize(build_resources, max_health, max_workers, work_resources, produce_worker, produce_resource, produce_amount, produce_score, harvest, work_amount)
+    def initialize(base_building, build_resources, max_health, max_workers, work_resources, produce_worker, produce_resource, produce_amount, produce_score, harvest, work_amount)
+        @base_building = base_building
         @build_resources = build_resources
         @max_health = max_health
         @max_workers = max_workers
@@ -40,6 +44,11 @@ class BuildingProperties
 
     # Read BuildingProperties from input stream
     def self.read_from(stream)
+        if stream.read_bool()
+            base_building = Model::BuildingType.read_from(stream)
+        else
+            base_building = nil
+        end
         build_resources = Hash.new
         stream.read_int().times do |_|
             build_resources_key = Model::Resource.read_from(stream)
@@ -64,11 +73,17 @@ class BuildingProperties
         produce_score = stream.read_int()
         harvest = stream.read_bool()
         work_amount = stream.read_int()
-        BuildingProperties.new(build_resources, max_health, max_workers, work_resources, produce_worker, produce_resource, produce_amount, produce_score, harvest, work_amount)
+        BuildingProperties.new(base_building, build_resources, max_health, max_workers, work_resources, produce_worker, produce_resource, produce_amount, produce_score, harvest, work_amount)
     end
 
     # Write BuildingProperties to output stream
     def write_to(stream)
+        if @base_building.nil?
+            stream.write_bool(false)
+        else
+            stream.write_bool(true)
+            stream.write_int(@base_building)
+        end
         stream.write_int(@build_resources.length())
         @build_resources.each do |build_resources_key, build_resources_value|
             stream.write_int(build_resources_key)
@@ -96,6 +111,13 @@ class BuildingProperties
 
     def to_s
         string_result = "BuildingProperties { "
+        string_result += "base_building: "
+        if @base_building.nil?
+            string_result += "nil"
+        else
+            string_result += BuildingType.to_s(@base_building)
+        end
+        string_result += ", "
         string_result += "build_resources: "
         string_result += "{ "
         build_resources_index = 0

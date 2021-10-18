@@ -3,6 +3,8 @@ use super::*;
 /// Building properties
 #[derive(Clone, Debug)]
 pub struct BuildingProperties {
+    /// Building type that this building can be upgraded from
+    pub base_building: Option<model::BuildingType>,
     /// Resources required for building
     pub build_resources: std::collections::HashMap<model::Resource, i32>,
     /// Max health points of the building
@@ -27,6 +29,7 @@ pub struct BuildingProperties {
 
 impl trans::Trans for BuildingProperties {
     fn write_to(&self, writer: &mut dyn std::io::Write) -> std::io::Result<()> {
+        self.base_building.write_to(writer)?;
         self.build_resources.write_to(writer)?;
         self.max_health.write_to(writer)?;
         self.max_workers.write_to(writer)?;
@@ -40,6 +43,7 @@ impl trans::Trans for BuildingProperties {
         Ok(())
     }
     fn read_from(reader: &mut dyn std::io::Read) -> std::io::Result<Self> {
+        let base_building: Option<model::BuildingType> = trans::Trans::read_from(reader)?;
         let build_resources: std::collections::HashMap<model::Resource, i32> = trans::Trans::read_from(reader)?;
         let max_health: i32 = trans::Trans::read_from(reader)?;
         let max_workers: i32 = trans::Trans::read_from(reader)?;
@@ -51,6 +55,7 @@ impl trans::Trans for BuildingProperties {
         let harvest: bool = trans::Trans::read_from(reader)?;
         let work_amount: i32 = trans::Trans::read_from(reader)?;
         Ok(Self {
+            base_building,
             build_resources,
             max_health,
             max_workers,

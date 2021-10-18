@@ -1,5 +1,6 @@
 const BuildingAction = require.main.require('./model/building-action');
 const MoveAction = require.main.require('./model/move-action');
+const Specialty = require.main.require('./model/specialty');
 /**
  * Player's actions
  */
@@ -12,10 +13,15 @@ class Action {
      * List of building orders
      */
     buildings;
+    /**
+     * Choosing specialty
+     */
+    chooseSpecialty;
 
-    constructor(moves, buildings) {
+    constructor(moves, buildings, chooseSpecialty) {
         this.moves = moves;
         this.buildings = buildings;
+        this.chooseSpecialty = chooseSpecialty;
     }
 
     /**
@@ -36,7 +42,13 @@ class Action {
             buildingsElement = await BuildingAction.readFrom(stream);
             buildings.push(buildingsElement);
         }
-        return new Action(moves, buildings);
+        let chooseSpecialty;
+        if (await stream.readBool()) {
+            chooseSpecialty = await Specialty.readFrom(stream);
+        } else {
+            chooseSpecialty = null;
+        }
+        return new Action(moves, buildings, chooseSpecialty);
     }
 
     /**
@@ -52,6 +64,13 @@ class Action {
         await stream.writeInt(buildings.length);
         for (let buildingsElement of buildings) {
             await buildingsElement.writeTo(stream);
+        }
+        let chooseSpecialty = this.chooseSpecialty;
+        if (chooseSpecialty === null) {
+            await stream.writeBool(false);
+        } else {
+            await stream.writeBool(true);
+            await chooseSpecialty.writeTo(stream);
         }
     }
 }

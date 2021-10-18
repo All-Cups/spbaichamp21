@@ -23,10 +23,20 @@ type Game = {
     MaxFlyingWorkerGroups: int;
     /// Max distance of direct travel between planets
     MaxTravelDistance: int;
+    /// Additional distance of direct travel between planets for player with Logistics specialty
+    LogisticsUpgrade: int;
+    /// Additional work done by player with Production specialty (in percent)
+    ProductionUpgrade: int;
+    /// Additional strength workers for player with Combat specialty (in percent)
+    CombatUpgrade: int;
     /// Max number of workers performing building on one planet
     MaxBuilders: int;
     /// Properties of every building type
     BuildingProperties: Map<Model.BuildingType, Model.BuildingProperties>;
+    /// Whether choosing specialties is allowed
+    SpecialtiesAllowed: bool;
+    /// View distance
+    ViewDistance: option<int>;
 } with
 
     /// Write Game to writer
@@ -45,11 +55,20 @@ type Game = {
             value.writeTo writer )
         writer.Write this.MaxFlyingWorkerGroups
         writer.Write this.MaxTravelDistance
+        writer.Write this.LogisticsUpgrade
+        writer.Write this.ProductionUpgrade
+        writer.Write this.CombatUpgrade
         writer.Write this.MaxBuilders
         writer.Write this.BuildingProperties.Count
         this.BuildingProperties |> Map.iter (fun key value ->
             writer.Write (int key)
             value.writeTo writer )
+        writer.Write this.SpecialtiesAllowed
+        match this.ViewDistance with
+            | Some value ->
+                writer.Write true
+                writer.Write value
+            | None -> writer.Write false
         ()
 
     /// Read Game from reader
@@ -65,9 +84,16 @@ type Game = {
                                  yield Model.FlyingWorkerGroup.readFrom reader; |]
         MaxFlyingWorkerGroups = reader.ReadInt32()
         MaxTravelDistance = reader.ReadInt32()
+        LogisticsUpgrade = reader.ReadInt32()
+        ProductionUpgrade = reader.ReadInt32()
+        CombatUpgrade = reader.ReadInt32()
         MaxBuilders = reader.ReadInt32()
         BuildingProperties = [for _ in 1 .. reader.ReadInt32() do
                                  let key = reader.ReadInt32() |> enum
                                  let value = Model.BuildingProperties.readFrom reader;
                                  yield (key, value) ] |> Map.ofList
+        SpecialtiesAllowed = reader.ReadBoolean()
+        ViewDistance = match reader.ReadBoolean() with
+                           | true -> Some(reader.ReadInt32())
+                           | false -> None
     }

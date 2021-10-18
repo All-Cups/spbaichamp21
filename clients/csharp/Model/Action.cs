@@ -13,11 +13,16 @@ namespace SpbAiChamp.Model
         /// List of building orders
         /// </summary>
         public Model.BuildingAction[] Buildings { get; set; }
+        /// <summary>
+        /// Choosing specialty
+        /// </summary>
+        public Model.Specialty? ChooseSpecialty { get; set; }
     
-        public Action(Model.MoveAction[] moves, Model.BuildingAction[] buildings)
+        public Action(Model.MoveAction[] moves, Model.BuildingAction[] buildings, Model.Specialty? chooseSpecialty)
         {
             this.Moves = moves;
             this.Buildings = buildings;
+            this.ChooseSpecialty = chooseSpecialty;
         }
     
         /// <summary> Read Action from reader </summary>
@@ -34,6 +39,13 @@ namespace SpbAiChamp.Model
             {
                 result.Buildings[buildingsIndex] = Model.BuildingAction.ReadFrom(reader);
             }
+            if (reader.ReadBoolean())
+            {
+                result.ChooseSpecialty = SpecialtyHelper.ReadFrom(reader);
+            } else
+            {
+                result.ChooseSpecialty = null;
+            }
             return result;
         }
     
@@ -49,6 +61,14 @@ namespace SpbAiChamp.Model
             foreach (var buildingsElement in Buildings)
             {
                 buildingsElement.WriteTo(writer);
+            }
+            if (!ChooseSpecialty.HasValue)
+            {
+                writer.Write(false);
+            } else
+            {
+                writer.Write(true);
+                writer.Write((int) (ChooseSpecialty.Value));
             }
         }
     
@@ -80,6 +100,15 @@ namespace SpbAiChamp.Model
                 buildingsIndex++;
             }
             stringResult += " ]";
+            stringResult += ", ";
+            stringResult += "ChooseSpecialty: ";
+            if (!ChooseSpecialty.HasValue)
+            {
+                stringResult += "null";
+            } else
+            {
+                stringResult += ChooseSpecialty.Value.ToString();
+            }
             stringResult += " }";
             return stringResult;
         }

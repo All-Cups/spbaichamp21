@@ -8,8 +8,9 @@ import spb_ai_champ.util.StreamUtil
  * @param buildingType Building's type
  * @param health Current health
  * @param workDone Amount of work done for current task
+ * @param lastTickTasksDone Number of tasks finished since last tick
  */
-case class Building(buildingType: spb_ai_champ.model.BuildingType, health: Int, workDone: Int) {
+case class Building(buildingType: spb_ai_champ.model.BuildingType, health: Int, workDone: Int, lastTickTasksDone: Int) {
     /**
      * Write Building to output stream
      */
@@ -17,6 +18,7 @@ case class Building(buildingType: spb_ai_champ.model.BuildingType, health: Int, 
         buildingType.writeTo(stream)
         StreamUtil.writeInt(stream, health)
         StreamUtil.writeInt(stream, workDone)
+        StreamUtil.writeInt(stream, lastTickTasksDone)
     }
 
     /**
@@ -32,6 +34,9 @@ case class Building(buildingType: spb_ai_champ.model.BuildingType, health: Int, 
         stringBuilder.append(", ")
         stringBuilder.append("workDone: ")
         stringBuilder.append(workDone)
+        stringBuilder.append(", ")
+        stringBuilder.append("lastTickTasksDone: ")
+        stringBuilder.append(lastTickTasksDone)
         stringBuilder.append(" }")
         stringBuilder.toString()
     }
@@ -43,6 +48,7 @@ object Building {
      */
     def readFrom(stream: java.io.InputStream): Building = Building(
         spb_ai_champ.model.BuildingType.readFrom(stream),
+        StreamUtil.readInt(stream),
         StreamUtil.readInt(stream),
         StreamUtil.readInt(stream)
     )

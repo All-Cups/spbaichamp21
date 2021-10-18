@@ -24,6 +24,10 @@ enum BuildingType : int {
     AccumulatorFactory = 8,
     /// Replicator produces new workers
     Replicator = 9,
+    /// Second level replicator
+    Replicator2 = 10,
+    /// Third level replicator
+    Replicator3 = 11,
 }
 
 /// Read BuildingType from reader
@@ -49,6 +53,10 @@ BuildingType readBuildingType(Stream reader) {
             return BuildingType.AccumulatorFactory;
         case BuildingType.Replicator:
             return BuildingType.Replicator;
+        case BuildingType.Replicator2:
+            return BuildingType.Replicator2;
+        case BuildingType.Replicator3:
+            return BuildingType.Replicator3;
         default:
             throw new Exception("Unexpected tag value");
     }

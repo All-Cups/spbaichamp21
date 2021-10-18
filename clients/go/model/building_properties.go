@@ -6,6 +6,8 @@ import . "spb_ai_champ/stream"
 
 // Building properties
 type BuildingProperties struct {
+    // Building type that this building can be upgraded from
+    BaseBuilding *BuildingType
     // Resources required for building
     BuildResources map[Resource]int32
     // Max health points of the building
@@ -28,8 +30,9 @@ type BuildingProperties struct {
     WorkAmount int32
 }
 
-func NewBuildingProperties(buildResources map[Resource]int32, maxHealth int32, maxWorkers int32, workResources map[Resource]int32, produceWorker bool, produceResource *Resource, produceAmount int32, produceScore int32, harvest bool, workAmount int32) BuildingProperties {
+func NewBuildingProperties(baseBuilding *BuildingType, buildResources map[Resource]int32, maxHealth int32, maxWorkers int32, workResources map[Resource]int32, produceWorker bool, produceResource *Resource, produceAmount int32, produceScore int32, harvest bool, workAmount int32) BuildingProperties {
     return BuildingProperties {
+        BaseBuilding: baseBuilding,
         BuildResources: buildResources,
         MaxHealth: maxHealth,
         MaxWorkers: maxWorkers,
@@ -45,6 +48,14 @@ func NewBuildingProperties(buildResources map[Resource]int32, maxHealth int32, m
 
 // Read BuildingProperties from reader
 func ReadBuildingProperties(reader io.Reader) BuildingProperties {
+    var baseBuilding *BuildingType
+    if ReadBool(reader) {
+        var baseBuildingValue BuildingType
+        baseBuildingValue = ReadBuildingType(reader)
+        baseBuilding = &baseBuildingValue
+    } else {
+        baseBuilding = nil
+    }
     var buildResources map[Resource]int32
     buildResourcesSize := ReadInt32(reader)
     buildResources = make(map[Resource]int32)
@@ -88,6 +99,7 @@ func ReadBuildingProperties(reader io.Reader) BuildingProperties {
     var workAmount int32
     workAmount = ReadInt32(reader)
     return BuildingProperties {
+        BaseBuilding: baseBuilding,
         BuildResources: buildResources,
         MaxHealth: maxHealth,
         MaxWorkers: maxWorkers,
@@ -103,6 +115,14 @@ func ReadBuildingProperties(reader io.Reader) BuildingProperties {
 
 // Write BuildingProperties to writer
 func (buildingProperties BuildingProperties) Write(writer io.Writer) {
+    baseBuilding := buildingProperties.BaseBuilding
+    if baseBuilding == nil {
+        WriteBool(writer, false)
+    } else {
+        WriteBool(writer, true)
+        baseBuildingValue := *baseBuilding
+        WriteInt32(writer, int32(baseBuildingValue))
+    }
     buildResources := buildingProperties.BuildResources
     WriteInt32(writer, int32(len(buildResources)))
     for buildResourcesKey, buildResourcesValue := range buildResources {
@@ -142,6 +162,15 @@ func (buildingProperties BuildingProperties) Write(writer io.Writer) {
 // Get string representation of BuildingProperties
 func (buildingProperties BuildingProperties) String() string {
     stringResult := "{ "
+    stringResult += "BaseBuilding: "
+    baseBuilding := buildingProperties.BaseBuilding
+    if baseBuilding == nil {
+        stringResult += "nil"
+    } else {
+        baseBuildingValue := *baseBuilding
+        stringResult += BuildingTypeToString(baseBuildingValue)
+    }
+    stringResult += ", "
     stringResult += "BuildResources: "
     buildResources := buildingProperties.BuildResources
     stringResult += "map[ "

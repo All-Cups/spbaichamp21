@@ -12,13 +12,16 @@ type Building struct {
     Health int32
     // Amount of work done for current task
     WorkDone int32
+    // Number of tasks finished since last tick
+    LastTickTasksDone int32
 }
 
-func NewBuilding(buildingType BuildingType, health int32, workDone int32) Building {
+func NewBuilding(buildingType BuildingType, health int32, workDone int32, lastTickTasksDone int32) Building {
     return Building {
         BuildingType: buildingType,
         Health: health,
         WorkDone: workDone,
+        LastTickTasksDone: lastTickTasksDone,
     }
 }
 
@@ -30,10 +33,13 @@ func ReadBuilding(reader io.Reader) Building {
     health = ReadInt32(reader)
     var workDone int32
     workDone = ReadInt32(reader)
+    var lastTickTasksDone int32
+    lastTickTasksDone = ReadInt32(reader)
     return Building {
         BuildingType: buildingType,
         Health: health,
         WorkDone: workDone,
+        LastTickTasksDone: lastTickTasksDone,
     }
 }
 
@@ -45,6 +51,8 @@ func (building Building) Write(writer io.Writer) {
     WriteInt32(writer, health)
     workDone := building.WorkDone
     WriteInt32(writer, workDone)
+    lastTickTasksDone := building.LastTickTasksDone
+    WriteInt32(writer, lastTickTasksDone)
 }
 
 // Get string representation of Building
@@ -61,6 +69,10 @@ func (building Building) String() string {
     stringResult += "WorkDone: "
     workDone := building.WorkDone
     stringResult += fmt.Sprint(workDone)
+    stringResult += ", "
+    stringResult += "LastTickTasksDone: "
+    lastTickTasksDone := building.LastTickTasksDone
+    stringResult += fmt.Sprint(lastTickTasksDone)
     stringResult += " }"
     return stringResult
 }

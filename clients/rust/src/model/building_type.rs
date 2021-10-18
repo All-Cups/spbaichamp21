@@ -23,6 +23,10 @@ pub enum BuildingType {
     AccumulatorFactory,
     /// Replicator produces new workers
     Replicator,
+    /// Second level replicator
+    Replicator2,
+    /// Third level replicator
+    Replicator3,
 }
 
 impl trans::Trans for BuildingType {
@@ -38,6 +42,8 @@ impl trans::Trans for BuildingType {
             Self::ChipFactory => 7,
             Self::AccumulatorFactory => 8,
             Self::Replicator => 9,
+            Self::Replicator2 => 10,
+            Self::Replicator3 => 11,
         };
         trans::Trans::write_to(&tag, writer)
     }
@@ -54,6 +60,8 @@ impl trans::Trans for BuildingType {
             7 => Ok(Self::ChipFactory),
             8 => Ok(Self::AccumulatorFactory),
             9 => Ok(Self::Replicator),
+            10 => Ok(Self::Replicator2),
+            11 => Ok(Self::Replicator3),
             _ => Err(std::io::Error::new(
                 std::io::ErrorKind::Other,
                 format!("Unexpected tag {:?}", tag))),

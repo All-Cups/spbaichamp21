@@ -2,10 +2,15 @@
 
 namespace model {
 
-BuildingProperties::BuildingProperties(std::unordered_map<model::Resource, int> buildResources, int maxHealth, int maxWorkers, std::unordered_map<model::Resource, int> workResources, bool produceWorker, std::optional<model::Resource> produceResource, int produceAmount, int produceScore, bool harvest, int workAmount) : buildResources(buildResources), maxHealth(maxHealth), maxWorkers(maxWorkers), workResources(workResources), produceWorker(produceWorker), produceResource(produceResource), produceAmount(produceAmount), produceScore(produceScore), harvest(harvest), workAmount(workAmount) { }
+BuildingProperties::BuildingProperties(std::optional<model::BuildingType> baseBuilding, std::unordered_map<model::Resource, int> buildResources, int maxHealth, int maxWorkers, std::unordered_map<model::Resource, int> workResources, bool produceWorker, std::optional<model::Resource> produceResource, int produceAmount, int produceScore, bool harvest, int workAmount) : baseBuilding(baseBuilding), buildResources(buildResources), maxHealth(maxHealth), maxWorkers(maxWorkers), workResources(workResources), produceWorker(produceWorker), produceResource(produceResource), produceAmount(produceAmount), produceScore(produceScore), harvest(harvest), workAmount(workAmount) { }
 
 // Read BuildingProperties from input stream
 BuildingProperties BuildingProperties::readFrom(InputStream& stream) {
+    std::optional<model::BuildingType> baseBuilding = std::optional<model::BuildingType>();
+    if (stream.readBool()) {
+        model::BuildingType baseBuildingValue = readBuildingType(stream);
+        baseBuilding.emplace(baseBuildingValue);
+    }
     size_t buildResourcesSize = stream.readInt();
     std::unordered_map<model::Resource, int> buildResources = std::unordered_map<model::Resource, int>();
     buildResources.reserve(buildResourcesSize);
@@ -34,11 +39,18 @@ BuildingProperties BuildingProperties::readFrom(InputStream& stream) {
     int produceScore = stream.readInt();
     bool harvest = stream.readBool();
     int workAmount = stream.readInt();
-    return BuildingProperties(buildResources, maxHealth, maxWorkers, workResources, produceWorker, produceResource, produceAmount, produceScore, harvest, workAmount);
+    return BuildingProperties(baseBuilding, buildResources, maxHealth, maxWorkers, workResources, produceWorker, produceResource, produceAmount, produceScore, harvest, workAmount);
 }
 
 // Write BuildingProperties to output stream
 void BuildingProperties::writeTo(OutputStream& stream) const {
+    if (baseBuilding) {
+        stream.write(true);
+        const model::BuildingType& baseBuildingValue = *baseBuilding;
+        stream.write((int)(baseBuildingValue));
+    } else {
+        stream.write(false);
+    }
     stream.write((int)(buildResources.size()));
     for (const auto& buildResourcesEntry : buildResources) {
         const model::Resource& buildResourcesKey = buildResourcesEntry.first;
@@ -73,6 +85,14 @@ void BuildingProperties::writeTo(OutputStream& stream) const {
 std::string BuildingProperties::toString() const {
     std::stringstream ss;
     ss << "BuildingProperties { ";
+    ss << "baseBuilding: ";
+    if (baseBuilding) {
+        const model::BuildingType& baseBuildingValue = *baseBuilding;
+        ss << buildingTypeToString(baseBuildingValue);
+    } else {
+        ss << "none";
+    }
+    ss << ", ";
     ss << "buildResources: ";
     ss << "{ ";
     size_t buildResourcesIndex = 0;

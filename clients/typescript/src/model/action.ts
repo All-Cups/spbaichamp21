@@ -1,5 +1,6 @@
 import { BuildingAction } from "./building-action";
 import { MoveAction } from "./move-action";
+import { Specialty } from "./specialty";
 import { Stream } from "../stream";
 
 /**
@@ -14,10 +15,15 @@ export class Action {
      * List of building orders
      */
     buildings: Array<BuildingAction>
+    /**
+     * Choosing specialty
+     */
+    chooseSpecialty: Specialty | null
 
-    constructor(moves: Array<MoveAction>, buildings: Array<BuildingAction>) {
+    constructor(moves: Array<MoveAction>, buildings: Array<BuildingAction>, chooseSpecialty: Specialty | null) {
         this.moves = moves;
         this.buildings = buildings;
+        this.chooseSpecialty = chooseSpecialty;
     }
 
     /**
@@ -38,7 +44,13 @@ export class Action {
             buildingsElement = await BuildingAction.readFrom(stream);
             buildings.push(buildingsElement);
         }
-        return new Action(moves, buildings)
+        let chooseSpecialty;
+        if (await stream.readBool()) {
+            chooseSpecialty = await Specialty.readFrom(stream);
+        } else {
+            chooseSpecialty = null;
+        }
+        return new Action(moves, buildings, chooseSpecialty)
     }
 
     /**
@@ -54,6 +66,13 @@ export class Action {
         await stream.writeInt(buildings.length);
         for (let buildingsElement of buildings) {
             await buildingsElement.writeTo(stream);
+        }
+        let chooseSpecialty = this.chooseSpecialty;
+        if (chooseSpecialty === null) {
+            await stream.writeBool(false);
+        } else {
+            await stream.writeBool(true);
+            await chooseSpecialty.writeTo(stream);
         }
     }
 }

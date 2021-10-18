@@ -10,6 +10,7 @@ impl MyStrategy {
         Action {
             moves: vec![],
             buildings: vec![],
+            choose_specialty: None,
         }
     }
 }

@@ -42,6 +42,18 @@ export class Game {
      */
     maxTravelDistance: number
     /**
+     * Additional distance of direct travel between planets for player with Logistics specialty
+     */
+    logisticsUpgrade: number
+    /**
+     * Additional work done by player with Production specialty (in percent)
+     */
+    productionUpgrade: number
+    /**
+     * Additional strength workers for player with Combat specialty (in percent)
+     */
+    combatUpgrade: number
+    /**
      * Max number of workers performing building on one planet
      */
     maxBuilders: number
@@ -49,8 +61,16 @@ export class Game {
      * Properties of every building type
      */
     buildingProperties: Map<BuildingType, BuildingProperties>
+    /**
+     * Whether choosing specialties is allowed
+     */
+    specialtiesAllowed: boolean
+    /**
+     * View distance
+     */
+    viewDistance: number | null
 
-    constructor(myIndex: number, currentTick: number, maxTickCount: number, players: Array<Player>, planets: Array<Planet>, flyingWorkerGroups: Array<FlyingWorkerGroup>, maxFlyingWorkerGroups: number, maxTravelDistance: number, maxBuilders: number, buildingProperties: Map<BuildingType, BuildingProperties>) {
+    constructor(myIndex: number, currentTick: number, maxTickCount: number, players: Array<Player>, planets: Array<Planet>, flyingWorkerGroups: Array<FlyingWorkerGroup>, maxFlyingWorkerGroups: number, maxTravelDistance: number, logisticsUpgrade: number, productionUpgrade: number, combatUpgrade: number, maxBuilders: number, buildingProperties: Map<BuildingType, BuildingProperties>, specialtiesAllowed: boolean, viewDistance: number | null) {
         this.myIndex = myIndex;
         this.currentTick = currentTick;
         this.maxTickCount = maxTickCount;
@@ -59,8 +79,13 @@ export class Game {
         this.flyingWorkerGroups = flyingWorkerGroups;
         this.maxFlyingWorkerGroups = maxFlyingWorkerGroups;
         this.maxTravelDistance = maxTravelDistance;
+        this.logisticsUpgrade = logisticsUpgrade;
+        this.productionUpgrade = productionUpgrade;
+        this.combatUpgrade = combatUpgrade;
         this.maxBuilders = maxBuilders;
         this.buildingProperties = buildingProperties;
+        this.specialtiesAllowed = specialtiesAllowed;
+        this.viewDistance = viewDistance;
     }
 
     /**
@@ -98,6 +123,12 @@ export class Game {
         maxFlyingWorkerGroups = await stream.readInt();
         let maxTravelDistance;
         maxTravelDistance = await stream.readInt();
+        let logisticsUpgrade;
+        logisticsUpgrade = await stream.readInt();
+        let productionUpgrade;
+        productionUpgrade = await stream.readInt();
+        let combatUpgrade;
+        combatUpgrade = await stream.readInt();
         let maxBuilders;
         maxBuilders = await stream.readInt();
         let buildingProperties;
@@ -109,7 +140,15 @@ export class Game {
             buildingPropertiesValue = await BuildingProperties.readFrom(stream);
             buildingProperties.set(buildingPropertiesKey, buildingPropertiesValue)
         }
-        return new Game(myIndex, currentTick, maxTickCount, players, planets, flyingWorkerGroups, maxFlyingWorkerGroups, maxTravelDistance, maxBuilders, buildingProperties)
+        let specialtiesAllowed;
+        specialtiesAllowed = await stream.readBool();
+        let viewDistance;
+        if (await stream.readBool()) {
+            viewDistance = await stream.readInt();
+        } else {
+            viewDistance = null;
+        }
+        return new Game(myIndex, currentTick, maxTickCount, players, planets, flyingWorkerGroups, maxFlyingWorkerGroups, maxTravelDistance, logisticsUpgrade, productionUpgrade, combatUpgrade, maxBuilders, buildingProperties, specialtiesAllowed, viewDistance)
     }
 
     /**
@@ -141,6 +180,12 @@ export class Game {
         await stream.writeInt(maxFlyingWorkerGroups);
         let maxTravelDistance = this.maxTravelDistance;
         await stream.writeInt(maxTravelDistance);
+        let logisticsUpgrade = this.logisticsUpgrade;
+        await stream.writeInt(logisticsUpgrade);
+        let productionUpgrade = this.productionUpgrade;
+        await stream.writeInt(productionUpgrade);
+        let combatUpgrade = this.combatUpgrade;
+        await stream.writeInt(combatUpgrade);
         let maxBuilders = this.maxBuilders;
         await stream.writeInt(maxBuilders);
         let buildingProperties = this.buildingProperties;
@@ -148,6 +193,15 @@ export class Game {
         for (let [buildingPropertiesKey, buildingPropertiesValue] of buildingProperties) {
             await buildingPropertiesKey.writeTo(stream);
             await buildingPropertiesValue.writeTo(stream);
+        }
+        let specialtiesAllowed = this.specialtiesAllowed;
+        await stream.writeBool(specialtiesAllowed);
+        let viewDistance = this.viewDistance;
+        if (viewDistance === null) {
+            await stream.writeBool(false);
+        } else {
+            await stream.writeBool(true);
+            await stream.writeInt(viewDistance);
         }
     }
 }

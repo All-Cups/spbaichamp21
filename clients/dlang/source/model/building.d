@@ -13,11 +13,14 @@ struct Building {
     int health;
     /// Amount of work done for current task
     int workDone;
+    /// Number of tasks finished since last tick
+    int lastTickTasksDone;
 
-    this(model.BuildingType buildingType, int health, int workDone) {
+    this(model.BuildingType buildingType, int health, int workDone, int lastTickTasksDone) {
         this.buildingType = buildingType;
         this.health = health;
         this.workDone = workDone;
+        this.lastTickTasksDone = lastTickTasksDone;
     }
 
     /// Read Building from reader
@@ -28,7 +31,9 @@ struct Building {
         health = reader.readInt();
         int workDone;
         workDone = reader.readInt();
-        return Building(buildingType, health, workDone);
+        int lastTickTasksDone;
+        lastTickTasksDone = reader.readInt();
+        return Building(buildingType, health, workDone, lastTickTasksDone);
     }
 
     /// Write Building to writer
@@ -36,5 +41,6 @@ struct Building {
         writer.write(cast(int)(buildingType));
         writer.write(health);
         writer.write(workDone);
+        writer.write(lastTickTasksDone);
     }
 }

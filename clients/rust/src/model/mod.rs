@@ -24,5 +24,7 @@ mod player;
 pub use self::player::*;
 mod resource;
 pub use self::resource::*;
+mod specialty;
+pub use self::specialty::*;
 mod worker_group;
 pub use self::worker_group::*;

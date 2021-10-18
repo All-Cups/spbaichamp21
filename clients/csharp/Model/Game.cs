@@ -38,6 +38,18 @@ namespace SpbAiChamp.Model
         /// </summary>
         public int MaxTravelDistance { get; set; }
         /// <summary>
+        /// Additional distance of direct travel between planets for player with Logistics specialty
+        /// </summary>
+        public int LogisticsUpgrade { get; set; }
+        /// <summary>
+        /// Additional work done by player with Production specialty (in percent)
+        /// </summary>
+        public int ProductionUpgrade { get; set; }
+        /// <summary>
+        /// Additional strength workers for player with Combat specialty (in percent)
+        /// </summary>
+        public int CombatUpgrade { get; set; }
+        /// <summary>
         /// Max number of workers performing building on one planet
         /// </summary>
         public int MaxBuilders { get; set; }
@@ -45,8 +57,16 @@ namespace SpbAiChamp.Model
         /// Properties of every building type
         /// </summary>
         public System.Collections.Generic.IDictionary<Model.BuildingType, Model.BuildingProperties> BuildingProperties { get; set; }
+        /// <summary>
+        /// Whether choosing specialties is allowed
+        /// </summary>
+        public bool SpecialtiesAllowed { get; set; }
+        /// <summary>
+        /// View distance
+        /// </summary>
+        public int? ViewDistance { get; set; }
     
-        public Game(int myIndex, int currentTick, int maxTickCount, Model.Player[] players, Model.Planet[] planets, Model.FlyingWorkerGroup[] flyingWorkerGroups, int maxFlyingWorkerGroups, int maxTravelDistance, int maxBuilders, System.Collections.Generic.IDictionary<Model.BuildingType, Model.BuildingProperties> buildingProperties)
+        public Game(int myIndex, int currentTick, int maxTickCount, Model.Player[] players, Model.Planet[] planets, Model.FlyingWorkerGroup[] flyingWorkerGroups, int maxFlyingWorkerGroups, int maxTravelDistance, int logisticsUpgrade, int productionUpgrade, int combatUpgrade, int maxBuilders, System.Collections.Generic.IDictionary<Model.BuildingType, Model.BuildingProperties> buildingProperties, bool specialtiesAllowed, int? viewDistance)
         {
             this.MyIndex = myIndex;
             this.CurrentTick = currentTick;
@@ -56,8 +76,13 @@ namespace SpbAiChamp.Model
             this.FlyingWorkerGroups = flyingWorkerGroups;
             this.MaxFlyingWorkerGroups = maxFlyingWorkerGroups;
             this.MaxTravelDistance = maxTravelDistance;
+            this.LogisticsUpgrade = logisticsUpgrade;
+            this.ProductionUpgrade = productionUpgrade;
+            this.CombatUpgrade = combatUpgrade;
             this.MaxBuilders = maxBuilders;
             this.BuildingProperties = buildingProperties;
+            this.SpecialtiesAllowed = specialtiesAllowed;
+            this.ViewDistance = viewDistance;
         }
     
         /// <summary> Read Game from reader </summary>
@@ -84,6 +109,9 @@ namespace SpbAiChamp.Model
             }
             result.MaxFlyingWorkerGroups = reader.ReadInt32();
             result.MaxTravelDistance = reader.ReadInt32();
+            result.LogisticsUpgrade = reader.ReadInt32();
+            result.ProductionUpgrade = reader.ReadInt32();
+            result.CombatUpgrade = reader.ReadInt32();
             result.MaxBuilders = reader.ReadInt32();
             int buildingPropertiesSize = reader.ReadInt32();
             result.BuildingProperties = new System.Collections.Generic.Dictionary<Model.BuildingType, Model.BuildingProperties>(buildingPropertiesSize);
@@ -94,6 +122,14 @@ namespace SpbAiChamp.Model
                 buildingPropertiesKey = BuildingTypeHelper.ReadFrom(reader);
                 buildingPropertiesValue = Model.BuildingProperties.ReadFrom(reader);
                 result.BuildingProperties.Add(buildingPropertiesKey, buildingPropertiesValue);
+            }
+            result.SpecialtiesAllowed = reader.ReadBoolean();
+            if (reader.ReadBoolean())
+            {
+                result.ViewDistance = reader.ReadInt32();
+            } else
+            {
+                result.ViewDistance = null;
             }
             return result;
         }
@@ -121,6 +157,9 @@ namespace SpbAiChamp.Model
             }
             writer.Write(MaxFlyingWorkerGroups);
             writer.Write(MaxTravelDistance);
+            writer.Write(LogisticsUpgrade);
+            writer.Write(ProductionUpgrade);
+            writer.Write(CombatUpgrade);
             writer.Write(MaxBuilders);
             writer.Write(BuildingProperties.Count);
             foreach (var buildingPropertiesEntry in BuildingProperties)
@@ -129,6 +168,15 @@ namespace SpbAiChamp.Model
                 var buildingPropertiesValue = buildingPropertiesEntry.Value;
                 writer.Write((int) (buildingPropertiesKey));
                 buildingPropertiesValue.WriteTo(writer);
+            }
+            writer.Write(SpecialtiesAllowed);
+            if (!ViewDistance.HasValue)
+            {
+                writer.Write(false);
+            } else
+            {
+                writer.Write(true);
+                writer.Write(ViewDistance.Value);
             }
         }
     
@@ -189,6 +237,15 @@ namespace SpbAiChamp.Model
             stringResult += "MaxTravelDistance: ";
             stringResult += MaxTravelDistance.ToString();
             stringResult += ", ";
+            stringResult += "LogisticsUpgrade: ";
+            stringResult += LogisticsUpgrade.ToString();
+            stringResult += ", ";
+            stringResult += "ProductionUpgrade: ";
+            stringResult += ProductionUpgrade.ToString();
+            stringResult += ", ";
+            stringResult += "CombatUpgrade: ";
+            stringResult += CombatUpgrade.ToString();
+            stringResult += ", ";
             stringResult += "MaxBuilders: ";
             stringResult += MaxBuilders.ToString();
             stringResult += ", ";
@@ -208,6 +265,18 @@ namespace SpbAiChamp.Model
                 buildingPropertiesIndex++;
             }
             stringResult += " }";
+            stringResult += ", ";
+            stringResult += "SpecialtiesAllowed: ";
+            stringResult += SpecialtiesAllowed.ToString();
+            stringResult += ", ";
+            stringResult += "ViewDistance: ";
+            if (!ViewDistance.HasValue)
+            {
+                stringResult += "null";
+            } else
+            {
+                stringResult += ViewDistance.Value.ToString();
+            }
             stringResult += " }";
             return stringResult;
         }

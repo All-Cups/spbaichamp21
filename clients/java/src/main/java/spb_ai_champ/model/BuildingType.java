@@ -45,7 +45,15 @@ public enum BuildingType {
     /**
      * Replicator produces new workers
      */
-    REPLICATOR(9);
+    REPLICATOR(9),
+    /**
+     * Second level replicator
+     */
+    REPLICATOR2(10),
+    /**
+     * Third level replicator
+     */
+    REPLICATOR3(11);
 
     public int tag;
 
@@ -78,6 +86,10 @@ public enum BuildingType {
             return ACCUMULATOR_FACTORY;
         case 9:
             return REPLICATOR;
+        case 10:
+            return REPLICATOR2;
+        case 11:
+            return REPLICATOR3;
         default:
             throw new java.io.IOException("Unexpected tag value");
         }

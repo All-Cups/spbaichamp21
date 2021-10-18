@@ -60,11 +60,30 @@ public class Building {
     public void setWorkDone(int value) {
         this.workDone = value;
     }
+    /**
+     * Number of tasks finished since last tick
+     */
+    private int lastTickTasksDone;
 
-    public Building(spb_ai_champ.model.BuildingType buildingType, int health, int workDone) {
+    /**
+     * Number of tasks finished since last tick
+     */
+    public int getLastTickTasksDone() {
+        return lastTickTasksDone;
+    }
+
+    /**
+     * Number of tasks finished since last tick
+     */
+    public void setLastTickTasksDone(int value) {
+        this.lastTickTasksDone = value;
+    }
+
+    public Building(spb_ai_champ.model.BuildingType buildingType, int health, int workDone, int lastTickTasksDone) {
         this.buildingType = buildingType;
         this.health = health;
         this.workDone = workDone;
+        this.lastTickTasksDone = lastTickTasksDone;
     }
 
     /**
@@ -77,7 +96,9 @@ public class Building {
         health = StreamUtil.readInt(stream);
         int workDone;
         workDone = StreamUtil.readInt(stream);
-        return new Building(buildingType, health, workDone);
+        int lastTickTasksDone;
+        lastTickTasksDone = StreamUtil.readInt(stream);
+        return new Building(buildingType, health, workDone, lastTickTasksDone);
     }
 
     /**
@@ -87,6 +108,7 @@ public class Building {
         StreamUtil.writeInt(stream, buildingType.tag);
         StreamUtil.writeInt(stream, health);
         StreamUtil.writeInt(stream, workDone);
+        StreamUtil.writeInt(stream, lastTickTasksDone);
     }
 
     /**
@@ -103,6 +125,9 @@ public class Building {
         stringBuilder.append(", ");
         stringBuilder.append("workDone: ");
         stringBuilder.append(String.valueOf(workDone));
+        stringBuilder.append(", ");
+        stringBuilder.append("lastTickTasksDone: ");
+        stringBuilder.append(String.valueOf(lastTickTasksDone));
         stringBuilder.append(" }");
         return stringBuilder.toString();
     }

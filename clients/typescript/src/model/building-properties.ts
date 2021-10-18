@@ -1,3 +1,4 @@
+import { BuildingType } from "./building-type";
 import { Resource } from "./resource";
 import { Stream } from "../stream";
 
@@ -5,6 +6,10 @@ import { Stream } from "../stream";
  * Building properties
  */
 export class BuildingProperties {
+    /**
+     * Building type that this building can be upgraded from
+     */
+    baseBuilding: BuildingType | null
     /**
      * Resources required for building
      */
@@ -46,7 +51,8 @@ export class BuildingProperties {
      */
     workAmount: number
 
-    constructor(buildResources: Map<Resource, number>, maxHealth: number, maxWorkers: number, workResources: Map<Resource, number>, produceWorker: boolean, produceResource: Resource | null, produceAmount: number, produceScore: number, harvest: boolean, workAmount: number) {
+    constructor(baseBuilding: BuildingType | null, buildResources: Map<Resource, number>, maxHealth: number, maxWorkers: number, workResources: Map<Resource, number>, produceWorker: boolean, produceResource: Resource | null, produceAmount: number, produceScore: number, harvest: boolean, workAmount: number) {
+        this.baseBuilding = baseBuilding;
         this.buildResources = buildResources;
         this.maxHealth = maxHealth;
         this.maxWorkers = maxWorkers;
@@ -63,6 +69,12 @@ export class BuildingProperties {
      * Read BuildingProperties from input stream
      */
     static async readFrom(stream: Stream): Promise<BuildingProperties> {
+        let baseBuilding;
+        if (await stream.readBool()) {
+            baseBuilding = await BuildingType.readFrom(stream);
+        } else {
+            baseBuilding = null;
+        }
         let buildResources;
         buildResources = new Map();
         for (let buildResourcesCount = await stream.readInt(); buildResourcesCount > 0; buildResourcesCount--) {
@@ -101,13 +113,20 @@ export class BuildingProperties {
         harvest = await stream.readBool();
         let workAmount;
         workAmount = await stream.readInt();
-        return new BuildingProperties(buildResources, maxHealth, maxWorkers, workResources, produceWorker, produceResource, produceAmount, produceScore, harvest, workAmount)
+        return new BuildingProperties(baseBuilding, buildResources, maxHealth, maxWorkers, workResources, produceWorker, produceResource, produceAmount, produceScore, harvest, workAmount)
     }
 
     /**
      * Write BuildingProperties to output stream
      */
     async writeTo(stream: Stream) {
+        let baseBuilding = this.baseBuilding;
+        if (baseBuilding === null) {
+            await stream.writeBool(false);
+        } else {
+            await stream.writeBool(true);
+            await baseBuilding.writeTo(stream);
+        }
         let buildResources = this.buildResources;
         await stream.writeInt(buildResources.size);
         for (let [buildResourcesKey, buildResourcesValue] of buildResources) {

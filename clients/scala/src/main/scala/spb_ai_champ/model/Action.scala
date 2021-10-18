@@ -7,8 +7,9 @@ import spb_ai_champ.util.StreamUtil
  *
  * @param moves List of movement orders
  * @param buildings List of building orders
+ * @param chooseSpecialty Choosing specialty
  */
-case class Action(moves: Seq[spb_ai_champ.model.MoveAction], buildings: Seq[spb_ai_champ.model.BuildingAction]) {
+case class Action(moves: Seq[spb_ai_champ.model.MoveAction], buildings: Seq[spb_ai_champ.model.BuildingAction], chooseSpecialty: Option[spb_ai_champ.model.Specialty]) {
     /**
      * Write Action to output stream
      */
@@ -20,6 +21,13 @@ case class Action(moves: Seq[spb_ai_champ.model.MoveAction], buildings: Seq[spb_
         StreamUtil.writeInt(stream, buildings.length)
         buildings.foreach { value =>
             value.writeTo(stream)
+        }
+        chooseSpecialty match {
+            case None => StreamUtil.writeBoolean(stream, false)
+            case Some(value) => {
+                StreamUtil.writeBoolean(stream, true)
+                value.writeTo(stream)
+            }
         }
     }
 
@@ -33,6 +41,9 @@ case class Action(moves: Seq[spb_ai_champ.model.MoveAction], buildings: Seq[spb_
         stringBuilder.append(", ")
         stringBuilder.append("buildings: ")
         stringBuilder.append(buildings)
+        stringBuilder.append(", ")
+        stringBuilder.append("chooseSpecialty: ")
+        stringBuilder.append(chooseSpecialty)
         stringBuilder.append(" }")
         stringBuilder.toString()
     }
@@ -48,6 +59,9 @@ object Action {
         },
         (0 until StreamUtil.readInt(stream)).map { _ =>
             spb_ai_champ.model.BuildingAction.readFrom(stream)
-        }
+        },
+        if (StreamUtil.readBoolean(stream)) Some(
+            spb_ai_champ.model.Specialty.readFrom(stream)
+        ) else None
     )
 }

@@ -7,6 +7,8 @@ open SpbAiChamp
 
 /// Building properties
 type BuildingProperties = {
+    /// Building type that this building can be upgraded from
+    BaseBuilding: option<Model.BuildingType>;
     /// Resources required for building
     BuildResources: Map<Model.Resource, int>;
     /// Max health points of the building
@@ -31,6 +33,11 @@ type BuildingProperties = {
 
     /// Write BuildingProperties to writer
     member this.writeTo(writer: System.IO.BinaryWriter) =
+        match this.BaseBuilding with
+            | Some value ->
+                writer.Write true
+                writer.Write (int value)
+            | None -> writer.Write false
         writer.Write this.BuildResources.Count
         this.BuildResources |> Map.iter (fun key value ->
             writer.Write (int key)
@@ -55,6 +62,9 @@ type BuildingProperties = {
 
     /// Read BuildingProperties from reader
     static member readFrom(reader: System.IO.BinaryReader) = {
+        BaseBuilding = match reader.ReadBoolean() with
+                           | true -> Some(reader.ReadInt32() |> enum)
+                           | false -> None
         BuildResources = [for _ in 1 .. reader.ReadInt32() do
                              let key = reader.ReadInt32() |> enum
                              let value = reader.ReadInt32()

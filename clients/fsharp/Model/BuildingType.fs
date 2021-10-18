@@ -14,3 +14,5 @@ type BuildingType =
     | ChipFactory = 7
     | AccumulatorFactory = 8
     | Replicator = 9
+    | Replicator2 = 10
+    | Replicator3 = 11

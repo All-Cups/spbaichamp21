@@ -45,6 +45,14 @@ namespace SpbAiChamp.Model
         /// Replicator produces new workers
         /// </summary>
         Replicator = 9,
+        /// <summary>
+        /// Second level replicator
+        /// </summary>
+        Replicator2 = 10,
+        /// <summary>
+        /// Third level replicator
+        /// </summary>
+        Replicator3 = 11,
     }
 
     public static class BuildingTypeHelper {
@@ -72,6 +80,10 @@ namespace SpbAiChamp.Model
                     return BuildingType.AccumulatorFactory;
                 case 9:
                     return BuildingType.Replicator;
+                case 10:
+                    return BuildingType.Replicator2;
+                case 11:
+                    return BuildingType.Replicator3;
                 default:
                     throw new System.Exception("Unexpected tag value");
             }

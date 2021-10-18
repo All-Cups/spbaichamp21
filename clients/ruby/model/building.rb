@@ -10,11 +10,14 @@ class Building
     attr_accessor :health
     # Amount of work done for current task
     attr_accessor :work_done
+    # Number of tasks finished since last tick
+    attr_accessor :last_tick_tasks_done
 
-    def initialize(building_type, health, work_done)
+    def initialize(building_type, health, work_done, last_tick_tasks_done)
         @building_type = building_type
         @health = health
         @work_done = work_done
+        @last_tick_tasks_done = last_tick_tasks_done
     end
 
     # Read Building from input stream
@@ -22,7 +25,8 @@ class Building
         building_type = Model::BuildingType.read_from(stream)
         health = stream.read_int()
         work_done = stream.read_int()
-        Building.new(building_type, health, work_done)
+        last_tick_tasks_done = stream.read_int()
+        Building.new(building_type, health, work_done, last_tick_tasks_done)
     end
 
     # Write Building to output stream
@@ -30,6 +34,7 @@ class Building
         stream.write_int(@building_type)
         stream.write_int(@health)
         stream.write_int(@work_done)
+        stream.write_int(@last_tick_tasks_done)
     end
 
     def to_s
@@ -42,6 +47,9 @@ class Building
         string_result += ", "
         string_result += "work_done: "
         string_result += @work_done.to_s
+        string_result += ", "
+        string_result += "last_tick_tasks_done: "
+        string_result += @last_tick_tasks_done.to_s
         string_result += " }"
         string_result
     end

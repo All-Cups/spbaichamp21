@@ -45,7 +45,15 @@ enum class BuildingType private constructor(val tag: Int) {
     /**
      * Replicator produces new workers
      */
-    REPLICATOR(9);
+    REPLICATOR(9),
+    /**
+     * Second level replicator
+     */
+    REPLICATOR2(10),
+    /**
+     * Third level replicator
+     */
+    REPLICATOR3(11);
 
     companion object {
         /**
@@ -64,6 +72,8 @@ enum class BuildingType private constructor(val tag: Int) {
             CHIP_FACTORY.tag -> CHIP_FACTORY
             ACCUMULATOR_FACTORY.tag -> ACCUMULATOR_FACTORY
             REPLICATOR.tag -> REPLICATOR
+            REPLICATOR2.tag -> REPLICATOR2
+            REPLICATOR3.tag -> REPLICATOR3
             else -> throw java.io.IOException("Unexpected tag value")
             }
         }

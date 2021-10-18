@@ -61,7 +61,7 @@ impl Runner {
         let mut writer = std::io::BufWriter::new(stream_clone);
         args.token.write_to(&mut writer)?;
         0i32.write_to(&mut writer)?;
-        3i32.write_to(&mut writer)?;
+        4i32.write_to(&mut writer)?;
         0i32.write_to(&mut writer)?;
         writer.flush()?;
         Ok(Self {

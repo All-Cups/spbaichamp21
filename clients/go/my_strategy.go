@@ -14,5 +14,6 @@ func (strategy MyStrategy) getAction(game Game) Action {
     return Action{
         Moves: make([]MoveAction, 0),
         Buildings: make([]BuildingAction, 0),
+        ChooseSpecialty: nil,
     }
 }

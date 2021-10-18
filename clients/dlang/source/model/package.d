@@ -13,4 +13,5 @@ public import model.move_action;
 public import model.planet;
 public import model.player;
 public import model.resource;
+public import model.specialty;
 public import model.worker_group;

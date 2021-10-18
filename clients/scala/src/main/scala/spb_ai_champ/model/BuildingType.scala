@@ -55,6 +55,14 @@ object BuildingType {
      * Replicator produces new workers
      */
     case object REPLICATOR extends BuildingType(9)
+    /**
+     * Second level replicator
+     */
+    case object REPLICATOR2 extends BuildingType(10)
+    /**
+     * Third level replicator
+     */
+    case object REPLICATOR3 extends BuildingType(11)
 
     /**
      * Read BuildingType from input stream
@@ -71,6 +79,8 @@ object BuildingType {
             case CHIP_FACTORY.tag => CHIP_FACTORY
             case ACCUMULATOR_FACTORY.tag => ACCUMULATOR_FACTORY
             case REPLICATOR.tag => REPLICATOR
+            case REPLICATOR2.tag => REPLICATOR2
+            case REPLICATOR3.tag => REPLICATOR3
             case _ => throw new java.io.IOException("Unexpected tag value")
         }
 }

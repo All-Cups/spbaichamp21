@@ -1,3 +1,4 @@
+from model.building_type import BuildingType
 from model.resource import Resource
 from stream_wrapper import StreamWrapper
 from typing import Dict
@@ -6,8 +7,9 @@ from typing import Optional
 class BuildingProperties:
     """Building properties"""
 
-    __slots__ = ("build_resources","max_health","max_workers","work_resources","produce_worker","produce_resource","produce_amount","produce_score","harvest","work_amount",)
+    __slots__ = ("base_building","build_resources","max_health","max_workers","work_resources","produce_worker","produce_resource","produce_amount","produce_score","harvest","work_amount",)
 
+    base_building: Optional[BuildingType]
     build_resources: Dict[Resource, int]
     max_health: int
     max_workers: int
@@ -19,7 +21,9 @@ class BuildingProperties:
     harvest: bool
     work_amount: int
 
-    def __init__(self, build_resources: Dict[Resource, int], max_health: int, max_workers: int, work_resources: Dict[Resource, int], produce_worker: bool, produce_resource: Optional[Resource], produce_amount: int, produce_score: int, harvest: bool, work_amount: int):
+    def __init__(self, base_building: Optional[BuildingType], build_resources: Dict[Resource, int], max_health: int, max_workers: int, work_resources: Dict[Resource, int], produce_worker: bool, produce_resource: Optional[Resource], produce_amount: int, produce_score: int, harvest: bool, work_amount: int):
+        self.base_building = base_building
+        """Building type that this building can be upgraded from"""
         self.build_resources = build_resources
         """Resources required for building"""
         self.max_health = max_health
@@ -45,6 +49,10 @@ class BuildingProperties:
     def read_from(stream: StreamWrapper) -> "BuildingProperties":
         """Read BuildingProperties from input stream
         """
+        if stream.read_bool():
+            base_building = BuildingType(stream.read_int())
+        else:
+            base_building = None
         build_resources = {}
         for _ in range(stream.read_int()):
             build_resources_key = Resource(stream.read_int())
@@ -66,11 +74,16 @@ class BuildingProperties:
         produce_score = stream.read_int()
         harvest = stream.read_bool()
         work_amount = stream.read_int()
-        return BuildingProperties(build_resources, max_health, max_workers, work_resources, produce_worker, produce_resource, produce_amount, produce_score, harvest, work_amount)
+        return BuildingProperties(base_building, build_resources, max_health, max_workers, work_resources, produce_worker, produce_resource, produce_amount, produce_score, harvest, work_amount)
     
     def write_to(self, stream: StreamWrapper):
         """Write BuildingProperties to output stream
         """
+        if self.base_building is None:
+            stream.write_bool(False)
+        else:
+            stream.write_bool(True)
+            stream.write_int(self.base_building)
         stream.write_int(len(self.build_resources))
         for key, value in self.build_resources.items():
             stream.write_int(key)
@@ -94,6 +107,8 @@ class BuildingProperties:
     
     def __repr__(self):
         return "BuildingProperties(" + \
+            repr(self.base_building) + \
+            ", " + \
             repr(self.build_resources) + \
             ", " + \
             repr(self.max_health) + \

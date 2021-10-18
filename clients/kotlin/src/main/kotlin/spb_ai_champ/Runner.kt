@@ -17,7 +17,7 @@ fun main(args: Array<String>) {
     val outputStream = BufferedOutputStream(socket.getOutputStream())
     StreamUtil.writeString(outputStream, token)
     StreamUtil.writeInt(outputStream, 0)
-    StreamUtil.writeInt(outputStream, 3)
+    StreamUtil.writeInt(outputStream, 4)
     StreamUtil.writeInt(outputStream, 0)
     outputStream.flush()
     

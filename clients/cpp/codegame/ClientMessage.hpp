@@ -9,6 +9,7 @@
 #include "model/DebugData.hpp"
 #include "model/MoveAction.hpp"
 #include "model/Resource.hpp"
+#include "model/Specialty.hpp"
 #include <memory>
 #include <optional>
 #include <sstream>
