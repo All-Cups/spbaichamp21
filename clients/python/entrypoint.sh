@@ -4,6 +4,7 @@ PROJECT_NAME="spb_ai_champ"
 SOLUTION_CODE_ENTRYPOINT="my_strategy.py"
 function compile() (
     set -e
+    find . -name '*.pyx' -exec cythonize -i {} \;
     zip -r - . > /tmp/$PROJECT_NAME.zip
 )
 COMPILED_FILE_PATH="/tmp/$PROJECT_NAME.zip"
