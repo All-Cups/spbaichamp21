@@ -35,3 +35,7 @@
 - [Rust](https://github.com/All-Cups/spbaichamp21/releases/download/v0.4.0/client-rust.zip)
 - [Scala](https://github.com/All-Cups/spbaichamp21/releases/download/v0.4.0/client-scala.zip)
 - [TypeScript](https://github.com/All-Cups/spbaichamp21/releases/download/v0.4.0/client-typescript.zip)
+
+## Докерфайлы
+
+Также вы можете увидеть докерфайлы и скрипты компиляции в папке [clients](clients).
