@@ -3,7 +3,7 @@
   "version": "0.4.0",
   "main": "main.js",
   "scripts": {
-    "build": "rimraf ./build && tsc",
+    "build": "rimraf ./build && tsc --downlevelIteration",
     "start": "npm run build && node build/main.js"
   },
   "devDependencies": {
