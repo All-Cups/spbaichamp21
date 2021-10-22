@@ -1,4 +1,5 @@
-import os from "os";
+//import os from "os";
+const os = require('os');
 
 const BOOL_SIZE = 1;
 const INT_SIZE = 4;
