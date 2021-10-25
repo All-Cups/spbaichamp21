@@ -19,8 +19,8 @@ class Runner
         socket.connect(addr);
         stream = new BufferedStream(new SocketStream(socket));
         stream.write(token);
+        stream.write(1);
         stream.write(0);
-        stream.write(4);
         stream.write(0);
         stream.flush();
     }

@@ -11,8 +11,8 @@ public:
     Runner(const std::string& host, int port, const std::string& token): tcpStream(host, port)
     {
         tcpStream.write(token);
+        tcpStream.write(int(1));
         tcpStream.write(int(0));
-        tcpStream.write(int(4));
         tcpStream.write(int(0));
         tcpStream.flush();
     }

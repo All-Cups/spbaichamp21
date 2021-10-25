@@ -18,8 +18,8 @@ object Runner extends App {
     val outputStream = new BufferedOutputStream(socket.getOutputStream)
 
     StreamUtil.writeString(outputStream, token)
+    StreamUtil.writeInt(outputStream, 1)
     StreamUtil.writeInt(outputStream, 0)
-    StreamUtil.writeInt(outputStream, 4)
     StreamUtil.writeInt(outputStream, 0)
     outputStream.flush()
 

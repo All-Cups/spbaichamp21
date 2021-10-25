@@ -23,8 +23,8 @@ func NewRunner(host string, port uint16, token string) Runner {
     }
     writer := bufio.NewWriter(conn)
     WriteString(writer, token)
+    WriteInt32(writer, 1)
     WriteInt32(writer, 0)
-    WriteInt32(writer, 4)
     WriteInt32(writer, 0)
     err = writer.Flush()
     if err != nil {

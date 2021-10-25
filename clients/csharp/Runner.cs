@@ -20,8 +20,8 @@ namespace SpbAiChamp
             var tokenData = System.Text.Encoding.UTF8.GetBytes(token);
             writer.Write(tokenData.Length);
             writer.Write(tokenData);
+            writer.Write((int) 1);
             writer.Write((int) 0);
-            writer.Write((int) 4);
             writer.Write((int) 0);
             writer.Flush();
         }

@@ -17,8 +17,8 @@ class Runner:
         self.writer = StreamWrapper(socket_stream)
         self.token = token
         self.writer.write_string(self.token)
+        self.writer.write_int(1)
         self.writer.write_int(0)
-        self.writer.write_int(4)
         self.writer.write_int(0)
         self.writer.flush()
 

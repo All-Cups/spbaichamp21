@@ -14,8 +14,8 @@ class Runner {
 
     async connect() {
         await this.stream.writeString(this.token);
+        await this.stream.writeInt(1);
         await this.stream.writeInt(0);
-        await this.stream.writeInt(4);
         await this.stream.writeInt(0);
         await this.stream.flush();
     }

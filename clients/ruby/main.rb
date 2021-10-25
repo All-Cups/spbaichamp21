@@ -9,8 +9,8 @@ class Runner
         @stream = TcpStream.new(host, port)
         @token = token
         @stream.write_string(@token)
+        @stream.write_int(1)
         @stream.write_int(0)
-        @stream.write_int(4)
         @stream.write_int(0)
         @stream.flush()
     end
