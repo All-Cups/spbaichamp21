@@ -5,7 +5,7 @@
 В этом репозитории можно скачать всё необходимое для участия в чемпионате.
 При необходимости, можно ознакомиться с историей изменений на странице [релизов](https://github.com/All-Cups/spbaichamp21/releases).
 
-Текущая версия: **1.0.2**
+Текущая версия: **1.0.4**
 
 ## Документация
 
@@ -15,10 +15,10 @@
 
 ### Актуальные версии приложения под различные ОС
 
-- [Windows](https://github.com/All-Cups/spbaichamp21/releases/download/v1.0.2/app-windows.zip)
-- [MacOS](https://github.com/All-Cups/spbaichamp21/releases/download/v1.0.2/app-macos.tar.gz)
-- [Linux](https://github.com/All-Cups/spbaichamp21/releases/download/v1.0.2/app-linux.tar.gz)
-- [Linux ARMv7](https://github.com/All-Cups/spbaichamp21/releases/download/v1.0.2/app-linux-armv7.tar.gz)
+- [Windows](https://github.com/All-Cups/spbaichamp21/releases/download/v1.0.4/app-windows.zip)
+- [MacOS](https://github.com/All-Cups/spbaichamp21/releases/download/v1.0.4/app-macos.tar.gz)
+- [Linux](https://github.com/All-Cups/spbaichamp21/releases/download/v1.0.4/app-linux.tar.gz)
+- [Linux ARMv7](https://github.com/All-Cups/spbaichamp21/releases/download/v1.0.4/app-linux-armv7.tar.gz)
 
 ### Языковые пакеты
 
